@@ -6,26 +6,55 @@
 </script>
 
 <style>
+ @import url('https://fonts.googleapis.com/css?family=Solway|Sulphur+Point&display=swap');
+    /* *{font-family: 'Solway', serif;} */
     .main{
         padding: 3rem;
         display: flex;
         justify-content: space-between
     }
     .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 25%;
-        padding-right: 4rem
+        padding-right: 4rem;
+        font-family: 'Solway', serif;
     }
     .circle{
         height:43.2rem;
         width: 75%;
-        background-size: cover;
+        background-size: 100%;
         background-position: center;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12,1fr);
     }
    img{
-       height:10rem
+       height:11rem
+   }
+
+   a{
+       width: 12rem
+   }
+   .explore-link{
+       /* position: relative;
+       left: 1rem; */
+       grid-column: 5;
+       grid-row: 7
+   }
+   .compare-link{
+       position: relative;
+       right: 2rem;
+       grid-column-end: 9;
+       grid-row: 7;
+       /* grid-column: 4 */
+   }
+   .create-link{
+       position: relative;
+       left: 2rem;
+       grid-column-end: 7;
+       /* grid-row-end: 1 */
    }
 </style>
 <!-- style="background-image: url('{bgImage}')" -->
@@ -46,12 +75,16 @@
 <div class = "info">
 <h1> What is Lin-guage?</h1>
 <p>Lin-guage is a language exploration website. It's main function is to allow you, the user, 
-to learn about languages in a number of ways.<br> 
+to learn about and play with languages in a number of ways.
+<br> 
 <br>
-You can "Explore" and learn about specific languages, like how many speakers they have, to what grammar system they use.<br>
-You can "Compare" and see a list of language comparisons, in order of easies to hardest to learn. <br>
+ "Explore" and learn about specific languages. How many speakers does it have? How do you say "Hello" in it? What grammar system does it use?
 <br>
-And finally, you can "Create" a language. Taking in details about languages you like, Lin-guage will generate your own unique language.
+<br>
+"Compare" to see a list of language comparisons, ordered from easiest to hardest to learn. 
+<br>
+<br>
+"Create" a language. Pick traits you want your language to have, and Lin-guage will generate a totally unique mini grammar and dictionary for you.
 
 </p>
 </div>
