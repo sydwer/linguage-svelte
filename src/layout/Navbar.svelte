@@ -6,12 +6,13 @@
     @import url('https://fonts.googleapis.com/css?family=Solway|Sulphur+Point&display=swap');
     /* *{font-family: 'Solway', serif;} */
     .nav-bar{
+        padding: 3rem;
         height: 15%;
         margin-bottom: 55px;
         font-family: 'Solway', serif;
     }
     .nav-container{
-        height: 100%;
+        height: 7rem;
         display: flex;
         flex-direction: row;
         justify-content: space-between
@@ -36,9 +37,10 @@
         <!-- <Link to="/"><span class="logo"><img src= "./media/Linguage_banner.png" alt="logo"/></span></Link> -->
         <Link to="/"><img class= "logo" src= "./media/Linguage_banner.png" alt="logo"/></Link>
         <ul class="nav-buttons">
-        <li><Link to="/">Explore</Link></li>
-        <li><Link to="/">Compare</Link></li>
-        <li><Link to="/">Create</Link></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/explore">Explore</Link></li>
+        <li><Link to="/compare">Compare</Link></li>
+        <li><Link to="/create">Create</Link></li>
       </ul>
      </div>
   </nav>
