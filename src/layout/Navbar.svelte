@@ -6,9 +6,10 @@
     @import url('https://fonts.googleapis.com/css?family=Solway|Sulphur+Point&display=swap');
     /* *{font-family: 'Solway', serif;} */
     .nav-bar{
-        padding: 3rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
         height: 15%;
-        margin-bottom: 55px;
+        margin-bottom: 10px;
         font-family: 'Solway', serif;
     }
     .nav-container{
@@ -27,8 +28,13 @@
     }
     .nav-buttons>li{
         padding: 5px;
-        text-decoration: none
     }
+
+  
+    :any-link { color: black !important }
+    :any-link:active { color: #bfda01 !important }
+    :any-link:hover { color: #5fa40f !important} 
+   
   </style>
   
   <nav class = "nav-bar">

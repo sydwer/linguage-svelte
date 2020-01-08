@@ -1,4 +1,5 @@
 <script>
+    import { Link } from 'svelte-routing';
     let explore = "./media/explore_button.png"
     let create = "./media/create_button.png"
     let compare = "./media/compare_button.png"
@@ -9,7 +10,8 @@
  @import url('https://fonts.googleapis.com/css?family=Solway|Sulphur+Point&display=swap');
     /* *{font-family: 'Solway', serif;} */
     .main{
-        padding: 3rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
         display: flex;
         justify-content: space-between
     }
@@ -24,8 +26,9 @@
     .circle{
         height:43.2rem;
         width: 75%;
-        background-size: 100%;
+        background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: repeat(12,1fr);
@@ -34,9 +37,7 @@
        height:11rem
    }
 
-   a{
-       width: 12rem
-   }
+   
    .explore-link{
        /* position: relative;
        left: 1rem; */
@@ -50,9 +51,9 @@
        grid-row: 7;
        /* grid-column: 4 */
    }
-   .create-link{
+    .create-link{
        position: relative;
-       left: 2rem;
+       left: 1.6rem;
        grid-column-end: 7;
        /* grid-row-end: 1 */
    }
@@ -60,17 +61,22 @@
 <!-- style="background-image: url('{bgImage}')" -->
 <div class = "main">
 <div class="circle" style="background-image: url('{bgImage}')">
-    <a class = "explore-link" href="/">
-        <img class="exploreImg" src= { explore } alt="explore"/>
-    </a>
-
-    <a class="create-link" href="/">
-        <img class="comingImg" src= { create } alt="create"/>
-    </a>
-            
-    <a class="compare-link" href="/">
-         <img class="compareImg" src= { compare } alt="compare"/>   
-    </a>
+    <div class = "explore-link">
+        <Link to="/explore"  >
+            <img class="exploreImg" src= { explore } alt="explore"/>
+        </Link>
+    </div>
+ 
+    <div class="create-link">
+        <Link to="/create" >
+            <img class="comingImg" src= { create } alt="create"/>
+        </Link>
+    </div>
+    <div class="compare-link">
+        <Link to="/compare" >
+            <img class="compareImg" src= { compare } alt="compare"/>   
+        </Link>
+    </div> 
 </div> 
 <div class = "info">
 <h1> What is Lin-guage?</h1>
