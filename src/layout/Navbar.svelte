@@ -32,7 +32,7 @@
 
   
     :any-link { color: black !important }
-    :any-link:active { color: #bfda01 !important }
+    :any-link:active { color: yellow !important }
     :any-link:hover { color: #5fa40f !important} 
    
   </style>
