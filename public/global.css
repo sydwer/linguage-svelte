@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Solway|Sulphur+Point&display=swap');
+    /* *{font-family: 'Solway', serif;} */
+
 :any-link { color: black !important }
-:any-link:active { color: #bfda01 !important }
+:any-link:active { color: yellow !important }
 :any-link:hover { color: #5fa40f !important}
+
+*{
+    font-family: 'Solway', serif;
+}

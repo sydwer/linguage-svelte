@@ -19,7 +19,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 25%;
+        width: 30%;
         padding-right: 4rem;
         font-family: 'Solway', serif;
     }
@@ -53,7 +53,7 @@
    }
     .create-link{
        position: relative;
-       left: 1.6rem;
+       left: 1.4rem;
        grid-column-end: 7;
        /* grid-row-end: 1 */
    }
