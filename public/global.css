@@ -1,3 +1,3 @@
-.logo>img{
-	height: 10px;
-}
+:any-link { color: black !important }
+:any-link:active { color: #bfda01 !important }
+:any-link:hover { color: #5fa40f !important}
