@@ -141,7 +141,7 @@
         background-color: #749e02;
     }
     #yes-box:hover > #yes-arrow{
-        transform: rotate(360deg);
+        transform: rotate(720deg);
     }
     #no-button{
         border: 1px solid #ca4646fc;
@@ -152,12 +152,12 @@
     }
 
     #no-box:hover > #no-arrow{
-        transform: rotate(360deg);
+        transform: rotate(720deg);
     }
    
     img{
         width: 6.5%;
-        transition: all 0.3s ease-in-out 0s;
+        transition: all 0.5s ease-in-out 0s;
     }
     #custom-language-box{
         width: 75%;

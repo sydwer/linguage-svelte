@@ -38,24 +38,30 @@
    }
 
    
-   .explore-link{
+   #explore-link{
        /* position: relative;
        left: 1rem; */
        grid-column: 5;
        grid-row: 7
    }
-   .compare-link{
+   #compare-link{
        position: relative;
        right: 2rem;
        grid-column-end: 9;
        grid-row: 7;
        /* grid-column: 4 */
    }
-    .create-link{
+    #create-link{
        position: relative;
        left: 1.4rem;
        grid-column-end: 7;
        /* grid-row-end: 1 */
+   }
+   .circle-link:hover{
+       transform: scale(1.05)
+   }
+   .circle-link:active{
+       transform: scale(1)
    }
    span{
        font-weight: bolder;
@@ -65,18 +71,18 @@
 <!-- style="background-image: url('{bgImage}')" -->
 <div class = "main">
 <div class="circle" style="background-image: url('{bgImage}')">
-    <div class = "explore-link">
+    <div id = "explore-link" class="circle-link">
         <Link to="/explore"  >
             <img class="exploreImg" src= { explore } alt="explore"/>
         </Link>
     </div>
  
-    <div class="create-link">
+    <div id="create-link" class="circle-link">
         <Link to="/create" >
             <img class="comingImg" src= { create } alt="create"/>
         </Link>
     </div>
-    <div class="compare-link">
+    <div id="compare-link" class="circle-link">
         <Link to="/compare" >
             <img class="compareImg" src= { compare } alt="compare"/>   
         </Link>
