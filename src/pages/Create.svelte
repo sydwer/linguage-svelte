@@ -45,7 +45,7 @@
         },
 	];
     
-   let languages = [];
+   let languages = undefined;
 
 
     onMount(async function() {
@@ -118,6 +118,7 @@
         margin: 0.5rem;
         border-radius: 15px;
         /* padding: 1rem; */
+        margin: 1rem;
         width: 33%;
         height: 2.5rem;
         font-size: 1rem;
@@ -136,19 +137,27 @@
         background-color: #86ba3247;
         /* transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s; */
     }
-    #yes-button:hover{
+    #yes-box:hover > #yes-button{
         background-color: #749e02;
+    }
+    #yes-box:hover > #yes-arrow{
+        transform: rotate(360deg);
     }
     #no-button{
         border: 1px solid #ca4646fc;
         background-color: #ca464638;
     }
-    #no-button:hover{
+    #no-box:hover > #no-button{
         background-color: #ca4646fc;
+    }
+
+    #no-box:hover > #no-arrow{
+        transform: rotate(360deg);
     }
    
     img{
         width: 6.5%;
+        transition: all 0.3s ease-in-out 0s;
     }
     #custom-language-box{
         width: 75%;
@@ -187,19 +196,18 @@
         <div>
         <h2> Your language will sound like {selectedSounds.value} with {selectedGrammar.value} grammar.</h2>
         <h4 id ="correct-message">Is This Correct?</h4>
-            <div>
-                <img src="./media/arrow.png" alt = "arrow">
+            <div id= "yes-box">
+                <img id= "yes-arrow" src="./media/arrow.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="yes-button"  on:click={() =>{
                     console.log(selectedGrammar)}}
                 >Yes</button>
             </div>
-            <div>
-                <img src="./media/no-arrow.png" alt = "arrow">
+            <div id= "no-box">
+                <img id = "no-arrow" src="./media/no-arrow.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
                     selectedValue = undefined
                     selectedSounds = undefined
                     selectedGrammar = undefined
-                    console.log(selectedSounds,selectedValue,selectedGrammar)
                     }}
                 >No</button>
             </div>

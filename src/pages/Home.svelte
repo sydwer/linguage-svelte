@@ -57,6 +57,10 @@
        grid-column-end: 7;
        /* grid-row-end: 1 */
    }
+   span{
+       font-weight: bolder;
+       text-decoration: underline;
+   }
 </style>
 <!-- style="background-image: url('{bgImage}')" -->
 <div class = "main">
@@ -84,13 +88,16 @@
 to learn about and play with languages in a number of ways.
 <br> 
 <br>
- "Explore" and learn about specific languages. How many speakers does it have? How do you say "Hello" in it? What grammar system does it use?
+<!-- You Can:
+<br>
+<br> -->
+ <span>"Explore":</span><br> Learn about specific languages. How many speakers does it have? How do you say "Hello"? What grammar system does it use?
 <br>
 <br>
-"Compare" to see a list of language comparisons, ordered from easiest to hardest to learn. 
+<span>"Compare":</span><br> See a list of language comparisons, ordered from easiest to hardest to learn. 
 <br>
 <br>
-"Create" a language. Pick traits you want your language to have, and Lin-guage will generate a totally unique mini grammar and dictionary for you.
+<span>"Create":</span><br> Make your own language. Pick traits you want your language to have, and Lin-guage will generate a totally unique mini grammar and dictionary for you.
 
 </p>
 </div>
