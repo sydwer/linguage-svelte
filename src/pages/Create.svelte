@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from "svelte"
 	import Select from 'svelte-select';
 
 	const items = [
@@ -44,6 +45,16 @@
         },
 	];
     
+   let languages = [];
+
+
+    onMount(async function() {
+        const response = await fetch("http://127.0.0.1:3000/languages");
+        const json = await response.json();
+        languages =[json];
+        console.log(languages);
+    });
+
     const groupBy = (item) => item.group;
 	
 	let selectedValue = undefined;
@@ -74,7 +85,7 @@
         margin-bottom: 1rem;
         padding-left: 5.2rem;
         font-family: 'Solway', serif;
-        width: 20%;
+        width: 25%;
     }
     #form-box>h2{
         padding-left: 1rem;
@@ -140,7 +151,7 @@
         width: 6.5%;
     }
     #custom-language-box{
-        width: 80%;
+        width: 75%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -153,13 +164,13 @@
 
 <div id = "main">
     <div id = "form-box">
-        <h2>Create a Language:</h2>
+        <h2>Select Your Language's Traits:</h2>
         {#if !selectedSounds}
         <h3>It Should Sound like:</h3>
         <Select {items} {groupBy} bind:selectedValue></Select>
         <button class="submit-button" on:click={() =>{
                     selectedSounds = selectedValue
-                    console.log(selectedSounds)}}
+                    }}
                 >Pick Sounds</button>
             {/if}
             {#if selectedSounds && !selectedGrammar}
@@ -167,15 +178,14 @@
                 <Select {items} {groupBy} bind:selectedValue></Select>
                 <button class="submit-button" on:click={() =>{
                     selectedGrammar = selectedValue
-                    console.log(selectedGrammar)}}
+                    }}
                 >Pick Grammar</button>
             {/if}
         <!-- <h3>With the Grammar of:</h3>
         <Select {items} {groupBy} bind:selectedValue></Select> -->
         {#if selectedGrammar}
         <div>
-        <h4> Your language will sound like {selectedSounds.value} with {selectedGrammar.value} grammar</h4>
-        <br/>
+        <h2> Your language will sound like {selectedSounds.value} with {selectedGrammar.value} grammar.</h2>
         <h4 id ="correct-message">Is This Correct?</h4>
             <div>
                 <img src="./media/arrow.png" alt = "arrow">
@@ -186,7 +196,11 @@
             <div>
                 <img src="./media/no-arrow.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
-                    console.log(selectedGrammar)}}
+                    selectedValue = undefined
+                    selectedSounds = undefined
+                    selectedGrammar = undefined
+                    console.log(selectedSounds,selectedValue,selectedGrammar)
+                    }}
                 >No</button>
             </div>
         </div>
