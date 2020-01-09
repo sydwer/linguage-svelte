@@ -122,7 +122,7 @@
     #yes-button{
         margin-top: 0.5rem;
         border: 1px solid #293801; 
-        background-color: #86ba3299;
+        background-color: #86ba3247;
         /* transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s; */
     }
     #yes-button:hover{
@@ -137,7 +137,7 @@
     }
    
     img{
-        width: 4%;
+        width: 6.5%;
     }
     #custom-language-box{
         width: 80%;
