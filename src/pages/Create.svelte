@@ -48,6 +48,7 @@
 	
 	let selectedValue = undefined;
     let selectedGrammar = undefined;
+    let selectedSounds = undefined;
     
 
     
@@ -60,15 +61,25 @@
     *{
         font-family: 'Solway', serif;
     }
-    h1{
-        padding-left: 3rem;
+    #main{
+        display: flex;
+        flex-direction: row;
     }
+    h2{
+        margin-bottom: 3.5rem;
+    }
+   
     #form-box{
+        margin-top: 2rem; 
+        margin-bottom: 1rem;
         padding-left: 5.2rem;
         font-family: 'Solway', serif;
-        width: 33%;
+        width: 20%;
     }
-    #submit-button{
+    #form-box>h2{
+        padding-left: 1rem;
+    }
+    .submit-button{
         padding: 0;
         font-weight: bold;
         position: relative;
@@ -77,41 +88,116 @@
         margin-top: 2rem;
         width: 45%;
         height: 2.3rem;
-        background-color: #89bb022e;
+        background-color: #fbfbfb2e;
         border-radius: 15px;
         border: 1px solid #293801;
         font-size: 1rem;
-        transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s;
+        /* transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s; */
     }
-    #submit-button:hover{
+    .submit-button:hover{
         padding: 0;
         text-decoration: none;
         border-radius: 15px;
-        width: 90%;
+        /* width: 90%; */
         background-color: #749e02;
         color: white;
     }
+
+    .yes-no-buttons{
+        margin: 0.5rem;
+        border-radius: 15px;
+        /* padding: 1rem; */
+        width: 33%;
+        height: 2.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s;
+    } 
+
+    .yes-no-buttons:hover{
+        color:white;
+        width: 60%;
+
+    }
+    #yes-button{
+        margin-top: 0.5rem;
+        border: 1px solid #293801; 
+        background-color: #86ba3299;
+        /* transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s; */
+    }
+    #yes-button:hover{
+        background-color: #749e02;
+    }
+    #no-button{
+        border: 1px solid #ca4646fc;
+        background-color: #ca464638;
+    }
+    #no-button:hover{
+        background-color: #ca4646fc;
+    }
+   
     img{
         width: 4%;
     }
+    #custom-language-box{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    #correct-message{
+        font-size: 1.25rem;
+    }
 </style>
 
-<h1>Create Your Language:</h1>
-<div id = "form-box">
-<h2>It Should Sound like:</h2>
-<Select {items} {groupBy} bind:selectedValue></Select>
-<h2>With the Grammar of:</h2>
-<Select {items} {groupBy} bind:selectedGrammar></Select>
-<div>
-<img src="./media/arrow.png" alt = "arrow">
-    <button id="submit-button" on:click={() =>{
-        console.log(selectedValue)}}
-    >Create Language</button>
+<div id = "main">
+    <div id = "form-box">
+        <h2>Create a Language:</h2>
+        {#if !selectedSounds}
+        <h3>It Should Sound like:</h3>
+        <Select {items} {groupBy} bind:selectedValue></Select>
+        <button class="submit-button" on:click={() =>{
+                    selectedSounds = selectedValue
+                    console.log(selectedSounds)}}
+                >Pick Sounds</button>
+            {/if}
+            {#if selectedSounds && !selectedGrammar}
+                <h3>With the Grammar of:</h3>
+                <Select {items} {groupBy} bind:selectedValue></Select>
+                <button class="submit-button" on:click={() =>{
+                    selectedGrammar = selectedValue
+                    console.log(selectedGrammar)}}
+                >Pick Grammar</button>
+            {/if}
+        <!-- <h3>With the Grammar of:</h3>
+        <Select {items} {groupBy} bind:selectedValue></Select> -->
+        {#if selectedGrammar}
+        <div>
+        <h4> Your language will sound like {selectedSounds.value} with {selectedGrammar.value} grammar</h4>
+        <br/>
+        <h4 id ="correct-message">Is This Correct?</h4>
+            <div>
+                <img src="./media/arrow.png" alt = "arrow">
+                <button class = "yes-no-buttons" id="yes-button"  on:click={() =>{
+                    console.log(selectedGrammar)}}
+                >Yes</button>
+            </div>
+            <div>
+                <img src="./media/no-arrow.png" alt = "arrow">
+                <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
+                    console.log(selectedGrammar)}}
+                >No</button>
+            </div>
+        </div>
+        {/if}
+            <!-- {#if selectedValue}
+	            <p>Selected value is: {selectedValue.label}</p>
+            {/if} -->
+
+    </div>
+    <div id = "custom-language-box">
+        <h2>Your Language</h2>
+    </div>
+
 </div>
-<!-- <button id="submit-button" on:click={() =>{
-        console.log(selectedValue)}}
-    >Create Language</button> -->
-</div>
-<!-- {#if selectedValue}
-	<p>Selected value is: {selectedValue.label}</p>
-{/if} -->
