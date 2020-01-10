@@ -39,8 +39,6 @@
 
    
    #explore-link{
-       /* position: relative;
-       left: 1rem; */
        grid-column: 5;
        grid-row: 7
    }
@@ -49,13 +47,11 @@
        right: 2rem;
        grid-column-end: 9;
        grid-row: 7;
-       /* grid-column: 4 */
    }
     #create-link{
        position: relative;
        left: 1.4rem;
        grid-column-end: 7;
-       /* grid-row-end: 1 */
    }
    .circle-link:hover{
        transform: scale(1.05)
@@ -68,7 +64,6 @@
        text-decoration: underline;
    }
 </style>
-<!-- style="background-image: url('{bgImage}')" -->
 <div class = "main">
 <div class="circle" style="background-image: url('{bgImage}')">
     <div id = "explore-link" class="circle-link">
@@ -94,10 +89,7 @@
 to learn about and play with languages in a number of ways.
 <br> 
 <br>
-<!-- You Can:
-<br>
-<br> -->
- <span>"Explore":</span><br> Learn about specific languages. How many speakers does it have? How do you say "Hello"? What grammar system does it use?
+<span>"Explore":</span><br> Learn about specific languages. How many speakers does it have? How do you say "Hello"? What grammar system does it use?
 <br>
 <br>
 <span>"Compare":</span><br> See a list of language comparisons, ordered from easiest to hardest to learn. 

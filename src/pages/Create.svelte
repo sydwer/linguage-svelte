@@ -1,6 +1,7 @@
 <script>
-    import { onMount } from "svelte"
+    import { onMount } from "svelte";
 	import Select from 'svelte-select';
+    import SyllableList from './SyllableList.svelte'
 
 	const items = [
         {value: 'Arabic', 
@@ -45,21 +46,43 @@
         },
 	];
     
-   let languages = undefined;
-
-
-    onMount(async function() {
-        const response = await fetch("http://127.0.0.1:3000/languages");
-        const json = await response.json();
-        languages =[json];
-        console.log(languages);
-    });
-
+    let languages = undefined;
+    let syllableOrigin = undefined;
     const groupBy = (item) => item.group;
 	
 	let selectedValue = undefined;
     let selectedGrammar = undefined;
     let selectedSounds = undefined;
+
+    
+
+
+    onMount(async function() {
+        const response = await fetch("http://127.0.0.1:3000/languages");
+        const json = await response.json();
+        languages =json;
+        console.log(languages);
+    });
+
+
+    function sayTheLanguages(){
+        console.log(languages)
+        console.log(selectedSounds.value)
+        console.log(selectedGrammar.value)
+         syllableOrigin = languages.find(obj=>obj.name===selectedSounds.value)
+        //  syllables = syllables
+        console.log(syllableOrigin)
+
+    }
+
+    // const makeSounds(){
+
+    // }
+    // const groupBy = (item) => item.group;
+	
+	// let selectedValue = undefined;
+    // let selectedGrammar = undefined;
+    // let selectedSounds = undefined;
     
 
     
@@ -115,10 +138,8 @@
     }
 
     .yes-no-buttons{
-        margin: 0.5rem;
         border-radius: 15px;
-        /* padding: 1rem; */
-        margin: 1rem;
+        /* margin: 1rem; */
         width: 33%;
         height: 2.5rem;
         font-size: 1rem;
@@ -137,11 +158,16 @@
         background-color: #86ba3247;
         /* transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s; */
     }
+    .button-box{
+        display: flex;
+        flex-direction: row;
+    }
     #yes-box:hover > #yes-button{
         background-color: #749e02;
     }
     #yes-box:hover > #yes-arrow{
         transform: rotate(720deg);
+        width: 8%;
     }
     #no-button{
         border: 1px solid #ca4646fc;
@@ -153,11 +179,14 @@
 
     #no-box:hover > #no-arrow{
         transform: rotate(720deg);
+        width: 8%;
     }
    
     img{
-        width: 6.5%;
+        align-self: center;
+        width: 0;
         transition: all 0.5s ease-in-out 0s;
+        margin-right: 1rem;
     }
     #custom-language-box{
         width: 75%;
@@ -197,13 +226,14 @@
         <h2> Your language will sound like {selectedSounds.value} with {selectedGrammar.value} grammar.</h2>
         <h4 id ="correct-message">Is This Correct?</h4>
             <div id= "yes-box">
-                <img id= "yes-arrow" src="./media/arrow.png" alt = "arrow">
-                <button class = "yes-no-buttons" id="yes-button"  on:click={() =>{
-                    console.log(selectedGrammar)}}
+                <img id= "yes-arrow" src="./media/check-mark.png" alt = "arrow">
+                <button class = "yes-no-buttons" id="yes-button"  on:click={()=>{
+                    sayTheLanguages()}}
                 >Yes</button>
             </div>
-            <div id= "no-box">
-                <img id = "no-arrow" src="./media/no-arrow.png" alt = "arrow">
+            <br>
+            <div id= "no-box" class="button-box">
+                <img id = "no-arrow" src="./media/x-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
                     selectedValue = undefined
                     selectedSounds = undefined
@@ -213,13 +243,12 @@
             </div>
         </div>
         {/if}
-            <!-- {#if selectedValue}
-	            <p>Selected value is: {selectedValue.label}</p>
-            {/if} -->
+
 
     </div>
     <div id = "custom-language-box">
         <h2>Your Language</h2>
+        <SyllableList />
     </div>
 
 </div>
