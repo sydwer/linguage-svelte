@@ -47,7 +47,7 @@
 	];
     
     let languages = undefined;
-    let syllables = undefined;
+    let syllableOrigin = undefined;
     const groupBy = (item) => item.group;
 	
 	let selectedValue = undefined;
@@ -60,8 +60,8 @@
     onMount(async function() {
         const response = await fetch("http://127.0.0.1:3000/languages");
         const json = await response.json();
-        languages =[json];
-        console.log(languages.flat());
+        languages =json;
+        console.log(languages);
     });
 
 
@@ -69,9 +69,9 @@
         console.log(languages)
         console.log(selectedSounds.value)
         console.log(selectedGrammar.value)
-         syllables = languages.filter(obj=>obj.name==='Arabic')
-         syllables = syllables
-        console.log(syllables)
+         syllableOrigin = languages.find(obj=>obj.name===selectedSounds.value)
+        //  syllables = syllables
+        console.log(syllableOrigin)
 
     }
 
@@ -138,9 +138,8 @@
     }
 
     .yes-no-buttons{
-        margin: 0.5rem;
         border-radius: 15px;
-        margin: 1rem;
+        /* margin: 1rem; */
         width: 33%;
         height: 2.5rem;
         font-size: 1rem;
@@ -159,12 +158,16 @@
         background-color: #86ba3247;
         /* transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s; */
     }
+    .button-box{
+        display: flex;
+        flex-direction: row;
+    }
     #yes-box:hover > #yes-button{
         background-color: #749e02;
     }
     #yes-box:hover > #yes-arrow{
         transform: rotate(720deg);
-        width: 6.5%;
+        width: 8%;
     }
     #no-button{
         border: 1px solid #ca4646fc;
@@ -176,13 +179,14 @@
 
     #no-box:hover > #no-arrow{
         transform: rotate(720deg);
-        width: 6.5%;
+        width: 8%;
     }
    
     img{
-        
+        align-self: center;
         width: 0;
         transition: all 0.5s ease-in-out 0s;
+        margin-right: 1rem;
     }
     #custom-language-box{
         width: 75%;
@@ -227,7 +231,8 @@
                     sayTheLanguages()}}
                 >Yes</button>
             </div>
-            <div id= "no-box">
+            <br>
+            <div id= "no-box" class="button-box">
                 <img id = "no-arrow" src="./media/x-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
                     selectedValue = undefined
