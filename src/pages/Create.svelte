@@ -1,6 +1,7 @@
 <script>
-    import { onMount } from "svelte"
+    import { onMount } from "svelte";
 	import Select from 'svelte-select';
+    import SyllableList from './SyllableList.svelte'
 
 	const items = [
         {value: 'Arabic', 
@@ -45,21 +46,43 @@
         },
 	];
     
-   let languages = undefined;
+    let languages = undefined;
+    let syllables = undefined;
+    const groupBy = (item) => item.group;
+	
+	let selectedValue = undefined;
+    let selectedGrammar = undefined;
+    let selectedSounds = undefined;
+
+    
 
 
     onMount(async function() {
         const response = await fetch("http://127.0.0.1:3000/languages");
         const json = await response.json();
         languages =[json];
-        console.log(languages);
+        console.log(languages.flat());
     });
 
-    const groupBy = (item) => item.group;
+
+    function sayTheLanguages(){
+        console.log(languages)
+        console.log(selectedSounds.value)
+        console.log(selectedGrammar.value)
+         syllables = languages.filter(obj=>obj.name==='Arabic')
+         syllables = syllables
+        console.log(syllables)
+
+    }
+
+    // const makeSounds(){
+
+    // }
+    // const groupBy = (item) => item.group;
 	
-	let selectedValue = undefined;
-    let selectedGrammar = undefined;
-    let selectedSounds = undefined;
+	// let selectedValue = undefined;
+    // let selectedGrammar = undefined;
+    // let selectedSounds = undefined;
     
 
     
@@ -200,8 +223,8 @@
         <h4 id ="correct-message">Is This Correct?</h4>
             <div id= "yes-box">
                 <img id= "yes-arrow" src="./media/check-mark.png" alt = "arrow">
-                <button class = "yes-no-buttons" id="yes-button"  on:click={() =>{
-                    console.log(selectedGrammar)}}
+                <button class = "yes-no-buttons" id="yes-button"  on:click={()=>{
+                    sayTheLanguages()}}
                 >Yes</button>
             </div>
             <div id= "no-box">
@@ -220,6 +243,7 @@
     </div>
     <div id = "custom-language-box">
         <h2>Your Language</h2>
+        <SyllableList />
     </div>
 
 </div>
