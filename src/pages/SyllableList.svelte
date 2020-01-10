@@ -1,5 +1,6 @@
 <script>
     export let phonemes;
+    export let syllableStructure;
     let sounds = undefined
     
     // console.log(syllableOrigin.name)
@@ -10,4 +11,4 @@
 
 
 </style>
-<h1> Sounds here {phonemes}</h1>
+<h1> Sounds here {phonemes}, structure here {syllableStructure}</h1>

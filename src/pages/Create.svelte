@@ -51,6 +51,7 @@
     let syllableOrigin = undefined;
     let grammarOrigin = undefined;
     let sounds = undefined;
+    let syllable = undefined;
     let grammar = undefined;
 	
 	let selectedValue = undefined;
@@ -70,8 +71,7 @@
     function pullLanguageTraits(){
          syllableOrigin = languages.find(obj=>obj.name===selectedSounds.value)
          sounds = syllableOrigin.phonemes
-         console.log(sounds)
-
+         syllable = syllableOrigin.syllable_structure
     }
 
 </script>
@@ -236,7 +236,7 @@
     </div>
     <div id = "custom-language-box">
         <h2>Your Language</h2>
-        <SyllableList phonemes = {sounds}/>
+        <SyllableList phonemes = {sounds} syllableStructure = {syllable}/>
     </div>
 
 </div>
