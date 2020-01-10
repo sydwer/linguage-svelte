@@ -117,7 +117,6 @@
     .yes-no-buttons{
         margin: 0.5rem;
         border-radius: 15px;
-        /* padding: 1rem; */
         margin: 1rem;
         width: 33%;
         height: 2.5rem;
@@ -142,6 +141,7 @@
     }
     #yes-box:hover > #yes-arrow{
         transform: rotate(720deg);
+        width: 6.5%;
     }
     #no-button{
         border: 1px solid #ca4646fc;
@@ -153,10 +153,12 @@
 
     #no-box:hover > #no-arrow{
         transform: rotate(720deg);
+        width: 6.5%;
     }
    
     img{
-        width: 6.5%;
+        
+        width: 0;
         transition: all 0.5s ease-in-out 0s;
     }
     #custom-language-box{
@@ -197,13 +199,13 @@
         <h2> Your language will sound like {selectedSounds.value} with {selectedGrammar.value} grammar.</h2>
         <h4 id ="correct-message">Is This Correct?</h4>
             <div id= "yes-box">
-                <img id= "yes-arrow" src="./media/arrow.png" alt = "arrow">
+                <img id= "yes-arrow" src="./media/check-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="yes-button"  on:click={() =>{
                     console.log(selectedGrammar)}}
                 >Yes</button>
             </div>
             <div id= "no-box">
-                <img id = "no-arrow" src="./media/no-arrow.png" alt = "arrow">
+                <img id = "no-arrow" src="./media/x-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
                     selectedValue = undefined
                     selectedSounds = undefined
@@ -213,9 +215,7 @@
             </div>
         </div>
         {/if}
-            <!-- {#if selectedValue}
-	            <p>Selected value is: {selectedValue.label}</p>
-            {/if} -->
+
 
     </div>
     <div id = "custom-language-box">
