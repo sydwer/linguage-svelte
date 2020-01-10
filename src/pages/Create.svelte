@@ -45,10 +45,14 @@
         group: 'African'
         },
 	];
+    const groupBy = (item) => item.group;
     
     let languages = undefined;
     let syllableOrigin = undefined;
-    const groupBy = (item) => item.group;
+    let grammarOrigin = undefined;
+    let sounds = undefined;
+    let syllable = undefined;
+    let grammar = undefined;
 	
 	let selectedValue = undefined;
     let selectedGrammar = undefined;
@@ -61,31 +65,15 @@
         const response = await fetch("http://127.0.0.1:3000/languages");
         const json = await response.json();
         languages =json;
-        console.log(languages);
     });
 
 
-    function sayTheLanguages(){
-        console.log(languages)
-        console.log(selectedSounds.value)
-        console.log(selectedGrammar.value)
+    function pullLanguageTraits(){
          syllableOrigin = languages.find(obj=>obj.name===selectedSounds.value)
-        //  syllables = syllables
-        console.log(syllableOrigin)
-
+         sounds = syllableOrigin.phonemes
+         syllable = syllableOrigin.syllable_structure
     }
 
-    // const makeSounds(){
-
-    // }
-    // const groupBy = (item) => item.group;
-	
-	// let selectedValue = undefined;
-    // let selectedGrammar = undefined;
-    // let selectedSounds = undefined;
-    
-
-    
 </script>
 
 
@@ -228,7 +216,7 @@
             <div id= "yes-box">
                 <img id= "yes-arrow" src="./media/check-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="yes-button"  on:click={()=>{
-                    sayTheLanguages()}}
+                    pullLanguageTraits()}}
                 >Yes</button>
             </div>
             <br>
@@ -248,7 +236,7 @@
     </div>
     <div id = "custom-language-box">
         <h2>Your Language</h2>
-        <SyllableList />
+        <SyllableList phonemes = {sounds} syllableStructure = {syllable}/>
     </div>
 
 </div>
