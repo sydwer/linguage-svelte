@@ -7,7 +7,19 @@
 </script>
 
 <style>
+#sound-box{
+    display: flex;
+    flex-direction: column;
+}
+#sound-box>h2{
+    text-decoration: underline;
+}
+
+h3>span{
+   text-decoration: underline; 
+}
 #phoneme-box{
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(9, 1fr)
 }
@@ -50,13 +62,16 @@
 {#if !phonemes}
 <h1 id="loading-bar"> Awaiting User Input<p class="loading"><span>.</span><span>.</span><span>.</span></p></h1>
 {/if}
-<div id="phoneme-box">
+<div id="sound-box">
     {#if phonemes}
+    <h2>Sound Inventory:</h2>
+    <div id="phoneme-box">
         {#each phonemes as sound}
         <h3>{sound.symbol}</h3>
         {/each}
+    </div>
     {/if}
 </div>
     {#if syllableStructure}
-    <h3>Your Syllable Structure is {syllableStructure}</h3>
+    <h3><span>Syllable Structure:</span> "{syllableStructure}"</h3>
     {/if}
