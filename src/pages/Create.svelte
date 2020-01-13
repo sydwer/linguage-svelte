@@ -70,13 +70,37 @@
         languages = json;
     });
 
-
+    function resetAllVariables(){
+        phonologyOrigin = undefined;
+        grammarOrigin = undefined;
+        phonemes = undefined;
+        syllableStructure = undefined;
+        grammar = undefined;
+        consonants = undefined;
+        vowels = undefined;
+        selectedValue = undefined;
+        selectedGrammar = undefined;
+        selectedPhonology = undefined;
+    };
+       //Refactor this ^ when you have time
     function pullLanguageTraits(){
          phonologyOrigin = languages.find(obj=>obj.name===selectedPhonology.value);
          grammarOrigin = languages.find(obj=>obj.name===selectedGrammar.value);
          phonemes = phonologyOrigin.phonemes;
          syllableStructure = phonologyOrigin.syllable_structure.split("");
-         consonants = phonemes.filter(function(phoneme) {
+         sortPhonemes();
+        //  consonants = phonemes.filter(function(phoneme) {
+        //     return phoneme.category === "consonant";
+        //  })
+        //  vowels = phonemes.filter(function(phoneme) {
+        //     return phoneme.category === "vowel";
+        //  })
+        //  console.log(consonants)
+        //  console.log(vowels)
+    }
+
+    function sortPhonemes(){
+          consonants = phonemes.filter(function(phoneme) {
             return phoneme.category === "consonant";
          })
          vowels = phonemes.filter(function(phoneme) {
@@ -85,7 +109,6 @@
          console.log(consonants)
          console.log(vowels)
     }
-
     // function makeSyllables(){
     //     var i;
     //     for (i = 0; i < 100; i++) {
@@ -251,10 +274,7 @@
             <div id= "no-box" class="button-box">
                 <img id = "no-arrow" src="./media/x-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
-                    selectedValue = undefined
-                    selectedPhonology = undefined
-                    selectedGrammar = undefined
-                    }}
+                    resetAllVariables()}}
                 >No</button>
             </div>
         </div>
