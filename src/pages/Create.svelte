@@ -106,22 +106,34 @@
     }
 
     function makeSyllableBank(){
-        var i;
-        for (i = 0; i < 10; i++) {
-            generateRandomSyllable()
+        if(phonologyOrigin.syllable_structure_2){
+            console.log("2 syllable templates")
+                 var i;
+            for (i = 0; i < 5; i++) {
+                generateRandomSyllable(phonologyOrigin.syllable_structure_2)
+            }
+                 var j;
+            for (j = 0; j < 5; j++) {
+                generateRandomSyllable(syllableStructure)
+            }
+        }else{
+            var i;
+            for (i = 0; i < 10; i++){
+                generateRandomSyllable(syllableStructure)
+            }
         }
         console.log(syllableBank)
     }
-    
-    function generateRandomSyllable(){
+
+    function generateRandomSyllable(syllableForm){
         var i;
         let randomSyllableArray = []
-        for (i = 0; i < syllableStructure.length; i++){
-            if (syllableStructure[i] === "c"){
+        for (i = 0; i < syllableForm.length; i++){
+            if (syllableForm[i] === "c"){
                 randomSyllableArray.push(consonants[Math.floor(Math.random()*consonants.length)].symbol)
-            }else if(syllableStructure[i] === "v"){
+            }else if(syllableForm[i] === "v"){
                 randomSyllableArray.push(vowels[Math.floor(Math.random()*vowels.length)].symbol)
-            }else if(syllableStructure[i] ==="n"){
+            }else if(syllableForm[i] ==="n"){
                 randomSyllableArray.push("n")
             }else{
                 randomSyllableArray.push(phonemes[Math.floor(Math.random()*phonemes.length)].symbol)
@@ -130,6 +142,23 @@
             const joinedRandomSyllable = randomSyllableArray.join("")
             syllableBank.push(joinedRandomSyllable)
     }
+    // function generateRandomSyllable(){
+    //     var i;
+    //     let randomSyllableArray = []
+    //     for (i = 0; i < syllableStructure.length; i++){
+    //         if (syllableStructure[i] === "c"){
+    //             randomSyllableArray.push(consonants[Math.floor(Math.random()*consonants.length)].symbol)
+    //         }else if(syllableStructure[i] === "v"){
+    //             randomSyllableArray.push(vowels[Math.floor(Math.random()*vowels.length)].symbol)
+    //         }else if(syllableStructure[i] ==="n"){
+    //             randomSyllableArray.push("n")
+    //         }else{
+    //             randomSyllableArray.push(phonemes[Math.floor(Math.random()*phonemes.length)].symbol)
+    //         }
+    //     }
+    //         const joinedRandomSyllable = randomSyllableArray.join("")
+    //         syllableBank.push(joinedRandomSyllable)
+    // }
 
 
    
@@ -147,9 +176,6 @@
         display: flex;
         flex-direction: row;
     }
-    h2{
-        margin-bottom: 3.5rem;
-    }
    
     #form-box{
         margin-top: 2rem; 
@@ -165,9 +191,6 @@
         padding: 0;
         font-weight: bold;
         position: relative;
-        /* overflow: visible; */
-        /* text-decoration-line: underline; */
-        margin-top: 2rem;
         width: 45%;
         height: 2.3rem;
         background-color: #fbfbfb2e;
@@ -251,9 +274,11 @@
 <div id = "main">
     <div id = "form-box">
         <h2>Select Your Language's Traits:</h2>
+        <br>
         {#if !selectedPhonology}
         <h3>It Should Sound like:</h3>
         <Select {items} {groupBy} bind:selectedValue></Select>
+        <br>
         <button class="submit-button" on:click={() =>{
                     selectedPhonology = selectedValue
                     }}
@@ -262,6 +287,7 @@
             {#if selectedPhonology && !selectedGrammar}
                 <h3>With the Grammar of:</h3>
                 <Select {items} {groupBy} bind:selectedValue></Select>
+                <br>
                 <button class="submit-button" on:click={() =>{
                     selectedGrammar = selectedValue
                     }}
