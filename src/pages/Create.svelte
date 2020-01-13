@@ -52,6 +52,7 @@
     let grammarOrigin = undefined;
     let phonemes = undefined;
     let syllableStructure = undefined;
+    let syllableBank = [];
     let grammar = undefined;
 
     let consonants = undefined;
@@ -89,14 +90,7 @@
          phonemes = phonologyOrigin.phonemes;
          syllableStructure = phonologyOrigin.syllable_structure.split("");
          sortPhonemes();
-        //  consonants = phonemes.filter(function(phoneme) {
-        //     return phoneme.category === "consonant";
-        //  })
-        //  vowels = phonemes.filter(function(phoneme) {
-        //     return phoneme.category === "vowel";
-        //  })
-        //  console.log(consonants)
-        //  console.log(vowels)
+         makeSyllableBank();
     }
 
     function sortPhonemes(){
@@ -108,19 +102,35 @@
          })
          console.log(consonants)
          console.log(vowels)
+         console.log(syllableStructure.length)
     }
-    // function makeSyllables(){
-    //     var i;
-    //     for (i = 0; i < 100; i++) {
-    //         var i2;
-    //         for (i2 = 0; i2< syllableStructure.length; i2++){
-    //             let randomSyllable = []
-    //             if (syllableStructure[i2] === "c"){
-    //                 randomSyllable.push
-    //             }
-    //         }
-    //     }
-    // }
+
+    function makeSyllableBank(){
+        var i;
+        for (i = 0; i < 10; i++) {
+            generateRandomSyllable()
+        }
+        console.log(syllableBank)
+    }
+    
+    function generateRandomSyllable(){
+        var i;
+        let randomSyllableArray = []
+        for (i = 0; i < syllableStructure.length; i++){
+            if (syllableStructure[i] === "c"){
+                randomSyllableArray.push(consonants[Math.floor(Math.random()*consonants.length)].symbol)
+            }else if(syllableStructure[i] === "v"){
+                randomSyllableArray.push(vowels[Math.floor(Math.random()*vowels.length)].symbol)
+            }else if(syllableStructure[i] ==="n"){
+                randomSyllableArray.push("n")
+            }else{
+                randomSyllableArray.push(phonemes[Math.floor(Math.random()*phonemes.length)].symbol)
+            }
+        }
+            const joinedRandomSyllable = randomSyllableArray.join("")
+            syllableBank.push(joinedRandomSyllable)
+    }
+
 
    
 
