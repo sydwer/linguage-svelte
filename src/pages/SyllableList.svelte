@@ -1,7 +1,6 @@
 <script>
     export let phonemes;
     export let syllableStructure;
-    let sounds = undefined
   
     
 </script>
