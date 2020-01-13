@@ -48,15 +48,18 @@
     const groupBy = (item) => item.group;
     
     let languages = undefined;
-    let syllableOrigin = undefined;
+    let phonologyOrigin = undefined;
     let grammarOrigin = undefined;
-    let sounds = undefined;
-    let syllable = undefined;
+    let phonemes = undefined;
+    let syllableStructure = undefined;
     let grammar = undefined;
+
+    let consonants = undefined;
+    let vowels = undefined;
 	
 	let selectedValue = undefined;
     let selectedGrammar = undefined;
-    let selectedSounds = undefined;
+    let selectedPhonology = undefined;
 
     
 
@@ -64,15 +67,39 @@
     onMount(async function() {
         const response = await fetch("http://127.0.0.1:3000/languages");
         const json = await response.json();
-        languages =json;
+        languages = json;
     });
 
 
     function pullLanguageTraits(){
-         syllableOrigin = languages.find(obj=>obj.name===selectedSounds.value)
-         sounds = syllableOrigin.phonemes
-         syllable = syllableOrigin.syllable_structure
+         phonologyOrigin = languages.find(obj=>obj.name===selectedPhonology.value);
+         grammarOrigin = languages.find(obj=>obj.name===selectedGrammar.value);
+         phonemes = phonologyOrigin.phonemes;
+         syllableStructure = phonologyOrigin.syllable_structure.split("");
+         consonants = phonemes.filter(function(phoneme) {
+            return phoneme.category === "consonant";
+         })
+         vowels = phonemes.filter(function(phoneme) {
+            return phoneme.category === "vowel";
+         })
+         console.log(consonants)
+         console.log(vowels)
     }
+
+    // function makeSyllables(){
+    //     var i;
+    //     for (i = 0; i < 100; i++) {
+    //         var i2;
+    //         for (i2 = 0; i2< syllableStructure.length; i2++){
+    //             let randomSyllable = []
+    //             if (syllableStructure[i2] === "c"){
+    //                 randomSyllable.push
+    //             }
+    //         }
+    //     }
+    // }
+
+   
 
 </script>
 
@@ -191,15 +218,15 @@
 <div id = "main">
     <div id = "form-box">
         <h2>Select Your Language's Traits:</h2>
-        {#if !selectedSounds}
+        {#if !selectedPhonology}
         <h3>It Should Sound like:</h3>
         <Select {items} {groupBy} bind:selectedValue></Select>
         <button class="submit-button" on:click={() =>{
-                    selectedSounds = selectedValue
+                    selectedPhonology = selectedValue
                     }}
                 >Pick Sounds</button>
             {/if}
-            {#if selectedSounds && !selectedGrammar}
+            {#if selectedPhonology && !selectedGrammar}
                 <h3>With the Grammar of:</h3>
                 <Select {items} {groupBy} bind:selectedValue></Select>
                 <button class="submit-button" on:click={() =>{
@@ -211,12 +238,13 @@
         <Select {items} {groupBy} bind:selectedValue></Select> -->
         {#if selectedGrammar}
         <div>
-        <h2> Your language will sound like {selectedSounds.value} with {selectedGrammar.value} grammar.</h2>
+        <h2> Your language will sound like {selectedPhonology.value} with {selectedGrammar.value} grammar.</h2>
         <h4 id ="correct-message">Is This Correct?</h4>
             <div id= "yes-box">
                 <img id= "yes-arrow" src="./media/check-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="yes-button"  on:click={()=>{
-                    pullLanguageTraits()}}
+                    pullLanguageTraits()
+                    }}
                 >Yes</button>
             </div>
             <br>
@@ -224,7 +252,7 @@
                 <img id = "no-arrow" src="./media/x-mark.png" alt = "arrow">
                 <button class = "yes-no-buttons" id="no-button"  on:click={() =>{
                     selectedValue = undefined
-                    selectedSounds = undefined
+                    selectedPhonology = undefined
                     selectedGrammar = undefined
                     }}
                 >No</button>
@@ -236,7 +264,7 @@
     </div>
     <div id = "custom-language-box">
         <h2>Your Language</h2>
-        <SyllableList phonemes = {sounds} syllableStructure = {syllable}/>
+        <SyllableList phonemes = {phonemes} syllableStructure = {syllableStructure}/>
     </div>
 
 </div>
