@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
 	import Select from 'svelte-select';
     import SyllableList from './SyllableList.svelte'
+    import Agglutinative from './Agglutinative.svelte'
    
 
 	const items = [
@@ -83,12 +84,14 @@
         selectedValue = undefined;
         selectedGrammar = undefined;
         selectedPhonology = undefined;
+        syllableBank = [];
     };
        //Refactor this ^ when you have time
 
     function pullLanguageTraits(){
          phonologyOrigin = languages.find(obj=>obj.name===selectedPhonology.value);
          grammarOrigin = languages.find(obj=>obj.name===selectedGrammar.value);
+         console.log(grammarOrigin.morphology.name)
          phonemes = phonologyOrigin.phonemes;
          syllableStructure = phonologyOrigin.syllable_structure.split("");
          sortPhonemes();
@@ -106,7 +109,6 @@
 
     function makeSyllableBank(){
         if(phonologyOrigin.syllable_structure_2){
-            console.log("2 syllable templates")
                  var i;
             for (i = 0; i < 5; i++) {
                 generateRandomSyllable(phonologyOrigin.syllable_structure_2)
@@ -251,8 +253,10 @@
 
 <div id = "main">
     <div id = "form-box">
+    {#if !selectedGrammar}
         <h2>Select Your Language's Traits:</h2>
         <br>
+    {/if}
         {#if !selectedPhonology}
         <h3>It Should Sound like:</h3>
         <Select {items} {groupBy} bind:selectedValue></Select>
@@ -297,8 +301,16 @@
 
     </div>
     <div id = "custom-language-box">
+    {#if phonemes}
         <h2>Your Language</h2>
+    {/if}
         <SyllableList phonemes = {phonemes} syllableStructure = {syllableStructure}/>
+        <!-- {#if syllableStructure}
+        <Grammar syllableBank = {syllableBank} mary = {phonologyOrigin.mary} john = {phonologyOrigin.john}/>
+        {/if} -->
+        {#if syllableStructure && grammarOrigin.morphology.name === "agglutinative"}
+        <Agglutinative syllableBank = {syllableBank} mary = {phonologyOrigin.mary} john = {phonologyOrigin.john}/>
+        {/if}
     </div>
 
 </div>
