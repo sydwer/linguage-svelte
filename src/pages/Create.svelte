@@ -152,6 +152,10 @@
     *{
         font-family: 'Solway', serif;
     }
+    h1{
+        padding-left: 1rem;
+        text-decoration: underline;
+    }
     #main{
         display: flex;
         flex-direction: row;
@@ -250,7 +254,7 @@
         font-size: 1.25rem;
     }
 </style>
-
+<h1>Create:</h1>
 <div id = "main">
     <div id = "form-box">
     {#if !selectedGrammar}

@@ -17,9 +17,28 @@
     }
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css?family=Solway|Sulphur+Point&display=swap');
+    /* *{font-family: 'Solway', serif;} */
     #main{
         display: flex;
         flex-direction: row;
+    }
+    h1{
+        padding-left: 1rem;
+        text-decoration: underline;
+    }
+    h2{
+        padding-left: 2rem;
+        margin: 0;
+    }
+    h5{
+        display: flex;
+        justify-content: center;
+        padding-left:3rem;
+        margin-bottom: 10px;
+    }
+    h4{
+        margin-bottom: 0;
     }
      #comparison-box{
         padding-left: 3rem;
@@ -57,13 +76,37 @@
         align-items: center;
         justify-content: center;
     }
+    #key-points-box{
+        font-family: 'Solway', serif;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    p{
+        font-size: larger
+    }
+    #comparison-header{
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 
 </style>
 <!-- ■ -->
-<h1>Comparisons</h1>
+
+
+<h1>Compare:</h1>
+<div id="comparison-header">
+    <h2>Languages, Easiest to Hardsest to Learn</h2>
+    <h4>*Click on a comparison to see more information*</h4>
+</div>
 <div id = "main">
 {#if comparisons}
+<div id = "comparison-selection">
+<h5> Starting Language --> New Language </h5>
     <div id="comparison-box">
     <img id="gradient" src="./media/gradient.png" alt="gradient">
     <div id="comparison-list">
@@ -74,7 +117,30 @@
         {/each}
     </div>
     </div>
+    </div>
 {/if}
+{#if !activeComparison}
+<div id="key-points-box">
+           <h2>What Makes a Language "Easier to Learn"?</h2>
+           <p>The more similar languages are, i.e the less "new" stuff you have<br/> 
+            to know, the easier they are to learn. With this in mind, lɪŋˈ-guage has<br/> 
+            developed a system that stores information on languages including where<br/> 
+            they're from, what their grammar and writing looks like - and even how<br/> 
+            many sounds they have. Then lɪŋˈ-guage pushes all of this into an equation<br/> 
+            that compares these traits, and gets out a number that represents how<br/> 
+            different they are from eachother.<br/>       
+            <br/>
+            This number is what lɪŋˈ-guage uses to sort the language comparisons.<br/> 
+            It presents them to you in order of similarity between the pairs. So, the <br/>
+            easiest language transitions are shown first, and the hardest language<br/>
+            learning pairs are at the end.
+            <br/>
+            <br/>
+            Click on a comparison within the list to see a brief summary of the <br/>
+            similarities and differences between the two languages.
+           </p>
+        </div>
+    {/if}
 {#if activeComparison}
 <ComparisonBox comparison={activeComparison}/>
 {/if}
