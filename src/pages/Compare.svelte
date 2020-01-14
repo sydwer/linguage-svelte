@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from "svelte";
+    import { onMount } from 'svelte';
     import ComparisonBox from './ComparisonBox.svelte'
 
     let comparisons = undefined;
@@ -12,8 +12,9 @@
     });
 
     function sayHi(comparison){
-        console.log(comparison.native_language.hello)
+        // console.log(comparison.native_language.hello)
         activeComparison = comparison
+        // console.log(activeComparison.target_language)
     }
 </script>
 <style>
