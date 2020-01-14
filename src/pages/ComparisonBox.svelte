@@ -18,27 +18,56 @@ import { onMount } from 'svelte';
 
 <style>
 #main{
-    width: 75%;
+    padding-left: 15%;
 }
-#comparison-info-header{
+.comparison-row{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
 h1{
     display: flex;
     justify-content: center;
+    text-decoration: underline;
+}
+h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
 }
 </style>
-
+{#if native_language}
 <div id="main">
-<div id="comparison-info-header">
-    <h1>{comparison.native_language.name}:</h1>
-    <h1> vs.</h1>
-    <h1>{comparison.target_language.name}:</h1>
+    <div id="comparison-info-header" class = "comparison-row">
+        <span></span>
+        <h1>{comparison.native_language.name}:</h1>
+        <h1> vs.</h1>
+        <h1>{comparison.target_language.name}:</h1>
+    </div>
+      <div class = "comparison-row">
+        <h2>Language Family:</h2>
+        <h3>{native_language.language_family.general_family},{native_language.language_family.specific_family}</h3>
+        <h3> - </h3>
+        <h3>{target_language.language_family.general_family},{target_language.language_family.specific_family}</h3>
+    </div>
+    <div class = "comparison-row">
+        <h2>Grammar:</h2>
+        <h3>{native_language.morphology.name}</h3>
+        <h3> - </h3>
+        <h3>{target_language.morphology.name}</h3>
+    </div>
+    <div class = "comparison-row">
+        <h2>Number of Sounds:</h2>
+        <h3>{native_language.phonemes.length}</h3>
+        <h3> - </h3>
+        <h3>{target_language.phonemes.length}</h3>
+    </div>
 </div>
-    <!-- <div class = "comparison-row">
-    <h3>Grammar:{comparison.native_language.morphology.name}</h3>
-    <h3> - </h3>
-    <h3>{comparison.target_language.morphology.name}</h3>
-    </div> -->
-</div>
+<!-- TRANSFER THESE ROWS INTO A COMPONENT WHEN YOU HAVE TIME -->
+{/if}

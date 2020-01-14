@@ -16,6 +16,9 @@
         activeComparison = comparison
         // console.log(activeComparison.target_language)
     }
+    function resetPage(){
+        activeComparison = undefined;
+    }
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Solway|Sulphur+Point&display=swap');
@@ -100,12 +103,17 @@
 
 
 <h1>Compare:</h1>
+{#if activeComparison}
+<button on:click={()=>{ resetPage()}}> &#8249;<span>Return to Comparisons</span> </button>
+{/if}
+{#if !activeComparison}
 <div id="comparison-header">
     <h2>Languages, Easiest to Hardsest to Learn</h2>
     <h4>*Click on a comparison to see more information*</h4>
 </div>
+{/if}
 <div id = "main">
-{#if comparisons}
+{#if comparisons && !activeComparison}
 <div id = "comparison-selection">
 <h5> Starting Language --> New Language </h5>
     <div id="comparison-box">
