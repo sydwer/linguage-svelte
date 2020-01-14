@@ -21,6 +21,7 @@ function makeFreeMorpheme(syllables){
     for(i = 0; i < syllableAmount; i ++){
         randomWordSyllables.push(syllables[Math.floor(Math.random() * syllables.length)])
     }
+    console.log(randomWordSyllables)
     const joinedRandomWord = randomWordSyllables.join("")
     return joinedRandomWord
 }
@@ -30,4 +31,4 @@ function makeFreeMorpheme(syllables){
 
 <h1>Agglutinative Grammar Component Test:</h1>
 <h2>{mary} {john} </h2>
-<h3>{test} {freeMorphemeTest}</h3>
+<h3>{freeMorphemeTest}</h3>
