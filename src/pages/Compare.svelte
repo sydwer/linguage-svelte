@@ -3,6 +3,7 @@
     import ComparisonBox from './ComparisonBox.svelte'
 
     let comparisons = undefined;
+    let filteredComparisons = undefined;
     let activeComparison = undefined;
 
     onMount(async function() {
@@ -30,6 +31,15 @@
         height: 25rem;
         overflow: scroll;
     }
+    #one-comparison{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    h3{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 </style>
 <!-- ■ -->
@@ -38,7 +48,9 @@
 {#if comparisons}
 <div id="comparison-list">
         {#each comparisons as comparison}
-        <h3 on:click={()=>{sayHi(comparison)}}> {comparison.native_language.name} -> {comparison.target_language.name}</h3> 
+        <div id="one-comparison" on:click={()=>{sayHi(comparison)}}>
+        <h3> {comparison.native_language.name} </h3><h3>-></h3><h3>{comparison.target_language.name}</h3>
+        </div>
         {/each}
     </div>
 {/if}
