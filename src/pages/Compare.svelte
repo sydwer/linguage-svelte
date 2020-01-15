@@ -126,11 +126,11 @@
 <!-- ■ -->
 
 
-<h1>Compare:</h1>
 {#if activeComparison}
 <button on:click={()=>{ resetPage()}}><span>⬅ </span>Return to Comparisons</button>
 {/if}
 {#if !activeComparison}
+<h1>Compare:</h1>
 <div id="comparison-header">
     <h2>Languages, Easiest to Hardest to Learn</h2>
     <h4>*Click on a comparison to see more information*</h4>
