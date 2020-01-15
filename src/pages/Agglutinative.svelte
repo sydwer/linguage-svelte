@@ -1,11 +1,10 @@
 <script>
-import { onMount } from "svelte";
-export let syllableBank
-export let mary
-export let john
+export let syllableBank;
+export let mary;
+export let john;
 
-const test = makeBoundMorpheme(syllableBank)
-const freeMorphemeTest = makeFreeMorpheme(syllableBank)
+const test = makeBoundMorpheme(syllableBank);
+const freeMorphemeTest = makeFreeMorpheme(syllableBank);
 
 
 function makeBoundMorpheme(syllables){
@@ -15,13 +14,13 @@ function makeBoundMorpheme(syllables){
 
 function makeFreeMorpheme(syllables){
     //want 2-4 syllables so 1-3, and then add one?
-    const syllableAmount = Math.floor(Math.random() * 3) + 1
+    const syllableAmount = Math.floor(Math.random() * 2) + 1
     const randomWordSyllables =[]
     var i;
     for(i = 0; i < syllableAmount; i ++){
         randomWordSyllables.push(syllables[Math.floor(Math.random() * syllables.length)])
     }
-    console.log(randomWordSyllables)
+    console.log("here")
     const joinedRandomWord = randomWordSyllables.join("")
     return joinedRandomWord
 }

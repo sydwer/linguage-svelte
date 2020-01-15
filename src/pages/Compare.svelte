@@ -40,10 +40,13 @@
         display: flex;
         justify-content: center;
         padding-left:3rem;
-        margin-bottom: 10px;
+        margin: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
     h4{
-        margin-bottom: 0;
+        margin: 0;
+        margin-top: 5px;
     }
      #comparison-box{
         padding-left: 3rem;
@@ -63,7 +66,7 @@
         flex-direction: column;
         align-items: center;
         border: 2px solid black;
-        overflow: scroll;
+        overflow-y: scroll;
     }
     #one-comparison{
         display: grid;
@@ -87,7 +90,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 30px;
     }
+  
     p{
         font-size: larger
     }
