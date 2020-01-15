@@ -158,20 +158,20 @@
         padding-left: 1rem;
         text-decoration: underline;
     }
+
     #main{
         display: flex;
         flex-direction: row;
     }
    
     #form-box{
-        margin-top: 2rem; 
         margin-bottom: 1rem;
         padding-left: 5.2rem;
         font-family: 'Solway', serif;
         width: 25%;
     }
     #form-box>h2{
-        padding-left: 1rem;
+        margin-bottom: 0;
     }
     .submit-button{
         padding: 0;
@@ -256,9 +256,10 @@
         font-size: 1.25rem;
     }
      #reset-button{
+        margin-top: 1rem;
         margin-left: 1rem;
         font-weight: bold;
-        width: 18%;
+        width: 15%;
         height: 2.3rem;
         background-color: #ca464638;
         border-radius: 15px;
@@ -270,9 +271,11 @@
         color: white;
     }
 </style>
+{#if !selectedLanguages}
 <h1>Create:</h1>
+{/if}
 {#if selectedLanguages}
-<button id="reset-button" on:click={()=>{resetAllVariables()}}>Make A New Language</button>
+<button id="reset-button" on:click={()=>{resetAllVariables()}}>⬅ Make A New Language</button>
 {/if}
 <div id = "main">
     <div id = "form-box">
