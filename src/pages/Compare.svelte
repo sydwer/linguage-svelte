@@ -11,10 +11,14 @@
         comparisons = json;
     });
 
+
     function sayHi(comparison){
         // console.log(comparison.native_language.hello)
         activeComparison = comparison
         // console.log(activeComparison.target_language)
+    }
+    function resetPage(){
+        activeComparison = undefined;
     }
 </script>
 <style>
@@ -93,6 +97,24 @@
         flex-direction: column;
         align-items: center;
     }
+    button{
+        margin-left: 1rem;
+        font-weight: bold;
+        position: relative;
+        width: 15%;
+        height: 2.3rem;
+        background-color: #86ba3247;
+        border-radius: 15px;
+        border: 1px solid #293801;
+        font-size: 1rem;
+    }
+    button:hover{
+        text-decoration: none;
+        border-radius: 15px;
+        /* width: 90%; */
+        background-color: #749e02;
+        color: white;
+    }
 
 
 </style>
@@ -100,12 +122,17 @@
 
 
 <h1>Compare:</h1>
+{#if activeComparison}
+<button on:click={()=>{ resetPage()}}>Return to Comparisons</button>
+{/if}
+{#if !activeComparison}
 <div id="comparison-header">
-    <h2>Languages, Easiest to Hardsest to Learn</h2>
+    <h2>Languages, Easiest to Hardest to Learn</h2>
     <h4>*Click on a comparison to see more information*</h4>
 </div>
+{/if}
 <div id = "main">
-{#if comparisons}
+{#if comparisons && !activeComparison}
 <div id = "comparison-selection">
 <h5> Starting Language --> New Language </h5>
     <div id="comparison-box">
