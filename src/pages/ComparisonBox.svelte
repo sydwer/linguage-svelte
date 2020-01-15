@@ -4,6 +4,7 @@ import { onMount } from 'svelte';
     let languages = undefined;
     let native_language = undefined;
     let target_language = undefined;
+    let newPhonemes = [];
 
     onMount(async function() {
         const response = await fetch("http://127.0.0.1:3000/languages");
@@ -11,14 +12,26 @@ import { onMount } from 'svelte';
         languages = json;
         native_language = languages.find(obj=>obj.name===comparison.native_language.name)
         target_language = languages.find(obj=>obj.name===comparison.target_language.name)
+        // findNewPhonemes(native_language, target_language)
         console.log(native_language)
     });
 
+    // function findNewPhonemes(native_language, target_language){
+    //     var i;
+    //     for(i = 0; i < target_language.phonemes.length; i++){
+    //         if (native_language.phonemes.includes(target_language.phonemes[i])){
+    //             console.log("includes it")
+    //         }else{
+    //             console.log("excludes")
+    //         }
+    //     }
+    // }
 </script>
 
 <style>
 #main{
-    padding-left: 15%;
+    width: 100%;
+    
 }
 .comparison-row{
     display:grid;
@@ -41,7 +54,10 @@ h2{
     align-items: center;
     padding-right: 10px;
 }
+
 </style>
+
+
 {#if native_language}
 <div id="main">
     <div id="comparison-info-header" class = "comparison-row">
@@ -57,13 +73,19 @@ h2{
         <h3>{target_language.language_family.general_family},{target_language.language_family.specific_family}</h3>
     </div>
     <div class = "comparison-row">
-        <h2>Grammar:</h2>
+        <h2>Grammar/Morphology:</h2>
         <h3>{native_language.morphology.name}</h3>
         <h3> - </h3>
         <h3>{target_language.morphology.name}</h3>
     </div>
     <div class = "comparison-row">
-        <h2>Number of Sounds:</h2>
+        <h2>Number of Noun Classes:</h2>
+        <h3>{native_language.noun_classes}</h3>
+        <h3> - </h3>
+        <h3>{target_language.noun_classes}</h3>
+    </div>
+    <div class = "comparison-row">
+        <h2>Number of Sounds Used:</h2>
         <h3>{native_language.phonemes.length}</h3>
         <h3> - </h3>
         <h3>{target_language.phonemes.length}</h3>
