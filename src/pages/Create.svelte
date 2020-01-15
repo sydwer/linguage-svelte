@@ -1,8 +1,8 @@
 <script>
     import { onMount } from "svelte";
 	import Select from 'svelte-select';
-    import SyllableList from './SyllableList.svelte'
-    import Agglutinative from './Agglutinative.svelte'
+    import SyllableList from './SyllableList.svelte';
+    import Agglutinative from './Agglutinative.svelte';
    
 
 	const items = [
@@ -63,6 +63,7 @@
 	let selectedValue = undefined;
     let selectedGrammar = undefined;
     let selectedPhonology = undefined;
+    let selectedLanguages = false;
 
     
 
@@ -85,6 +86,7 @@
         selectedGrammar = undefined;
         selectedPhonology = undefined;
         syllableBank = [];
+        selectedLanguages = false;
     };
        //Refactor this ^ when you have time
 
@@ -94,6 +96,7 @@
          console.log(grammarOrigin.morphology.name)
          phonemes = phonologyOrigin.phonemes;
          syllableStructure = phonologyOrigin.syllable_structure.split("");
+         selectedLanguages = true;
          sortPhonemes();
          makeSyllableBank();
     }
@@ -110,11 +113,11 @@
     function makeSyllableBank(){
         if(phonologyOrigin.syllable_structure_2){
                  var i;
-            for (i = 0; i < 5; i++) {
+            for (i = 0; i < 4; i++) {
                 generateRandomSyllable(phonologyOrigin.syllable_structure_2)
             }
                  var j;
-            for (j = 0; j < 5; j++) {
+            for (j = 0; j < 6; j++) {
                 generateRandomSyllable(syllableStructure)
             }
         }else{
@@ -123,7 +126,6 @@
                 generateRandomSyllable(syllableStructure)
             }
         }
-        console.log(syllableBank)
     }
 
     function generateRandomSyllable(syllableForm){
@@ -253,8 +255,25 @@
     #correct-message{
         font-size: 1.25rem;
     }
+     #reset-button{
+        margin-left: 1rem;
+        font-weight: bold;
+        width: 18%;
+        height: 2.3rem;
+        background-color: #ca464638;
+        border-radius: 15px;
+        border:1px solid #ca4646fc;
+        font-size: 1rem;
+    }
+    #reset-button:hover{
+        background-color: #ca4646fc;
+        color: white;
+    }
 </style>
 <h1>Create:</h1>
+{#if selectedLanguages}
+<button id="reset-button" on:click={()=>{resetAllVariables()}}>Make A New Language</button>
+{/if}
 <div id = "main">
     <div id = "form-box">
     {#if !selectedGrammar}
@@ -281,7 +300,7 @@
             {/if}
         <!-- <h3>With the Grammar of:</h3>
         <Select {items} {groupBy} bind:selectedValue></Select> -->
-        {#if selectedGrammar}
+        {#if selectedGrammar && !selectedLanguages}
         <div>
         <h2> Your language will sound like {selectedPhonology.value} with {selectedGrammar.value} grammar.</h2>
         <h4 id ="correct-message">Is This Correct?</h4>
@@ -308,12 +327,12 @@
     {#if phonemes}
         <h2>Your Language</h2>
     {/if}
-        <SyllableList phonemes = {phonemes} syllableStructure = {syllableStructure}/>
+        <SyllableList phonemes={phonemes} syllableStructure={syllableStructure}/>
         <!-- {#if syllableStructure}
-        <Grammar syllableBank = {syllableBank} mary = {phonologyOrigin.mary} john = {phonologyOrigin.john}/>
-        {/if} -->
-        {#if syllableStructure && grammarOrigin.morphology.name === "agglutinative"}
         <Agglutinative syllableBank = {syllableBank} mary = {phonologyOrigin.mary} john = {phonologyOrigin.john}/>
+        {/if} -->
+        {#if grammarOrigin}
+        <Agglutinative syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
         {/if}
     </div>
 
