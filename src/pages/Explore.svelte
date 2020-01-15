@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte'
+    import ExploreBox from './ExploreBox.svelte'
 
     let languages = undefined;
     let selectedLanguage = undefined;
@@ -11,7 +12,11 @@
     });
 
     function pickLanguage(language){
+        selectedLanguage = language
         console.log(language.name)
+    }
+    function resetPage(){
+        selectedLanguage = undefined;
     }
 </script>
 
@@ -52,15 +57,35 @@
         /* width: 5rem; */
         height: 6rem;
     }
-
+      button{
+        margin-left: 1rem;
+        font-weight: bold;
+        position: relative;
+        width: 15%;
+        height: 2.3rem;
+        background-color: #86ba3247;
+        border-radius: 15px;
+        border: 1px solid #293801;
+        font-size: 1rem;
+    }
+    button:hover{
+        text-decoration: none;
+        border-radius: 15px;
+        /* width: 90%; */
+        background-color: #749e02;
+        color: white;
+    }
    
 </style>
 
 
-<h1>Explore:</h1>
-{#if !selectedLanguage}
-<h3>Pick a Language to Learn More About It</h3>
+{#if selectedLanguage}
+<button on:click={()=>{resetPage()}}><span>⬅ </span>Return to Languages</button>
 {/if}
+{#if !selectedLanguage}
+<h1>Explore:</h1>
+<h3>Pick a Language to Learn More About It</h3>
+
 <div id= "main">
 {#if languages}
     <div id="card-grid">
@@ -73,3 +98,7 @@
     </div>
 {/if}
 </div>
+{/if}
+{#if selectedLanguage}
+<ExploreBox selectedLanguage={selectedLanguage}/>
+{/if}

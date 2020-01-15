@@ -75,7 +75,6 @@ h2>span{
     {#if phonemes}
     <h2>Sound Inventory:</h2>
     <h4>(Click on a symbol to hear what it sounds like)</h4>
-    <!-- <h7>*Dipthongs have unconvential sound file, that utilizes a sentance encompassing them all, rather than the single one clicked on</h7> -->
     <div id="phoneme-box">
         {#each phonemes as sound}
         <h3 on:click={()=>{playAudio(sound.sound_url)}}>{sound.symbol}</h3>
