@@ -324,9 +324,9 @@
 
     </div>
     <div id = "custom-language-box">
-    {#if phonemes}
+    <!-- {#if phonemes}
         <h2>Your Language</h2>
-    {/if}
+    {/if} -->
         <SyllableList phonemes={phonemes} syllableStructure={syllableStructure}/>
         <!-- {#if syllableStructure}
         <Agglutinative syllableBank = {syllableBank} mary = {phonologyOrigin.mary} john = {phonologyOrigin.john}/>
