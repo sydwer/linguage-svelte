@@ -58,6 +58,7 @@
         height: 6rem;
     }
       button{
+          margin-top: 1rem;
         margin-left: 1rem;
         font-weight: bold;
         position: relative;
@@ -80,7 +81,7 @@
 
 
 {#if selectedLanguage}
-<button on:click={()=>{resetPage()}}><span>⬅ </span>Return to Languages</button>
+<button on:click={()=>{resetPage()}}>⬅ Return to Languages</button>
 {/if}
 {#if !selectedLanguage}
 <h1>Explore:</h1>

@@ -103,6 +103,7 @@
         align-items: center;
     }
     button{
+        margin-top: 1rem;
         margin-left: 1rem;
         font-weight: bold;
         position: relative;
@@ -127,7 +128,7 @@
 
 
 {#if activeComparison}
-<button on:click={()=>{ resetPage()}}><span>⬅ </span>Return to Comparisons</button>
+<button on:click={()=>{ resetPage()}}>⬅ Return to Comparisons</button>
 {/if}
 {#if !activeComparison}
 <h1>Compare:</h1>
