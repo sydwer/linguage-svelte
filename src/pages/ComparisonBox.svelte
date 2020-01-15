@@ -61,7 +61,7 @@ h1{
     <ComparisonRow rowName=" Specific Language Family:" nativeLanguageInfo={native_language.language_family.specific_family}
         targetLanguageInfo= {target_language.language_family.specific_family}/>
 
-    <ComparisonRow rowName="Grammar/Morphology" nativeLanguageInfo={native_language.morphology.name} 
+    <ComparisonRow rowName="Grammar/Morphology:" nativeLanguageInfo={native_language.morphology.name} 
         targetLanguageInfo={target_language.morphology.name}/>
 
     <ComparisonRow rowName= "Number of Noun Classes:" nativeLanguageInfo={native_language.noun_classes} 
@@ -69,6 +69,9 @@ h1{
 
     <ComparisonRow rowName="Number of Sounds Used:" nativeLanguageInfo={native_language.phonemes.length} 
         targetLanguageInfo={target_language.phonemes.length}/>
+        
+    <ComparisonRow rowName="Writing System:" nativeLanguageInfo={native_language.orthography.name}
+        targetLanguageInfo={target_language.orthography.name}/>
 </div>
 <!-- TRANSFER THESE ROWS INTO A COMPONENT WHEN YOU HAVE TIME -->
 {/if}
