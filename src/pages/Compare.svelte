@@ -101,7 +101,7 @@
         margin-left: 1rem;
         font-weight: bold;
         position: relative;
-        width: 15%;
+        width: 18%;
         height: 2.3rem;
         background-color: #86ba3247;
         border-radius: 15px;
@@ -123,7 +123,7 @@
 
 <h1>Compare:</h1>
 {#if activeComparison}
-<button on:click={()=>{ resetPage()}}>Return to Comparisons</button>
+<button on:click={()=>{ resetPage()}}><span>⬅ </span>Return to Comparisons</button>
 {/if}
 {#if !activeComparison}
 <div id="comparison-header">
