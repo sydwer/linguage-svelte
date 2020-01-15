@@ -1,5 +1,6 @@
 <script>
-import { onMount } from 'svelte';
+    import { onMount } from 'svelte';
+    import ComparisonRow from './ComparisonRow.svelte'
     export let comparison;
     let languages = undefined;
     let native_language = undefined;
@@ -43,18 +44,6 @@ h1{
     justify-content: center;
     text-decoration: underline;
 }
-h3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 10px;
-}
-
 </style>
 
 
@@ -66,30 +55,20 @@ h2{
         <h1> vs.</h1>
         <h1>{comparison.target_language.name}:</h1>
     </div>
-      <div class = "comparison-row">
-        <h2>Language Family:</h2>
-        <h3>{native_language.language_family.general_family},{native_language.language_family.specific_family}</h3>
-        <h3> - </h3>
-        <h3>{target_language.language_family.general_family},{target_language.language_family.specific_family}</h3>
-    </div>
-    <div class = "comparison-row">
-        <h2>Grammar/Morphology:</h2>
-        <h3>{native_language.morphology.name}</h3>
-        <h3> - </h3>
-        <h3>{target_language.morphology.name}</h3>
-    </div>
-    <div class = "comparison-row">
-        <h2>Number of Noun Classes:</h2>
-        <h3>{native_language.noun_classes}</h3>
-        <h3> - </h3>
-        <h3>{target_language.noun_classes}</h3>
-    </div>
-    <div class = "comparison-row">
-        <h2>Number of Sounds Used:</h2>
-        <h3>{native_language.phonemes.length}</h3>
-        <h3> - </h3>
-        <h3>{target_language.phonemes.length}</h3>
-    </div>
+    <ComparisonRow rowName= "General Language Family:" nativeLanguageInfo={native_language.language_family.general_family}
+        targetLanguageInfo={target_language.language_family.general_family} />
+
+    <ComparisonRow rowName=" Specific Language Family:" nativeLanguageInfo={native_language.language_family.specific_family}
+        targetLanguageInfo= {target_language.language_family.specific_family}/>
+
+    <ComparisonRow rowName="Grammar/Morphology" nativeLanguageInfo={native_language.morphology.name} 
+        targetLanguageInfo={target_language.morphology.name}/>
+
+    <ComparisonRow rowName= "Number of Noun Classes:" nativeLanguageInfo={native_language.noun_classes} 
+        targetLanguageInfo={target_language.noun_classes}/>
+
+    <ComparisonRow rowName="Number of Sounds Used:" nativeLanguageInfo={native_language.phonemes.length} 
+        targetLanguageInfo={target_language.phonemes.length}/>
 </div>
 <!-- TRANSFER THESE ROWS INTO A COMPONENT WHEN YOU HAVE TIME -->
 {/if}
