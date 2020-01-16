@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
-	import Select from 'svelte-select';
+    import Select from 'svelte-select';
+    import Loading from '../layout/Loading.svelte'
     import PhonemeBox from './PhonemeBox.svelte';
     import Agglutinative from './Agglutinative.svelte';
    
@@ -183,20 +184,17 @@
         border-radius: 15px;
         border: 1px solid #293801;
         font-size: 1rem;
-        /* transition: width 1s ease, color 0.4s ease 0.2s, background 0.4s ease 0.2s; */
     }
     .submit-button:hover{
         padding: 0;
         text-decoration: none;
         border-radius: 15px;
-        /* width: 90%; */
         background-color: #749e02;
         color: white;
     }
 
     .yes-no-buttons{
         border-radius: 15px;
-        /* margin: 1rem; */
         width: 33%;
         height: 2.5rem;
         font-size: 1rem;
@@ -250,6 +248,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         margin-top: 2rem;
     }
     #correct-message{
@@ -301,8 +300,6 @@
                     }}
                 >Pick Grammar</button>
             {/if}
-        <!-- <h3>With the Grammar of:</h3>
-        <Select {items} {groupBy} bind:selectedValue></Select> -->
         {#if selectedGrammar && !selectedLanguages}
         <div>
         <h2> Your language will sound like {selectedPhonology.value} with {selectedGrammar.value} grammar.</h2>
@@ -327,16 +324,19 @@
 
     </div>
     <div id = "custom-language-box">
-    <!-- {#if phonemes}
-        <h2>Your Language</h2>
-    {/if} -->
-        <PhonemeBox phonemes={phonemes} syllableStructure={syllableStructure}/>
-        <!-- {#if syllableStructure}
-        <Agglutinative syllableBank = {syllableBank} mary = {phonologyOrigin.mary} john = {phonologyOrigin.john}/>
-        {/if} -->
         {#if grammarOrigin}
-        <Agglutinative syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
+            <Agglutinative syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
         {/if}
+
+        <div id= "sounds-box">
+            {#if !phonemes}
+                <Loading message = "Waiting for User Input"/>
+            {/if}
+            <PhonemeBox phonemes={phonemes} syllableStructure={syllableStructure}/>
+            {#if syllableStructure}
+                <h3>Syllable Structure: "{syllableStructure}"</h3>
+            {/if}
+        </div>
     </div>
 
 </div>
