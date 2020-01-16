@@ -24,9 +24,11 @@ function makeFreeMorpheme(syllables){
     const joinedRandomWord = randomWordSyllables.join("")
     return joinedRandomWord
 }
-
-
 </script>
+
+<style>
+    
+</style>
 
 <h1>Agglutinative Grammar Component Test:</h1>
 <h2>{mary} {john} </h2>
