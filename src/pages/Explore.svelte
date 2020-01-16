@@ -58,12 +58,13 @@
         height: 6rem;
     }
       button{
-          margin-top: 1rem;
         margin-left: 1rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
         font-weight: bold;
         position: relative;
-        width: 15%;
-        height: 2.3rem;
+        width: 7%;
+        height: 2rem;
         background-color: #86ba3247;
         border-radius: 15px;
         border: 1px solid #293801;
@@ -81,7 +82,7 @@
 
 
 {#if selectedLanguage}
-<button on:click={()=>{resetPage()}}>⬅ Return to Languages</button>
+<button on:click={()=>{resetPage()}}>⬅ Back</button>
 {/if}
 {#if !selectedLanguage}
 <h1>Explore:</h1>
