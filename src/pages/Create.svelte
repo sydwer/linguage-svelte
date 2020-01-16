@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
 	import Select from 'svelte-select';
-    import SyllableList from './SyllableList.svelte';
+    import PhonemeBox from './PhonemeBox.svelte';
     import Agglutinative from './Agglutinative.svelte';
    
 
@@ -330,7 +330,7 @@
     <!-- {#if phonemes}
         <h2>Your Language</h2>
     {/if} -->
-        <SyllableList phonemes={phonemes} syllableStructure={syllableStructure}/>
+        <PhonemeBox phonemes={phonemes} syllableStructure={syllableStructure}/>
         <!-- {#if syllableStructure}
         <Agglutinative syllableBank = {syllableBank} mary = {phonologyOrigin.mary} john = {phonologyOrigin.john}/>
         {/if} -->
