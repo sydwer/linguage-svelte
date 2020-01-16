@@ -163,11 +163,12 @@
     #main{
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
     }
    
     #form-box{
         margin-bottom: 1rem;
-        padding-left: 5.2rem;
+        /* padding-left: 5.2rem; */
         font-family: 'Solway', serif;
         width: 25%;
     }
@@ -244,11 +245,8 @@
         margin-right: 1rem;
     }
     #custom-language-box{
-        width: 75%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        flex-direction: row;
         margin-top: 2rem;
     }
     #correct-message{
@@ -268,6 +266,9 @@
     #reset-button:hover{
         background-color: #ca4646fc;
         color: white;
+    }
+    #sounds-box{
+        width: 25%;
     }
 </style>
 {#if !selectedLanguages}
@@ -324,19 +325,23 @@
 
     </div>
     <div id = "custom-language-box">
-        {#if grammarOrigin}
-            <Agglutinative syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
+        {#if !phonemes}
+            <Loading message = "Waiting for User Input"/>
         {/if}
-
-        <div id= "sounds-box">
-            {#if !phonemes}
-                <Loading message = "Waiting for User Input"/>
-            {/if}
-            <PhonemeBox phonemes={phonemes} syllableStructure={syllableStructure}/>
-            {#if syllableStructure}
-                <h3>Syllable Structure: "{syllableStructure}"</h3>
+        <div id="grammar-box">
+            {#if grammarOrigin}
+                <Agglutinative syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
             {/if}
         </div>
+
+        {#if phonemes}
+            <div id= "sounds-box">
+                <PhonemeBox phonemes={phonemes} syllableStructure={syllableStructure}/>
+                {#if syllableStructure}
+                    <h3>Syllable Structure: "{syllableStructure}"</h3>
+                {/if}
+            </div>
+        {/if}
     </div>
 
 </div>
