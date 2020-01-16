@@ -268,7 +268,7 @@
         color: white;
     }
     #sounds-box{
-        width: 25%;
+        width: 30%;
     }
 </style>
 {#if !selectedLanguages}
@@ -336,9 +336,9 @@
 
         {#if phonemes}
             <div id= "sounds-box">
-                <PhonemeBox phonemes={phonemes} syllableStructure={syllableStructure}/>
+                <PhonemeBox phonemes={phonemes} />
                 {#if syllableStructure}
-                    <h3>Syllable Structure: "{syllableStructure}"</h3>
+                    <h3>Syllable Structure: "{syllableStructure.join("")}"</h3>
                 {/if}
             </div>
         {/if}
