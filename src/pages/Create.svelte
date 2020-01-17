@@ -139,6 +139,8 @@
                 randomSyllableArray.push(vowels[Math.floor(Math.random()*vowels.length)].symbol)
             }else if(syllableForm[i] === "n"){
                 randomSyllableArray.push("n")
+            }else if(syllableForm[i] === "l"){
+                randomSyllableArray.push(randomSyllableArray[1])
             }else{
                 randomSyllableArray.push(phonemes[Math.floor(Math.random()*phonemes.length)].symbol)
             }
