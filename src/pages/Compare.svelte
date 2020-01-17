@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import ComparisonBox from './ComparisonBox.svelte'
+    import Loading from '../layout/Loading.svelte'
 
     let comparisons = undefined;
     let activeComparison = undefined;
@@ -121,39 +122,51 @@
         background-color: #749e02;
         color: white;
     }
+    #loading-container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
 
 
 </style>
 <!-- ■ -->
 
+{#if !comparisons}
+    <div id="loading-container">
+        <Loading message="Loading"/>
+    </div>
+{/if}
 
 {#if activeComparison}
 <button on:click={()=>{ resetPage()}}>⬅ Return to Comparisons</button>
 {/if}
-{#if !activeComparison}
+
+{#if comparisons && !activeComparison}
 <h1>Compare:</h1>
 <div id="comparison-header">
     <h2>Languages, Easiest to Hardest to Learn</h2>
     <h4>*Click on a comparison to see more information*</h4>
 </div>
 {/if}
-<div id = "main">
+
 {#if comparisons && !activeComparison}
-<div id = "comparison-selection">
-<h5> Starting Language --> New Language </h5>
-    <div id="comparison-box">
-    <img id="gradient" src="./media/gradient.png" alt="gradient">
-    <div id="comparison-list">
-        {#each comparisons as comparison}
-        <div id="one-comparison" on:click={()=>{sayHi(comparison)}}>
-        <h3> {comparison.native_language.name} </h3><h3>-></h3><h3>{comparison.target_language.name}</h3>
+<div id = "main">
+    <div id = "comparison-selection">
+    <h5> Starting Language --> New Language </h5>
+        <div id="comparison-box">
+        <img id="gradient" src="./media/gradient.png" alt="gradient">
+        <div id="comparison-list">
+            {#each comparisons as comparison}
+            <div id="one-comparison" on:click={()=>{sayHi(comparison)}}>
+            <h3> {comparison.native_language.name} </h3><h3>-></h3><h3>{comparison.target_language.name}</h3>
+            </div>
+            {/each}
         </div>
-        {/each}
-    </div>
-    </div>
-    </div>
-{/if}
-{#if !activeComparison}
+        </div>
+        </div>
+<!-- {/if} -->
+<!-- {#if  comparisons && !activeComparison} -->
 <div id="key-points-box">
            <h2>What Makes a Language "Easier to Learn"?</h2>
            <p>The more similar languages are, i.e the less "new" stuff you have<br/> 
@@ -174,8 +187,9 @@
             similarities and differences between the two languages.
            </p>
         </div>
-    {/if}
+    <!-- {/if} -->
 {#if activeComparison}
 <ComparisonBox comparison={activeComparison}/>
 {/if}
 </div>
+{/if}
