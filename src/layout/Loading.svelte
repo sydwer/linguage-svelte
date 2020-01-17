@@ -4,7 +4,7 @@
 
 <style>
 #loading-bar{
-  width: 100%;
+    width: 100%;
     color: #598502;
     display: flex;
     flex-direction: row;
