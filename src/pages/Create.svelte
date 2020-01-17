@@ -114,11 +114,11 @@
     function makeSyllableBank(){
         if(phonologyOrigin.syllable_structure_2){
                  var i;
-            for (i = 0; i < 33; i++) {
+            for (i = 0; i < 45; i++) {
                 generateRandomSyllable(phonologyOrigin.syllable_structure_2)
             }
                  var j;
-            for (j = 0; j < 66; j++) {
+            for (j = 0; j < 55; j++) {
                 generateRandomSyllable(syllableStructure)
             }
         }else{
