@@ -114,39 +114,60 @@
     function makeSyllableBank(){
         if(phonologyOrigin.syllable_structure_2){
                  var i;
-            for (i = 0; i < 40; i++) {
+            for (i = 0; i < 3; i++) {
                 generateRandomSyllable(phonologyOrigin.syllable_structure_2)
             }
                  var j;
-            for (j = 0; j < 60; j++) {
+            for (j = 0; j < 6; j++) {
                 generateRandomSyllable(syllableStructure)
             }
         }else{
             var i;
-            for (i = 0; i < 100; i++){
+            for (i = 0; i < 10; i++){
                 generateRandomSyllable(syllableStructure)
             }
         }
+        console.log(syllableBank)
     }
 
     function generateRandomSyllable(syllableForm){
         var i;
-        let randomSyllableArray = []
+        // let randomSyllable = {IPA: undefined, latin: undefined}
+        const randomIPA = []
+        const randomLatin = []
+        const randomSyllableArray = []
         for (i = 0; i < syllableForm.length; i++){
             if (syllableForm[i] === "c"){
-                randomSyllableArray.push(consonants[Math.floor(Math.random()*consonants.length)].symbol)
+                const randomConsonant = consonants[Math.floor(Math.random()*consonants.length)];
+                randomIPA.push(randomConsonant.symbol);
+                randomLatin.push(randomConsonant.latin)
+                // randomSyllableArray.push(consonants[Math.floor(Math.random()*consonants.length)].symbol)
             }else if(syllableForm[i] === "v"){
-                randomSyllableArray.push(vowels[Math.floor(Math.random()*vowels.length)].symbol)
+                const randomVowel = vowels[Math.floor(Math.random()*vowels.length)];
+                randomIPA.push(randomVowel.symbol);
+                randomLatin.push(randomVowel.latin);
+                // randomSyllableArray.push(vowels[Math.floor(Math.random()*vowels.length)].symbol)
             }else if(syllableForm[i] === "n"){
-                randomSyllableArray.push("n")
-            }else if(syllableForm[i] === "l"){
-                randomSyllableArray.push(randomSyllableArray[1])
-            }else{
-                randomSyllableArray.push(phonemes[Math.floor(Math.random()*phonemes.length)].symbol)
+                randomIPA.push("n")
+                randomLatin.push("n")
+                // randomSyllableArray.push("n")
+            }
+            // else if(syllableForm[i] === "l"){
+            //     randomIPA.push(randomIPA[1])
+            //     randomLatin.push(randomLatin[1])
+            //     // randomSyllableArray.push(randomSyllableArray[1])
+            // }
+            else{
+                const randomPhoneme = phonemes[Math.floor(Math.random()*phonemes.length)];
+                randomIPA.push(randomPhoneme.symbol)
+                randomLatin.push(randomPhoneme.latin)
+                // randomSyllableArray.push(phonemes[Math.floor(Math.random()*phonemes.length)].symbol)
             }
         }
-            const joinedRandomSyllable = randomSyllableArray.join("")
-            syllableBank.push(joinedRandomSyllable)
+            const joinedRandomIPA = randomIPA.join("")
+            const joinedRandomLatin = randomLatin.join("")
+            const syllable = {IPA: joinedRandomIPA, latin: joinedRandomLatin}
+            syllableBank.push(syllable)
     }
 </script>
 
