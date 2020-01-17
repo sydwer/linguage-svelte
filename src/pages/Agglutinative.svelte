@@ -40,11 +40,11 @@ export let john;
         const randomSyllablesIPA = []
         const randomSyllablesLatin = []
         let syllableAmount = undefined;
-        const randomNumber = Math.floor(Math.random() * 3)
-        if (randomNumber < 2){
+        const randomNumber = Math.floor(Math.random() * 10)
+        if (randomNumber < 7){
             syllableAmount = 2;
         }else{
-            syllableAmount = randomNumber
+            syllableAmount = 3
         }
         // console.log(syllableAmount)
         var i;
