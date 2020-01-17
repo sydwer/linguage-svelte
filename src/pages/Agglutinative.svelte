@@ -6,17 +6,17 @@ export let mary;
 export let john;
 
 
-    const genericDictionary = [{original: "cat", new: undefined}, {original: "hello", new: undefined},{original: "book", new:undefined},{original: "tree", new: undefined},
-        {original: "dinner", new: undefined}, {original: "apple", new: undefined}, {original: "fish", new: undefined},{ original: "house", new: undefined},
-        {original: "river", new: undefined}, {original: "bear", new: undefined}, {original: "hunger", new: undefined}, {original: "say", new: undefined},
-        {original: "give", new: undefined}, {original: "copula", new: undefined}, {original: "die", new: undefined}, {original: "eat", new: undefined},
-        {original: "have", new: undefined}, {original: "want", new: undefined}, {original: "big", new: undefined}, {original: "hungry", new: undefined},
-        {original: "cute", new: undefined}, {original: "fast", new: undefined}, {original: "ten", new: undefined},];
+    const genericDictionary = [{original: "Cat", new: undefined}, {original: "Hello", new: undefined},{original: "Book", new:undefined},{original: "Tree", new: undefined},
+        {original: "Dinner", new: undefined}, {original: "Apple", new: undefined}, {original: "Fish", new: undefined},{ original: "House", new: undefined},
+        {original: "River", new: undefined}, {original: "Bear", new: undefined}, {original: "Hunger", new: undefined}, {original: "Say", new: undefined},
+        {original: "Give", new: undefined}, {original: "Copula", new: undefined}, {original: "Die", new: undefined}, {original: "Eat", new: undefined},
+        {original: "Have", new: undefined}, {original: "Want", new: undefined}, {original: "Big", new: undefined}, {original: "Hungry", new: undefined},
+        {original: "Cute", new: undefined}, {original: "Fast", new: undefined}, {original: "Ten", new: undefined},];
 
-    const pronounDictionary = [{original: "I", new: undefined},{original:"you", new: undefined},{original:"he", new: undefined},{original:"she", new: undefined},
-    {original:"it", new: undefined},{original:"we", new: undefined},{original:"you all", new: undefined},{original:"they", new: undefined},]
+    const pronounDictionary = [{original: "I", new: undefined},{original:"You", new: undefined},{original:"He", new: undefined},{original:"She", new: undefined},
+    {original:"It", new: undefined},{original:"We", new: undefined},{original:"You (Plural)", new: undefined},{original:"They", new: undefined},]
 
-
+    // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(genericDictionary);
         makeDictionary(pronounDictionary)
@@ -29,8 +29,14 @@ export let john;
 
     function makeFreeMorpheme(syllables){
         //want 2-4 syllables so 1-3, and then add one?
-        const syllableAmount = (Math.floor(Math.random() * 2) + 1)
         const randomWordSyllables =[]
+        let syllableAmount = undefined;
+        const randomNumber = Math.floor(Math.random() * 3)
+        if (randomNumber < 2){
+            syllableAmount = 2;
+        }else{
+            syllableAmount = randomNumber
+        }
         // console.log(syllableAmount)
         var i;
         for(i = 0; i < syllableAmount; i ++){
