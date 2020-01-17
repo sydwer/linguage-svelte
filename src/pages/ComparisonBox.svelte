@@ -1,7 +1,10 @@
 <script>
     import { onMount } from 'svelte';
-    import ComparisonRow from './ComparisonRow.svelte'
+    import ComparisonRow from './ComparisonRow.svelte';
     export let comparison;
+
+    // export let native_language;
+    // export let target_language;
     let languages = undefined;
     let native_language = undefined;
     let target_language = undefined;
@@ -73,5 +76,4 @@ h1{
     <ComparisonRow rowName="Writing System:" nativeLanguageInfo={native_language.orthography.name}
         targetLanguageInfo={target_language.orthography.name}/>
 </div>
-<!-- TRANSFER THESE ROWS INTO A COMPONENT WHEN YOU HAVE TIME -->
 {/if}

@@ -1,21 +1,31 @@
 <script>
     import { onMount } from 'svelte';
-    import ComparisonBox from './ComparisonBox.svelte'
-    import Loading from '../layout/Loading.svelte'
+    import ComparisonBox from './ComparisonBox.svelte';
+    import Loading from '../layout/Loading.svelte';
 
     let comparisons = undefined;
+    let languages = undefined;
     let activeComparison = undefined;
+    // let native_language = undefined;
+    // let target_language = undefined;
 
     onMount(async function() {
         const response = await fetch("http://127.0.0.1:3000/comparisons");
         const json = await response.json();
         comparisons = json;
+        // const response2 = await fetch("http://127.0.0.1:3000/languages");
+        // const json2 = await response2.json();
+        // languages = json2;
+        // native_language = languages.find(obj=>obj.name===comparison.native_language.name)
+        // target_language = languages.find(obj=>obj.name===comparison.target_language.name)
     });
 
 
-    function sayHi(comparison){
+    function pickComparison(comparison){
         // console.log(comparison.native_language.hello)
         activeComparison = comparison
+        // native_language = languages.find(obj=>obj.name===comparison.native_language.name)
+        // target_language = languages.find(obj=>obj.name===comparison.target_language.name)
         // console.log(activeComparison.target_language)
     }
     function resetPage(){
@@ -140,6 +150,7 @@
 
 {#if activeComparison}
 <button on:click={()=>{ resetPage()}}>⬅ Return to Comparisons</button>
+<ComparisonBox comparison={activeComparison}/>
 {/if}
 
 {#if comparisons && !activeComparison}
@@ -152,13 +163,14 @@
 
 {#if comparisons && !activeComparison}
 <div id = "main">
+{#if comparisons}
     <div id = "comparison-selection">
     <h5> Starting Language --> New Language </h5>
         <div id="comparison-box">
         <img id="gradient" src="./media/gradient.png" alt="gradient">
         <div id="comparison-list">
             {#each comparisons as comparison}
-            <div id="one-comparison" on:click={()=>{sayHi(comparison)}}>
+            <div id="one-comparison" on:click={()=>{pickComparison(comparison)}}>
             <h3> {comparison.native_language.name} </h3><h3>-></h3><h3>{comparison.target_language.name}</h3>
             </div>
             {/each}
@@ -188,8 +200,6 @@
            </p>
         </div>
     <!-- {/if} -->
-{#if activeComparison}
-<ComparisonBox comparison={activeComparison}/>
 {/if}
 </div>
 {/if}
