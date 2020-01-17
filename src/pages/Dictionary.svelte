@@ -4,6 +4,6 @@
 
 
 {#each dictionary as word}
-<h2>{word.original} : {word.new}</h2>
+<h2>{word.original} : {word.latin} IPA: {word.IPA} </h2>
 {/each}
 
