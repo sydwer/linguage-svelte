@@ -41,8 +41,10 @@ export let john;
         const randomSyllablesLatin = []
         let syllableAmount = undefined;
         const randomNumber = Math.floor(Math.random() * 10)
-        if (randomNumber < 7){
-            syllableAmount = 2;
+        if (randomNumber < 2){
+            syllableAmount = 1;
+        }else if(randomNumber < 9){
+            syllableAmount = 2
         }else{
             syllableAmount = 3
         }
