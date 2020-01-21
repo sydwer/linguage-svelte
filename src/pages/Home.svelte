@@ -7,7 +7,7 @@
 
     let greeting = 'Hello,'
     // var greetings = ['Willkommen zu', 'Bienvenido a', 'karibu', 'へようこそ','欢迎来到','어서 오십시오',];
-    const greetings = [',اهلا','Hola,','Hallo,','Aloha,','こんにちは,','안녕하세요,','你好,',"Yá'át'ééh,",'Hamjambo,','Hello,']
+    const greetings = [',اهلا','Hola,','こんにちは,','Hallo,','Aloha,','안녕하세요,','你好,',"Yá'át'ééh,",'Hamjambo,','Hello,']
 
     textSequence(0);
     function textSequence(i) {
@@ -16,8 +16,8 @@
                 greeting = greetings[i];
                 // greeting = greetings[Math.floor(Math.random()*greetings.length)]
                 textSequence(++i);
-                }, 2250); 
-            } else if (example.length == i) { 
+                }, 4500); 
+            } else if (greetings.length == i) { 
                 textSequence(0);
             }
         }
@@ -81,13 +81,17 @@
        font-weight: bolder;
        text-decoration: underline;
    }
-  #greeting{
+  h1{
       height: 2rem;
       width: 100%;
       margin: 0;
       display: flex;
       justify-content: flex-start;
   }
+  #greeting{
+      color:#598502 
+  }
+  
 </style>
 
 
@@ -112,6 +116,7 @@
 </div> 
 <div class = "info">
 <h1 id="greeting">{greeting}</h1>
+<br/>
 <h1> Welcome to Lin-guage</h1>
 <p>Lin-guage is a language exploration website. It's main function is to allow you, the user, 
 to learn about and play with languages in a number of ways.
