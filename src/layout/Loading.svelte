@@ -22,7 +22,10 @@
       opacity: .2;
     }
 }
-
+h1{
+  display: flex;
+  flex-direction: row;
+}
 .loading span {
     animation-name: blink;
     animation-duration: 1.4s;

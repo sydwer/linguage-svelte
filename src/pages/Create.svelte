@@ -3,7 +3,7 @@
     import Select from 'svelte-select';
     import Loading from '../layout/Loading.svelte'
     import PhonemeBox from './PhonemeBox.svelte';
-    import Agglutinative from './Agglutinative.svelte';
+    import Grammar from './Grammar.svelte';
    
 
 	const items = [
@@ -94,7 +94,6 @@
     function pullLanguageTraits(){
          phonologyOrigin = languages.find(obj=>obj.name===selectedPhonology.value);
          grammarOrigin = languages.find(obj=>obj.name===selectedGrammar.value);
-         console.log(grammarOrigin.morphology.name)
          phonemes = phonologyOrigin.phonemes;
          syllableStructure = phonologyOrigin.syllable_structure.split("");
          selectedLanguages = true;
@@ -153,6 +152,16 @@
          return object
     };
 
+    function filterPlosives(plosives){
+        const noAlveolars = plosives.filter(function(plosive) {
+               return plosive.place !== "alveolar";
+            })
+        const noGlottalorAlveolars = noAlveolars.filter(function(plosive) {
+               return plosive.place !== "glottal";
+            })
+        return noGlottalorAlveolars
+        
+    }
     function makeSonorantList(){
         const w = phonemes.find(obj => obj.symbol === 'w');
         const nasals = filterPhonemes("nasal", "manner");
@@ -174,7 +183,8 @@
     function makeConsonantCluster(sonorants,numberOfSyllables){
         const consonantClusterSyllables = [];
         const startingSounds = filterPhonemes("s", "latin").concat(filterPhonemes("sh", "latin"));
-        const plosives = filterPhonemes("plosive", "manner");
+        const allPlosives = filterPhonemes("plosive", "manner");
+        const plosives = filterPlosives(allPlosives);
         const laterals = filterPhonemes("lateral approximant", "manner");
         var i;
         for(i = 0; i < numberOfSyllables; i ++){
@@ -320,9 +330,11 @@
         margin-right: 1rem;
     }
     #custom-language-box{
+        widows: 100%;
         display: flex;
         flex-direction: row;
         margin-top: 2rem;
+        justify-content: space-around;
     }
     #correct-message{
         font-size: 1.25rem;
@@ -344,6 +356,13 @@
     }
     #sounds-box{
         width: 30%;
+        display: flex;
+        flex-direction: column;
+
+    }
+    #grammar-box{
+        display: flex;
+        justify-content: center;
     }
 </style>
 {#if !selectedLanguages}
@@ -353,6 +372,7 @@
 <button id="reset-button" on:click={()=>{resetAllVariables()}}>⬅ Make A New Language</button>
 {/if}
 <div id = "main">
+{#if !selectedLanguages}
     <div id = "form-box">
     {#if !selectedGrammar}
         <h2>Select Your Language's Traits:</h2>
@@ -396,16 +416,20 @@
             </div>
         </div>
         {/if}
+            
 
 
     </div>
+    {/if}
     <div id = "custom-language-box">
         {#if !phonemes}
-            <Loading message = "Waiting for User Input"/>
+            <Loading message = "Awaiting User Input"/>
         {/if}
         <div id="grammar-box">
             {#if grammarOrigin}
-                <Agglutinative syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
+            <div>
+                <Grammar syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
+            </div>
             {/if}
         </div>
 
