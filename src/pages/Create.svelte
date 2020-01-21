@@ -112,14 +112,23 @@
     }
 
     function makeSyllableBank(){
+        const sonorants = makeSonorantList();
         if(phonologyOrigin.syllable_structure_2){
-                 var i;
-            for (i = 0; i < 45; i++) {
-                generateRandomSyllable(phonologyOrigin.syllable_structure_2)
-            }
-                 var j;
-            for (j = 0; j < 55; j++) {
-                generateRandomSyllable(syllableStructure)
+            if (phonologyOrigin.syllable_structure_2 === "ccv"){
+                makeConsonantCluster(sonorants,20);
+                var j;
+                for (j = 0; j < 60; j++) {
+                    generateRandomSyllable(syllableStructure)
+                }
+            }else{
+                var i;
+                for (i = 0; i < 40; i++) {
+                    generateRandomSyllable(phonologyOrigin.syllable_structure_2)
+                }
+                var j;
+                for (j = 0; j < 60; j++) {
+                    generateRandomSyllable(syllableStructure)
+                }
             }
         }else{
             var i;
@@ -162,17 +171,24 @@
         return object
     }
 
-    function makeConsonantCluster(sonorants){
-        const consonantClusterSyllable = [];
-        const startingSounds = filterPhonemes("s", "latin");
-        // const consonantClusterArray = [startingSounds[Math.floor(Math.random()*startingSounds.length)],sonorants[Math.floor(Math.random()*sonorants.length)]];
-        const consonantClusterArray = [getRandomItem(startingSounds), getRandomItem(sonorants), getRandomItem(vowels)];
-        console.log(consonantClusterArray)
+    function makeConsonantCluster(sonorants,numberOfSyllables){
+        const consonantClusterSyllables = [];
+        const startingSounds = filterPhonemes("s", "latin").concat(filterPhonemes("sh", "latin"));
+        const plosives = filterPhonemes("plosive", "manner");
+        const laterals = filterPhonemes("lateral approximant", "manner");
+        var i;
+        for(i = 0; i < numberOfSyllables; i ++){
+            const consonantCluster1IPA = [getRandomItem(startingSounds).symbol, getRandomItem(sonorants).symbol, getRandomItem(vowels).symbol].join("");
+            const consonantCluster1Latin = [getRandomItem(startingSounds).latin, getRandomItem(sonorants).latin, getRandomItem(vowels).latin].join("");
+            const consonantCluster2IPA = [getRandomItem(plosives).symbol,getRandomItem(laterals).symbol, getRandomItem(vowels).symbol].join("");
+            const consonantCluster2Latin = [getRandomItem(plosives).latin,getRandomItem(laterals).latin, getRandomItem(vowels).latin].join("");
+            const consonantCluster1 = {IPA: consonantCluster1IPA, latin: consonantCluster1Latin};
+            const consonantCluster2 = {IPA: consonantCluster2IPA, latin: consonantCluster2Latin};
+            syllableBank.push(consonantCluster1, consonantCluster2)
+        }
     }
 
     function generateRandomSyllable(syllableForm){
-        const sonorants = makeSonorantList();
-        makeConsonantCluster(sonorants);
         var i;
         const randomIPA = []
         const randomLatin = []
