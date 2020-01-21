@@ -5,6 +5,7 @@ export let syllableBank;
 export let mary;
 export let john;
 
+    const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}];
 
     const nounDictionary = [{original: "Apple", IPA: undefined, latin: undefined},{original: "Bear", IPA: undefined, latin: undefined},
         {original: "Book", IPA: undefined, latin: undefined}, {original: "Cat", IPA: undefined, latin: undefined}, 
@@ -92,7 +93,7 @@ export let john;
 </script>
 
 <style>
-    h2{
+    h1{
         font-weight: bolder;
     }
 </style>

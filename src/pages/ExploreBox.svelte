@@ -70,6 +70,10 @@
     </div>
     <div id="sounds-box">
         <PhonemeBox phonemes={selectedLanguage.phonemes}/>
-        <a href="https://www.duolingo.com/course/{selectedLanguage.duolingo}/en/"><img src="./media/duo_gif.gif" alt="duo owl"> Start learning {selectedLanguage.name} on Duolingo!</a>
+        {#if selectedLanguage.name === "English"}
+            <a href="https://www.duolingo.com/"><img src="./media/duo_gif.gif" alt="duo owl"> Practice {selectedLanguage.name} on Duolingo!</a>
+        {:else}
+            <a href="https://www.duolingo.com/course/{selectedLanguage.duolingo}/en/"><img src="./media/duo_gif.gif" alt="duo owl"> Start learning {selectedLanguage.name} on Duolingo!</a>
+        {/if}
     </div>
 </div>
