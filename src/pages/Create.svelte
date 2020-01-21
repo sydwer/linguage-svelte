@@ -127,48 +127,84 @@
                 generateRandomSyllable(syllableStructure)
             }
         }
-        console.log(syllableBank)
+        // console.log(syllableBank)
+    }
+
+    function filterPhonemes(filterValue,filterKey){
+        let object = undefined
+        if(filterKey === "latin"){
+            object = phonemes.filter(function(phoneme) {
+            return phoneme.latin === filterValue;
+         })
+        }else{ 
+            object = phonemes.filter(function(phoneme) {
+               return phoneme.manner === filterValue;
+            })
+        }
+         return object
+    };
+
+    function makeSonorantList(){
+        const w = phonemes.find(obj => obj.symbol === 'w');
+        const nasals = filterPhonemes("nasal", "manner");
+        const laterals = filterPhonemes("lateral approximant", "manner");
+        if(w){
+            laterals.push(w)
+            // ensuring that if w isn't in sound inventory, im not pushing an undefined item into soundBank
+        }
+        const rhotics = filterPhonemes("r", "latin");
+        const sonorants = nasals.concat(laterals, rhotics)
+        return sonorants
+    };
+
+    function getRandomItem(array){
+        const object = array[Math.floor(Math.random()*array.length)];
+        return object
+    }
+
+    function makeConsonantCluster(sonorants){
+        const consonantClusterSyllable = [];
+        const startingSounds = filterPhonemes("s", "latin");
+        // const consonantClusterArray = [startingSounds[Math.floor(Math.random()*startingSounds.length)],sonorants[Math.floor(Math.random()*sonorants.length)]];
+        const consonantClusterArray = [getRandomItem(startingSounds), getRandomItem(sonorants), getRandomItem(vowels)];
+        console.log(consonantClusterArray)
     }
 
     function generateRandomSyllable(syllableForm){
+        const sonorants = makeSonorantList();
+        makeConsonantCluster(sonorants);
         var i;
-        // let randomSyllable = {IPA: undefined, latin: undefined}
         const randomIPA = []
         const randomLatin = []
         const randomSyllableArray = []
         for (i = 0; i < syllableForm.length; i++){
             if (syllableForm[i] === "c"){
-                const randomConsonant = consonants[Math.floor(Math.random()*consonants.length)];
+                const randomConsonant = getRandomItem(consonants);
                 randomIPA.push(randomConsonant.symbol);
                 randomLatin.push(randomConsonant.latin)
-                // randomSyllableArray.push(consonants[Math.floor(Math.random()*consonants.length)].symbol)
             }else if(syllableForm[i] === "v"){
-                const randomVowel = vowels[Math.floor(Math.random()*vowels.length)];
+                const randomVowel = getRandomItem(vowels);
                 randomIPA.push(randomVowel.symbol);
                 randomLatin.push(randomVowel.latin);
-                // randomSyllableArray.push(vowels[Math.floor(Math.random()*vowels.length)].symbol)
             }else if(syllableForm[i] === "n"){
                 randomIPA.push("n")
                 randomLatin.push("n")
-                // randomSyllableArray.push("n")
             }
-            // else if(syllableForm[i] === "l"){
-            //     randomIPA.push(randomIPA[1])
-            //     randomLatin.push(randomLatin[1])
-            //     // randomSyllableArray.push(randomSyllableArray[1])
-            // }
+            else if(syllableForm[i] === "l"){
+                randomIPA.push(randomIPA[1])
+                randomLatin.push(randomLatin[1])
+            }
             else{
-                const randomPhoneme = phonemes[Math.floor(Math.random()*phonemes.length)];
+                const randomPhoneme = getRandomItem(phonemes);
                 randomIPA.push(randomPhoneme.symbol)
                 randomLatin.push(randomPhoneme.latin)
-                // randomSyllableArray.push(phonemes[Math.floor(Math.random()*phonemes.length)].symbol)
             }
         }
             const joinedRandomIPA = randomIPA.join("")
             const joinedRandomLatin = randomLatin.join("")
             const syllable = {IPA: joinedRandomIPA, latin: joinedRandomLatin}
             syllableBank.push(syllable)
-    }
+    };
 </script>
 
 
