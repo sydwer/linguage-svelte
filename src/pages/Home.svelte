@@ -1,9 +1,27 @@
 <script>
     import { Link } from 'svelte-routing';
-    let explore = "./media/explore_button.png"
-    let create = "./media/create_button.png"
-    let compare = "./media/compare_button.png"
+    let explore = './media/explore_button.png'
+    let create = './media/create_button.png'
+    let compare = './media/compare_button.png'
     let bgImage = './media/enso2.png'
+
+    let greeting = 'Hello,'
+    // var greetings = ['Willkommen zu', 'Bienvenido a', 'karibu', 'へようこそ','欢迎来到','어서 오십시오',];
+    const greetings = [',اهلا','Hola,','Hallo,','Aloha,','こんにちは,','안녕하세요,','你好,',"Yá'át'ééh,",'Hamjambo,','Hello,']
+
+    textSequence(0);
+    function textSequence(i) {
+        if (greetings.length > i) {
+            setTimeout(function() {
+                greeting = greetings[i];
+                // greeting = greetings[Math.floor(Math.random()*greetings.length)]
+                textSequence(++i);
+                }, 2250); 
+            } else if (example.length == i) { 
+                textSequence(0);
+            }
+        }
+
 </script>
 
 <style>
@@ -63,7 +81,16 @@
        font-weight: bolder;
        text-decoration: underline;
    }
+  #greeting{
+      height: 2rem;
+      width: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
+  }
 </style>
+
+
 <div class = "main">
 <div class="circle" style="background-image: url('{bgImage}')">
     <div id = "explore-link" class="circle-link">
@@ -84,7 +111,8 @@
     </div> 
 </div> 
 <div class = "info">
-<h1> What is Lin-guage?</h1>
+<h1 id="greeting">{greeting}</h1>
+<h1> Welcome to Lin-guage</h1>
 <p>Lin-guage is a language exploration website. It's main function is to allow you, the user, 
 to learn about and play with languages in a number of ways.
 <br> 
