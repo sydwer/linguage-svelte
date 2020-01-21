@@ -3,7 +3,7 @@
     import Select from 'svelte-select';
     import Loading from '../layout/Loading.svelte'
     import PhonemeBox from './PhonemeBox.svelte';
-    import Agglutinative from './Agglutinative.svelte';
+    import Grammar from './Grammar.svelte';
    
 
 	const items = [
@@ -320,9 +320,11 @@
         margin-right: 1rem;
     }
     #custom-language-box{
+        widows: 100%;
         display: flex;
         flex-direction: row;
         margin-top: 2rem;
+        /* justify-content: space-between; */
     }
     #correct-message{
         font-size: 1.25rem;
@@ -344,6 +346,12 @@
     }
     #sounds-box{
         width: 30%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    #grammar-box{
+        width: 70%;
     }
 </style>
 {#if !selectedLanguages}
@@ -405,7 +413,7 @@
         {/if}
         <div id="grammar-box">
             {#if grammarOrigin}
-                <Agglutinative syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
+                <Grammar syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
             {/if}
         </div>
 
