@@ -35,16 +35,19 @@ export let grammarOrigin;
         {original:"It", IPA: undefined, latin: undefined},{original:"They", IPA: undefined, latin: undefined},
         ];
 
-    const tenses =[{original: "Present", IPA: undefined, latin: undefined},{original: "Past", IPA: undefined, latin: undefined},
+    const tenses =[{original: "Past", IPA: undefined, latin: undefined},{original: "Present", IPA: undefined, latin: undefined},
         {original: "Future", IPA: undefined, latin: undefined}, {original: "Imperfect", IPA: undefined, latin: undefined},
         {original: "Conditional", IPA: undefined, latin: undefined},
         ];
     
-    const affixes =[{original: "Topic", IPA: undefined, latin: undefined},{original:"Subject", IPA: undefined, latin: undefined},
+    const particles =[{original: "Topic", IPA: undefined, latin: undefined},{original:"Subject", IPA: undefined, latin: undefined},
         {original: "Object", IPA: undefined, latin: undefined},{original: "Also/Too", IPA: undefined, latin: undefined},
         {original: "To/From/By", IPA: undefined, latin: undefined}, {original: "Location/At", IPA: undefined, latin: undefined},
         {original: "And", IPA: undefined, latin: undefined},{original: "Possesive", IPA: undefined, latin: undefined},
         {original: "Question Marker", IPA: undefined, latin: undefined},]
+    
+    const classes = [{original: "Nominative", IPA: undefined, latin: undefined},{original: "Accusative", IPA: undefined, latin: undefined},
+        {original: "Dative", IPA: undefined, latin: undefined},{original: "Genative", IPA: undefined, latin: undefined},]
 
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
@@ -53,7 +56,8 @@ export let grammarOrigin;
         makeDictionary(adjectives);
         makeDictionary(pronouns);
         makeDictionary(tenses);
-        makeDictionary(affixes);
+        makeDictionary(particles);
+        makeDictionary(classes);
     }
 
     function makeBoundMorpheme(syllables){
@@ -92,7 +96,7 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            if (dictionary === tenses){
+            if (dictionary === tenses || pronouns || particles || classes){
                 newWord = makeBoundMorpheme(syllableBank)
             }else{
                 newWord = makeFreeMorpheme(syllableBank)
@@ -107,10 +111,18 @@ export let grammarOrigin;
 
 <style>
     #main{
-    padding: 1rem;
-      display: flex;
-      flex-direction: row; 
-      justify-content: space-between; 
+        width: 100%;
+        padding: 1rem;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: 1fr 2fr; 
+    }
+    #grammar{
+        padding-right: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: space-between; */
     }
     h1{
         font-weight: bolder;
@@ -118,6 +130,7 @@ export let grammarOrigin;
         text-decoration-color: #598502; 
         margin: 0;
     }
+   
 
 </style>
 
@@ -133,11 +146,21 @@ export let grammarOrigin;
         <Dictionary category="Adjectives" dictionary={adjectives}/>
         <Dictionary category="Verbs" dictionary={verbs}/>
     </div>
-    <div id="conjugations">
+    <div id="grammar">
+    <h1>Basic Grammar:</h1>
+    <div id="grammar-details"></div>
         {#if grammarOrigin.name === "Japanese"}
-            <Dictionary category="Particles" dictionary={affixes}/>
+            <Dictionary category="Particles" dictionary={particles}/>
         {/if}
-        <ConjugationTable pronouns={pronouns}/>
+        <h2>Pronouns:</h2>
+        <ConjugationTable allInfo={pronouns} columns="2"/>
+        <br/>
+        <h2>Conjugation Table:</h2>
+        {#if grammarOrigin.name === "Japanese"}
+            <ConjugationTable allInfo={tenses} columns="-1"/>
+        {:else}
+            <ConjugationTable allInfo={tenses} columns="1"/>
+        {/if}
     </div>
 </div>
 

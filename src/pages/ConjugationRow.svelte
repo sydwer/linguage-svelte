@@ -1,17 +1,24 @@
 <script>
-    export let pronoun;
-    export let generatedPronoun;
+    export let info;
+    export let generatedInfo;
 </script>
 
 <style>
    h3{
-       border: 2px solid black;
+       border-bottom: 1px double black;
        margin: 0;
+       display: grid;
+       grid-template-columns: 1fr 1fr;
    }
-   #pronoun{
-       border-right: 1px solid grey;
+   span{
+       display: flex;
+       justify-content: center;
+   }
+   #info{
+       color: grey;
+       border-right: 1px dotted black;
    }
 </style>
 
 
-<h3><span id="pronoun">{pronoun}</span>  <span>{generatedPronoun}</span></h3>
+<h3><span id="info">{info}</span>  <span>{generatedInfo}</span></h3>
