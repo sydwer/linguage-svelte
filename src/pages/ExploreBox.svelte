@@ -44,6 +44,12 @@
         color: black !important;
         text-decoration: underline;
     }
+    #sound-header{
+        display: flex;
+        justify-content: center;
+        border: none;
+        text-decoration: underline;
+    }
 </style>
 
 
@@ -69,6 +75,7 @@
         </div>
     </div>
     <div id="sounds-box">
+    <h2 id="sound-header">Sound Inventory:</h2>
         <PhonemeBox phonemes={selectedLanguage.phonemes}/>
         {#if selectedLanguage.name === "English"}
             <a href="https://www.duolingo.com/"><img src="./media/duo_gif.gif" alt="duo owl"> Practice {selectedLanguage.name} on Duolingo!</a>

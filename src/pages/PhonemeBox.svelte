@@ -14,9 +14,11 @@ function playAudio(url) {
     flex-direction: column;
     align-items: center;
 }
-#sound-box>h2{
+/* #sound-box>h1{
+    font-weight: bolder;
     text-decoration: underline;
-}
+    text-decoration-color: #598502;
+} */
 
 h4{
     margin-top: 0;
@@ -41,7 +43,7 @@ h4{
 
 <div id="sound-box">
     {#if phonemes}
-    <h2>Sound Inventory:</h2>
+    <!-- <h1>Sound Inventory:</h1> -->
     <h4>(Click on a symbol to hear what it sounds like)</h4>
     <div id="phoneme-box">
         {#each phonemes as sound}
