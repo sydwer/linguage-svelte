@@ -16,7 +16,7 @@
                 greeting = greetings[i];
                 // greeting = greetings[Math.floor(Math.random()*greetings.length)]
                 textSequence(++i);
-                }, 4500); 
+                }, 3000); 
             } else if (greetings.length == i) { 
                 textSequence(0);
             }
