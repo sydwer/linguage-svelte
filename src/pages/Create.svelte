@@ -188,10 +188,17 @@
         const laterals = filterPhonemes("lateral approximant", "manner");
         var i;
         for(i = 0; i < numberOfSyllables; i ++){
-            const consonantCluster1IPA = [getRandomItem(startingSounds).symbol, getRandomItem(sonorants).symbol, getRandomItem(vowels).symbol].join("");
-            const consonantCluster1Latin = [getRandomItem(startingSounds).latin, getRandomItem(sonorants).latin, getRandomItem(vowels).latin].join("");
-            const consonantCluster2IPA = [getRandomItem(plosives).symbol,getRandomItem(laterals).symbol, getRandomItem(vowels).symbol].join("");
-            const consonantCluster2Latin = [getRandomItem(plosives).latin,getRandomItem(laterals).latin, getRandomItem(vowels).latin].join("");
+            const startingSound = getRandomItem(startingSounds);
+            const sonorant = getRandomItem(sonorants);
+            const vowel1 = getRandomItem(vowels);
+            const plosive = getRandomItem(plosives);
+            const lateral = getRandomItem(laterals);
+            const vowel2 = getRandomItem(vowels);
+            //Without these constants, the IPA doesn't match the latin, since it just re-assigns the phoneme
+            const consonantCluster1IPA = [startingSound.symbol, sonorant.symbol, vowel1.symbol].join("");
+            const consonantCluster1Latin = [startingSound.latin, sonorant.latin, vowel1.latin].join("");
+            const consonantCluster2IPA = [plosive.symbol,lateral.symbol, vowel2.symbol].join("");
+            const consonantCluster2Latin = [plosive.latin,lateral.latin, vowel2.latin].join("");
             const consonantCluster1 = {IPA: consonantCluster1IPA, latin: consonantCluster1Latin};
             const consonantCluster2 = {IPA: consonantCluster2IPA, latin: consonantCluster2Latin};
             syllableBank.push(consonantCluster1, consonantCluster2)
