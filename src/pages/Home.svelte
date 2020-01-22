@@ -89,7 +89,7 @@
       justify-content: flex-start;
   }
   #greeting{
-      color:#598502 
+      color:#598502; 
   }
   
 </style>

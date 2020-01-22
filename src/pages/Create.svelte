@@ -337,11 +337,11 @@
         margin-right: 1rem;
     }
     #custom-language-box{
-        widows: 100%;
+        padding: 2rem;
         display: flex;
         flex-direction: row;
-        margin-top: 2rem;
-        justify-content: space-around;
+        /* margin-top: 2rem; */
+        justify-content: space-between;
     }
     #correct-message{
         font-size: 1.25rem;
@@ -365,13 +365,27 @@
         width: 30%;
         display: flex;
         flex-direction: column;
-
+    }
+    #sounds-box > h1{
+        font-weight: bolder;
+        text-decoration: underline;
+        text-decoration-color: #598502;
+        display: flex;
+        justify-content:center;
     }
     #grammar-box{
+        /* width:70%; */
         display: flex;
         justify-content: center;
     }
+    #loading-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
+
+
 {#if !selectedLanguages}
 <h1>Create:</h1>
 {/if}
@@ -423,25 +437,29 @@
             </div>
         </div>
         {/if}
-            
-
-
     </div>
-    {/if}
-    <div id = "custom-language-box">
-        {#if !phonemes}
+         {#if !phonemes}
+         <div id="loading-container">
             <Loading message = "Awaiting User Input"/>
+         </div>
         {/if}
+    {/if}
+        <!-- {#if !phonemes}
+            <Loading message = "Awaiting User Input"/>
+        {/if} -->
+        {#if selectedLanguages}
+    <div id = "custom-language-box">
         <div id="grammar-box">
             {#if grammarOrigin}
             <div>
-                <Grammar syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
+                <Grammar grammarOrigin={grammarOrigin} syllableBank={syllableBank} mary={phonologyOrigin.mary} john={phonologyOrigin.john}/>
             </div>
             {/if}
         </div>
 
         {#if phonemes}
             <div id= "sounds-box">
+            <h1>Sound Inventory:</h1>
                 <PhonemeBox phonemes={phonemes} />
                 {#if syllableStructure}
                     <h3>Syllable Structure: "{syllableStructure.join("")}"</h3>
@@ -449,5 +467,6 @@
             </div>
         {/if}
     </div>
+{/if}
 
 </div>

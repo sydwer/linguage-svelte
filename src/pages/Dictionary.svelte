@@ -4,17 +4,23 @@
 </script>
 
 <style>
+
     span{
         text-decoration: underline;
         font-weight: bold;
     }
-    p{
+    h2{
         padding-left: 1rem;
+    }
+    p{
+        padding-left: 2rem;
     }
 </style>
 
 <h2>{category}:</h2>
 {#each dictionary as word}
+<!-- <p>{word.original}:</p>
+<p>{word.latin}   (/{word.IPA}/) </p> -->
 <p><span>{word.original}</span>: {word.latin}   (/{word.IPA}/) </p>
 {/each}
 
