@@ -374,9 +374,9 @@
         justify-content:center;
     }
     #grammar-box{
-        /* width:70%; */
-        display: flex;
-        justify-content: center;
+        width:70%;
+        /* display: flex; */
+        /* justify-content: space-around; */
     }
     #loading-container{
         display: flex;
