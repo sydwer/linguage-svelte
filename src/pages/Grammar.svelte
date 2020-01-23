@@ -46,9 +46,21 @@ export let grammarOrigin;
         {original: "And", IPA: undefined, latin: undefined},{original: "Possesive", IPA: undefined, latin: undefined},
         {original: "Question Marker", IPA: undefined, latin: undefined},]
     
-    const classes = [{original: "Nominative", IPA: undefined, latin: undefined},{original: "Accusative", IPA: undefined, latin: undefined},
-        {original: "Dative", IPA: undefined, latin: undefined},{original: "Genative", IPA: undefined, latin: undefined},]
+    const cases = [{original: "Nominative", IPA: undefined, latin: undefined},{original: "Accusative", IPA: undefined, latin: undefined},
+        {original: "Dative", IPA: undefined, latin: undefined},{original: "Genative", IPA: undefined, latin: undefined},
+        ];
 
+    const genders = [{original: "Masculine", IPA: undefined, latin: undefined},{original: "Feminine", IPA: undefined, latin: undefined},
+        {original: "Neutral", IPA: undefined, latin: undefined},
+        ];
+
+    const classes = [{original: "People", IPA: undefined, latin: undefined}, {original: "Inanimate Objects", IPA: undefined, latin: undefined},
+        {original: "Names and Kinship Terms", IPA: undefined, latin: undefined},{original: "Round Objects", IPA: undefined, latin: undefined},
+        {original: "Food", IPA: undefined, latin: undefined}, {original: "Tools", IPA: undefined, latin: undefined},
+        {original: "Countable Items", IPA: undefined, latin: undefined}, {original: "Infinitive Verbs", IPA: undefined, latin: undefined},
+        {original: "Known Location", IPA: undefined, latin: undefined}, {original: "Ambiguous Location", IPA: undefined, latin: undefined},
+        {original: "Location in Relation to Another Object", IPA: undefined, latin: undefined},
+        ];
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(nouns);
@@ -56,9 +68,18 @@ export let grammarOrigin;
         makeDictionary(adjectives);
         makeDictionary(pronouns);
         makeDictionary(tenses);
-        makeDictionary(particles);
-        makeDictionary(classes);
+        makeDictionary(cases);
+        if(grammarOrigin.name === "Japanese"){
+            makeDictionary(particles);
+        }
+        if(grammarOrigin.name === "Swahili"){
+            makeDictionary(classes)
+        }
+        if(grammarOrigin.noun_classes > 0 && grammarOrigin.name !== "Swahili"){
+            makeDictionary(genders)
+        }
     }
+       
 
     function makeBoundMorpheme(syllables){
         const morpheme = syllables[Math.floor(Math.random() * syllables.length)]
@@ -96,7 +117,7 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            if (dictionary === tenses || dictionary=== pronouns || dictionary === particles || dictionary === classes){
+            if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders){
                 newWord = makeBoundMorpheme(syllableBank)
             }else{
                 newWord = makeFreeMorpheme(syllableBank)
@@ -104,7 +125,7 @@ export let grammarOrigin;
             dictionary[i].IPA = newWord.IPA
             dictionary[i].latin = newWord.latin
         }
-        console.log(tenses)
+        // console.log(tenses)
     }
 
 </script>
@@ -126,8 +147,10 @@ export let grammarOrigin;
     }
     h1{
         font-weight: bolder;
+        /* text-decoration: underline;
+        text-decoration-color: #598502;  */
+        color: #598502;
         text-decoration: underline;
-        text-decoration-color: #598502; 
         margin: 0;
     }
    
@@ -150,13 +173,27 @@ export let grammarOrigin;
     <h1>Basic Grammar:</h1>
     <div id="grammar-details"></div>
         {#if grammarOrigin.name === "Japanese"}
-            <Dictionary category="Particles" dictionary={particles}/>
-            <p>*Add these onto the end of a word to mark
-                <br>its role in the sentance
+            <!-- <Dictionary category="Particles" dictionary={particles}/> -->
+            <h2>Particles:</h2>
+            <ConjugationTable allInfo={particles} columns= "1"/>
+            <p>*Add these onto the end of a word to mark its role in the sentance
             </p>
         {/if}
         <h2>Pronouns:</h2>
         <ConjugationTable allInfo={pronouns} columns="2"/>
+        <br/>
+          {#if grammarOrigin.noun_classes > 0}
+        <h2>Noun Classes/Genders:</h2>
+        {#if grammarOrigin.noun_classes === 2}
+            <ConjugationTable allInfo={genders} columns="-2"/>
+        {:else if grammarOrigin.name === "German"}
+            <ConjugationTable allInfo={genders} columns="1"/>
+        {:else if grammarOrigin.name === "Swahili"}
+            <ConjugationTable allInfo={classes} columns="1"/>
+        {:else}
+            <ConjugationTable allInfo={genders} columns="1"/>
+        {/if}
+        {/if}
         <br/>
         <h2>Conjugation Table:</h2>
         {#if grammarOrigin.name === "Japanese"}
@@ -164,6 +201,23 @@ export let grammarOrigin;
         {:else}
             <ConjugationTable allInfo={tenses} columns="1"/>
         {/if}
+        <!-- {#if grammarOrigin.noun_classes > 0}
+        <h2>Noun Classes/Genders:</h2>
+        {#if grammarOrigin.noun_classes === 2}
+            <ConjugationTable allInfo={genders} columns="-2"/>
+        {:else if grammarOrigin.name === "German"}
+            <ConjugationTable allInfo={genders} columns="1"/>
+        {:else if grammarOrigin.name === "Swahili"}
+            <ConjugationTable allInfo={classes} columns="1"/>
+        {:else}
+            <ConjugationTable allInfo={genders} columns="1"/>
+        {/if}
+        {/if} -->
+        {#if grammarOrigin.name === "German" || grammarOrigin.name === "Korean"}
+        <h2>Grammatical Cases:</h2>
+            <ConjugationTable allInfo={cases} columns="1"/>
+        {/if}
+
     </div>
 </div>
 <div id="sentances">

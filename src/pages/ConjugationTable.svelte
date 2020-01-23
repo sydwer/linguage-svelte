@@ -12,6 +12,12 @@
         const nonPast = filteredInfo.find(obj => obj.original === 'Present')
         nonPast.original = "Non-Past"
     }
+    if(columns === "-2"){
+        const noNueter = allInfo.filter(function(info) {
+               return info.original !== "Neutral";
+            })
+            filteredInfo = noNueter
+    }
 </script>
 
 <style>
