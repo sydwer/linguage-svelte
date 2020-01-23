@@ -69,13 +69,17 @@
 <style>
 
 h4{
-    margin-bottom: 0;
+    margin: 10px;
 }
 div{
     display: flex;
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid grey;
+    padding-bottom: 15px;
+}
+#bear-sentence{
+    font-size: smaller;
 }
 
 </style>
@@ -116,11 +120,11 @@ div{
 
 <div>
 {#if !present}
-    <h4>{we.latin} {have.latin}{nonPast.latin} {hunger}</h4>
-    <h4>{we.IPA} {have.IPA}{nonPast.IPA} {hunger}</h4>
+    <h4>{we.latin} {have.latin}{nonPast.latin} {hunger.latin}</h4>
+    <h4>{we.IPA} {have.IPA}{nonPast.IPA} {hunger.IPA}</h4>
     {:else}
-    <h4>{we.latin} {have.latin}{present.latin} {hunger}</h4>
-    <h4>{we.IPA} {have.IPA}{present.IPA} {hunger}</h4>
+    <h4>{we.latin} {have.latin}{present.latin} {hunger.latin}</h4>
+    <h4>{we.IPA} {have.IPA}{present.IPA} {hunger.IPA}</h4>
     {/if}
     <h4>1PL have.PRES hunger</h4>
     <h4> 'We're hungry.'</h4>
@@ -141,7 +145,7 @@ div{
     <h4>'I wanted a rock from the river.'</h4>
 </div>
 
-<div>
+<div id="bear-sentence">
 {#if !present}
     <h4>{a.latin}{nom.latin} {bear.latin}{nom.latin} {big.latin}{nom.latin} {able.latin}{cond.latin}
         {ten.latin} {fish.latin}{acc.latin}{pl.latin} {fast.latin}{adv.latin} {eat.latin}{nonPast.latin}</h4>

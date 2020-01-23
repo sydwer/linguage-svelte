@@ -223,7 +223,7 @@ export let grammarOrigin;
         <br/>
         <br/>
     <div id="sentances">
-        <h2>Sample Sentances:</h2>
+        <h2>Sample Sentences:</h2>
         <!-- <Sentances grammarOrigin ="analytic"names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases="none"/>
         {:else if grammarOrigin.noun_classes === 2 || grammarOrigin.name === "German"}
         <Sentances grammarOrigin ="fusional" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers={genders} cases={cases}/>
