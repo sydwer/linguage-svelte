@@ -117,7 +117,7 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            if (dictionary=== pronouns || dictionary === particles || dictionary === cases){
+            if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders){
                 newWord = makeBoundMorpheme(syllableBank)
             }else{
                 newWord = makeFreeMorpheme(syllableBank)
@@ -147,8 +147,10 @@ export let grammarOrigin;
     }
     h1{
         font-weight: bolder;
+        /* text-decoration: underline;
+        text-decoration-color: #598502;  */
+        color: #598502;
         text-decoration: underline;
-        text-decoration-color: #598502; 
         margin: 0;
     }
    
@@ -171,9 +173,10 @@ export let grammarOrigin;
     <h1>Basic Grammar:</h1>
     <div id="grammar-details"></div>
         {#if grammarOrigin.name === "Japanese"}
-            <Dictionary category="Particles" dictionary={particles}/>
-            <p>*Add these onto the end of a word to mark
-                <br>its role in the sentance
+            <!-- <Dictionary category="Particles" dictionary={particles}/> -->
+            <h2>Particles:</h2>
+            <ConjugationTable allInfo={particles} columns= "1"/>
+            <p>*Add these onto the end of a word to mark its role in the sentance
             </p>
         {/if}
         <h2>Pronouns:</h2>
@@ -210,7 +213,7 @@ export let grammarOrigin;
             <ConjugationTable allInfo={genders} columns="1"/>
         {/if}
         {/if} -->
-        {#if grammarOrigin.name === "German"}
+        {#if grammarOrigin.name === "German" || grammarOrigin.name === "Korean"}
         <h2>Grammatical Cases:</h2>
             <ConjugationTable allInfo={cases} columns="1"/>
         {/if}

@@ -370,8 +370,10 @@
     #sounds-box > h1{
         margin-top:0;
         font-weight: bolder;
+        /* text-decoration: underline;
+        text-decoration-color: #598502;  */
+        color: #598502;
         text-decoration: underline;
-        text-decoration-color: #598502;
         display: flex;
         justify-content:center;
     }
@@ -384,6 +386,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    p>span{
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    ul>li>span{
+        color:#598502;
+    }
+    #how-to-header{
+        color:#598502;
+        text-decoration: underline;
+        margin: 0;
+    }
+    #how-to-box{
+        padding: 10px;
+        border: 2px double grey;
+        border-radius: 7px;
     }
 </style>
 
@@ -466,6 +485,55 @@
                 {#if syllableStructure}
                     <h3>Syllable Structure: "{syllableStructure.join("")}"</h3>
                 {/if}
+                <div id="how-to-box">
+                <h2 id="how-to-header">How to Use Your Generated Grammar:</h2>
+                <br/>
+                <p>The <span>DICTIONARY</span> on the left of the screen holds the words used in your
+                sample sentances.<br/>
+                The left-most word is the English definition, followed by the translation into your language.<br/>
+                The parenthesis hold your word written in the International Phonetic Alphabet.
+                <br/>
+                <br/>
+                If you want to create your own words, use the <span>SOUND INVENTORY</span> above as a guide for what
+                sounds to use.
+                <br/>
+                <br/>
+                The <span>SYLLABLE STRUCTURE</span> listed under the box is a guide for making syllables.
+                Use the structure as a template, subbing in random consonants and vowels where appropriate.<br/> 
+                The "c" represents a consonant, "v" is a vowel, and "?" means either is acceptable. 
+                <br/>
+                <br/>
+                <span>PARTICLES and CASES</span> indicate a noun's role in a sentance. These are
+                used as suffixes - so you just stick them onto the end of the noun. 
+                <br/>
+                <br/>
+                <span>GENDERS and CLASSES</span> are also used as suffixes on nouns. But they can be applied to 
+                adjectives and determiners ("The", "a", "an", etc.) as well. 
+                <br/>These indicate the gender of
+                the word(masculine, feminine, etc), or what it is (a human, a tool, a place, etc.).<br/>
+                These should be combined with <span>CASES</span>, if you have them, to more clearly
+                indicate what a noun is "doing" in the context of the sentance.
+                </p>
+                <ul>
+                    <li>Nominative: The subject/one "doing" the verb of the sentance</li>
+                    <li>Accusative: The object/one being DIRECTLY affected by the verb</li>
+                    <li>Dative: The indirect object/one recieving the effect of the action</li>
+                    <li>Genative: Shows possession</li>
+                    <li>Example: Mary's<span>[Genative]</span> sister<span>[Nominative]</span> gave 
+                    a<span>[Accusative]</span> fish<span>[Accusative]</span> to the<span>[Dative]</span> 
+                    cat<span>[Dative].</span></li>
+                </ul>
+                <p>
+                    <span>TENSES</span> are placed onto the end of a verb. These mark "when" or how an action was done.<br/>
+                </p>
+                <ul>
+                    <li>Past: The action has already happened</li>
+                    <li>Present/Infinitive: The action is currently happening, or happens "in general"(e.g She runs)</li>
+                    <li>Future: The action has not yet happened</li>
+                    <li>Imperfect: A continuous or habitual action, most often in the past(e.g She used to run)</li>
+                    <li>Conditional: An action with the potential to occur(e.g She would be tired )</li>
+                </ul>
+                </div>
             </div>
         {/if}
     </div>
