@@ -15,14 +15,15 @@ export let grammarOrigin;
         {original: "Dinner", IPA: undefined, latin: undefined}, {original: "Fish", IPA: undefined, latin: undefined},
         {original: "Hello", IPA: undefined, latin: undefined}, {original: "House", IPA: undefined, latin: undefined},
         {original: "Hunger", IPA: undefined, latin: undefined}, {original: "River", IPA: undefined, latin: undefined},
-        {original: "Ten", IPA: undefined, latin: undefined}, {original: "Time", IPA: undefined, latin: undefined},
+        {original: "Rock", IPA: undefined, latin: undefined}, {original: "Ten", IPA: undefined, latin: undefined},
         {original: "Tree", IPA: undefined, latin: undefined},
         ];
 
-    const verbs = [{original: "Eat", IPA: undefined, latin: undefined}, {original: "Enjoy", IPA: undefined, latin: undefined},
-        {original: "Die", IPA: undefined, latin: undefined}, {original: "Give", IPA: undefined, latin: undefined}, 
-        {original: "Have", IPA: undefined, latin: undefined}, {original: "Say", IPA: undefined, latin: undefined}, 
-        {original: "To Be", IPA: undefined, latin: undefined}, {original: "Want", IPA: undefined, latin: undefined},
+    const verbs = [{original: "Able To", IPA: undefined, latin: undefined},{original: "Eat", IPA: undefined, latin: undefined}, 
+        {original: "Enjoy", IPA: undefined, latin: undefined}, {original: "Die", IPA: undefined, latin: undefined}, 
+        {original: "Give", IPA: undefined, latin: undefined}, {original: "Have", IPA: undefined, latin: undefined}, 
+        {original: "Say", IPA: undefined, latin: undefined}, {original: "To Be", IPA: undefined, latin: undefined}, 
+        {original: "Want", IPA: undefined, latin: undefined},
         ];
 
     const adjectives = [{original: "Big", IPA: undefined, latin: undefined}, 
@@ -63,7 +64,8 @@ export let grammarOrigin;
         {original: "Location in Relation to Another Object", IPA: undefined, latin: undefined},
         ];
 
-    const determiners = [{original: "The", IPA: undefined, latin: undefined},{original: "A", IPA: undefined, latin: undefined},]
+    const determiners = [{original: "The", IPA: undefined, latin: undefined},{original: "A", IPA: undefined, latin: undefined},
+    {original: "Adverb Marker", IPA: undefined, latin: undefined},]
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(nouns);
@@ -162,6 +164,10 @@ export let grammarOrigin;
         text-decoration: underline;
         margin: 0;
     }
+    #sentances>h2{
+        display: flex;
+        justify-content: center;
+    }
    
 
 </style>
@@ -177,6 +183,7 @@ export let grammarOrigin;
         <Dictionary category="Pronouns" dictionary={pronouns}/>
         <Dictionary category="Adjectives" dictionary={adjectives}/>
         <Dictionary category="Verbs" dictionary={verbs}/>
+        <Dictionary category="Other" dictionary={determiners}/>
     </div>
     <div id="grammar">
     <h1>Basic Grammar:</h1>
@@ -227,7 +234,7 @@ export let grammarOrigin;
         <!-- {:else} -->
         <!-- {#if !affixes} -->
         <Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} 
-        cases={cases} determiners={determiners}/>
+        cases={cases} determiners={determiners} pronouns={pronouns}/>
         <!-- {:else}
         <Sentances grammarOrigin ="Default" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} cases={cases}/> -->
        
