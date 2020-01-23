@@ -179,13 +179,7 @@ export let grammarOrigin;
         <h2>Pronouns:</h2>
         <ConjugationTable allInfo={pronouns} columns="2"/>
         <br/>
-        <h2>Conjugation Table:</h2>
-        {#if grammarOrigin.name === "Japanese"}
-            <ConjugationTable allInfo={tenses} columns="-1"/>
-        {:else}
-            <ConjugationTable allInfo={tenses} columns="1"/>
-        {/if}
-        {#if grammarOrigin.noun_classes > 0}
+          {#if grammarOrigin.noun_classes > 0}
         <h2>Noun Classes/Genders:</h2>
         {#if grammarOrigin.noun_classes === 2}
             <ConjugationTable allInfo={genders} columns="-2"/>
@@ -196,6 +190,29 @@ export let grammarOrigin;
         {:else}
             <ConjugationTable allInfo={genders} columns="1"/>
         {/if}
+        {/if}
+        <br/>
+        <h2>Conjugation Table:</h2>
+        {#if grammarOrigin.name === "Japanese"}
+            <ConjugationTable allInfo={tenses} columns="-1"/>
+        {:else}
+            <ConjugationTable allInfo={tenses} columns="1"/>
+        {/if}
+        <!-- {#if grammarOrigin.noun_classes > 0}
+        <h2>Noun Classes/Genders:</h2>
+        {#if grammarOrigin.noun_classes === 2}
+            <ConjugationTable allInfo={genders} columns="-2"/>
+        {:else if grammarOrigin.name === "German"}
+            <ConjugationTable allInfo={genders} columns="1"/>
+        {:else if grammarOrigin.name === "Swahili"}
+            <ConjugationTable allInfo={classes} columns="1"/>
+        {:else}
+            <ConjugationTable allInfo={genders} columns="1"/>
+        {/if}
+        {/if} -->
+        {#if grammarOrigin.name === "German"}
+        <h2>Grammatical Cases:</h2>
+            <ConjugationTable allInfo={cases} columns="1"/>
         {/if}
 
     </div>
