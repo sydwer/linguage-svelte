@@ -96,7 +96,7 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            if (dictionary === tenses || pronouns || particles || classes){
+            if (dictionary === tenses || dictionary=== pronouns || dictionary === particles || dictionary === classes){
                 newWord = makeBoundMorpheme(syllableBank)
             }else{
                 newWord = makeFreeMorpheme(syllableBank)
@@ -151,6 +151,9 @@ export let grammarOrigin;
     <div id="grammar-details"></div>
         {#if grammarOrigin.name === "Japanese"}
             <Dictionary category="Particles" dictionary={particles}/>
+            <p>*Add these onto the end of a word to mark
+                <br>its role in the sentance
+            </p>
         {/if}
         <h2>Pronouns:</h2>
         <ConjugationTable allInfo={pronouns} columns="2"/>
@@ -162,6 +165,8 @@ export let grammarOrigin;
             <ConjugationTable allInfo={tenses} columns="1"/>
         {/if}
     </div>
+</div>
+<div id="sentances">
 </div>
 
 

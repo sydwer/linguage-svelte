@@ -114,9 +114,9 @@
         const sonorants = makeSonorantList();
         if(phonologyOrigin.syllable_structure_2){
             if (phonologyOrigin.syllable_structure_2 === "ccv"){
-                makeConsonantCluster(sonorants,20);
+                makeConsonantCluster(sonorants,25);
                 var j;
-                for (j = 0; j < 60; j++) {
+                for (j = 0; j < 80; j++) {
                     generateRandomSyllable(syllableStructure)
                 }
             }else{
@@ -125,13 +125,13 @@
                     generateRandomSyllable(phonologyOrigin.syllable_structure_2)
                 }
                 var j;
-                for (j = 0; j < 60; j++) {
+                for (j = 0; j < 80; j++) {
                     generateRandomSyllable(syllableStructure)
                 }
             }
         }else{
             var i;
-            for (i = 0; i < 99; i++){
+            for (i = 0; i < 120; i++){
                 generateRandomSyllable(syllableStructure)
             }
         }
@@ -362,11 +362,13 @@
         color: white;
     }
     #sounds-box{
+        padding:1rem;
         width: 30%;
         display: flex;
         flex-direction: column;
     }
     #sounds-box > h1{
+        margin-top:0;
         font-weight: bolder;
         text-decoration: underline;
         text-decoration-color: #598502;
