@@ -2,6 +2,7 @@
 // import {onMount } from 'svelte'
 import Dictionary from './Dictionary.svelte'
 import ConjugationTable from './ConjugationTable.svelte'
+import Sentances from './Sentances.svelte'
 export let syllableBank;
 export let mary;
 export let john;
@@ -14,14 +15,15 @@ export let grammarOrigin;
         {original: "Dinner", IPA: undefined, latin: undefined}, {original: "Fish", IPA: undefined, latin: undefined},
         {original: "Hello", IPA: undefined, latin: undefined}, {original: "House", IPA: undefined, latin: undefined},
         {original: "Hunger", IPA: undefined, latin: undefined}, {original: "River", IPA: undefined, latin: undefined},
-        {original: "Ten", IPA: undefined, latin: undefined}, {original: "Time", IPA: undefined, latin: undefined},
+        {original: "Rock", IPA: undefined, latin: undefined}, {original: "Ten", IPA: undefined, latin: undefined},
         {original: "Tree", IPA: undefined, latin: undefined},
         ];
 
-    const verbs = [{original: "Eat", IPA: undefined, latin: undefined}, {original: "Enjoy", IPA: undefined, latin: undefined},
-        {original: "Die", IPA: undefined, latin: undefined}, {original: "Give", IPA: undefined, latin: undefined}, 
-        {original: "Have", IPA: undefined, latin: undefined}, {original: "Say", IPA: undefined, latin: undefined}, 
-        {original: "To Be", IPA: undefined, latin: undefined}, {original: "Want", IPA: undefined, latin: undefined},
+    const verbs = [{original: "Able To", IPA: undefined, latin: undefined},{original: "Eat", IPA: undefined, latin: undefined}, 
+        {original: "Enjoy", IPA: undefined, latin: undefined}, {original: "Die", IPA: undefined, latin: undefined}, 
+        {original: "Give", IPA: undefined, latin: undefined}, {original: "Have", IPA: undefined, latin: undefined}, 
+        {original: "Say", IPA: undefined, latin: undefined}, {original: "To Be", IPA: undefined, latin: undefined}, 
+        {original: "Want", IPA: undefined, latin: undefined},
         ];
 
     const adjectives = [{original: "Big", IPA: undefined, latin: undefined}, 
@@ -51,7 +53,7 @@ export let grammarOrigin;
         ];
 
     const genders = [{original: "Masculine", IPA: undefined, latin: undefined},{original: "Feminine", IPA: undefined, latin: undefined},
-        {original: "Neutral", IPA: undefined, latin: undefined},
+        {original: "Neutral", IPA: undefined, latin: undefined},{original: "Plural", IPA: undefined, latin: undefined},
         ];
 
     const classes = [{original: "People", IPA: undefined, latin: undefined}, {original: "Inanimate Objects", IPA: undefined, latin: undefined},
@@ -61,6 +63,9 @@ export let grammarOrigin;
         {original: "Known Location", IPA: undefined, latin: undefined}, {original: "Ambiguous Location", IPA: undefined, latin: undefined},
         {original: "Location in Relation to Another Object", IPA: undefined, latin: undefined},
         ];
+
+    const determiners = [{original: "The", IPA: undefined, latin: undefined},{original: "A", IPA: undefined, latin: undefined},
+    {original: "Adverb Marker", IPA: undefined, latin: undefined},]
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(nouns);
@@ -69,15 +74,18 @@ export let grammarOrigin;
         makeDictionary(pronouns);
         makeDictionary(tenses);
         makeDictionary(cases);
+        makeDictionary(genders);
+        makeDictionary(determiners);
+        // makeDictionary(classes);
         if(grammarOrigin.name === "Japanese"){
             makeDictionary(particles);
         }
         if(grammarOrigin.name === "Swahili"){
             makeDictionary(classes)
         }
-        if(grammarOrigin.noun_classes > 0 && grammarOrigin.name !== "Swahili"){
-            makeDictionary(genders)
-        }
+        // if(grammarOrigin.noun_classes > 0 && grammarOrigin.name !== "Swahili"){
+        //     makeDictionary(genders)
+        // }
     }
        
 
@@ -117,7 +125,7 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders){
+            if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders || dictionary === determiners){
                 newWord = makeBoundMorpheme(syllableBank)
             }else{
                 newWord = makeFreeMorpheme(syllableBank)
@@ -139,11 +147,14 @@ export let grammarOrigin;
         grid-template-columns: 1fr 2fr; 
     }
     #grammar{
-        padding-right: 1rem;
+        padding-right: 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         /* justify-content: space-between; */
+    }
+    #dictionary{
+        padding-left: 1rem;
     }
     h1{
         font-weight: bolder;
@@ -152,6 +163,10 @@ export let grammarOrigin;
         color: #598502;
         text-decoration: underline;
         margin: 0;
+    }
+    #sentances>h2{
+        display: flex;
+        justify-content: center;
     }
    
 
@@ -168,6 +183,7 @@ export let grammarOrigin;
         <Dictionary category="Pronouns" dictionary={pronouns}/>
         <Dictionary category="Adjectives" dictionary={adjectives}/>
         <Dictionary category="Verbs" dictionary={verbs}/>
+        <Dictionary category="Other" dictionary={determiners}/>
     </div>
     <div id="grammar">
     <h1>Basic Grammar:</h1>
@@ -176,8 +192,7 @@ export let grammarOrigin;
             <!-- <Dictionary category="Particles" dictionary={particles}/> -->
             <h2>Particles:</h2>
             <ConjugationTable allInfo={particles} columns= "1"/>
-            <p>*Add these onto the end of a word to mark its role in the sentance
-            </p>
+            
         {/if}
         <h2>Pronouns:</h2>
         <ConjugationTable allInfo={pronouns} columns="2"/>
@@ -201,26 +216,32 @@ export let grammarOrigin;
         {:else}
             <ConjugationTable allInfo={tenses} columns="1"/>
         {/if}
-        <!-- {#if grammarOrigin.noun_classes > 0}
-        <h2>Noun Classes/Genders:</h2>
-        {#if grammarOrigin.noun_classes === 2}
-            <ConjugationTable allInfo={genders} columns="-2"/>
-        {:else if grammarOrigin.name === "German"}
-            <ConjugationTable allInfo={genders} columns="1"/>
-        {:else if grammarOrigin.name === "Swahili"}
-            <ConjugationTable allInfo={classes} columns="1"/>
-        {:else}
-            <ConjugationTable allInfo={genders} columns="1"/>
-        {/if}
-        {/if} -->
         {#if grammarOrigin.name === "German" || grammarOrigin.name === "Korean"}
         <h2>Grammatical Cases:</h2>
             <ConjugationTable allInfo={cases} columns="1"/>
         {/if}
+        <br/>
+        <br/>
+    <div id="sentances">
+        <h2>Sample Sentences:</h2>
+        <!-- <Sentances grammarOrigin ="analytic"names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases="none"/>
+        {:else if grammarOrigin.noun_classes === 2 || grammarOrigin.name === "German"}
+        <Sentances grammarOrigin ="fusional" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers={genders} cases={cases}/>
+        {:else if grammarOrigin.name === "Swahili"}
+        <Sentances grammarOrigin = "Swahili" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers={classes} cases="none"/>
+        {:else if grammarOrigin.name === "Japanese"}
+        <Sentances grammarOrigin ="Japanese" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases={particles}/> -->
+        <!-- {:else} -->
+        <!-- {#if !affixes} -->
+        <Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} 
+        cases={cases} determiners={determiners} pronouns={pronouns}/>
+        <!-- {:else}
+        <Sentances grammarOrigin ="Default" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} cases={cases}/> -->
+       
 
     </div>
-</div>
-<div id="sentances">
+
+    </div>
 </div>
 
 

@@ -489,7 +489,7 @@
                 <h2 id="how-to-header">How to Use Your Generated Grammar:</h2>
                 <br/>
                 <p>The <span>DICTIONARY</span> on the left of the screen holds the words used in your
-                sample sentances.<br/>
+                sample sentences.<br/>
                 The left-most word is the English definition, followed by the translation into your language.<br/>
                 The parenthesis hold your word written in the International Phonetic Alphabet.
                 <br/>
@@ -503,7 +503,7 @@
                 The "c" represents a consonant, "v" is a vowel, and "?" means either is acceptable. 
                 <br/>
                 <br/>
-                <span>PARTICLES and CASES</span> indicate a noun's role in a sentance. These are
+                <span>PARTICLES and CASES</span> indicate a noun's role in a sentence. These are
                 used as suffixes - so you just stick them onto the end of the noun. 
                 <br/>
                 <br/>
@@ -512,10 +512,10 @@
                 <br/>These indicate the gender of
                 the word(masculine, feminine, etc), or what it is (a human, a tool, a place, etc.).<br/>
                 These should be combined with <span>CASES</span>, if you have them, to more clearly
-                indicate what a noun is "doing" in the context of the sentance.
+                indicate what a noun is "doing" in the context of the sentence.
                 </p>
                 <ul>
-                    <li>Nominative: The subject/one "doing" the verb of the sentance</li>
+                    <li>Nominative: The subject/one "doing" the verb of the sentence</li>
                     <li>Accusative: The object/one being DIRECTLY affected by the verb</li>
                     <li>Dative: The indirect object/one recieving the effect of the action</li>
                     <li>Genative: Shows possession</li>
@@ -533,6 +533,18 @@
                     <li>Imperfect: A continuous or habitual action, most often in the past(e.g She used to run)</li>
                     <li>Conditional: An action with the potential to occur(e.g She would be tired )</li>
                 </ul>
+                <p><span>SAMPLE SENTENCES</span> are generated examples of how to use your grammar. They were 
+                chosen to show as many verb tenses and sentence constructions as possible.
+                <br/>
+                The first line is your generated language.
+                <br/>
+                The second line is the IPA transcription of your language's sentence.
+                <br/>
+                The third line is the linguistic gloss of your sentence. This shows a a basic translation of words,
+                with the words' genders, classes, tenses, or cases marked afterward(these are the abbreviations in all caps).
+                <br/>
+                The last line is the basic English translation of the sentence.
+                </p>
                 </div>
             </div>
         {/if}
