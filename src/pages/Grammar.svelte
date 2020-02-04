@@ -10,6 +10,9 @@ export let grammarOrigin;
 
     const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}];
 
+    // Create a db for these, get this chunk off code off the front-end, 
+    // may need reworking though once persisting a user's language becomes a feature
+
     const nouns = [{original: "Apple", IPA: undefined, latin: undefined},{original: "Bear", IPA: undefined, latin: undefined},
         {original: "Book", IPA: undefined, latin: undefined}, {original: "Cat", IPA: undefined, latin: undefined}, 
         {original: "Dinner", IPA: undefined, latin: undefined}, {original: "Fish", IPA: undefined, latin: undefined},
@@ -238,6 +241,7 @@ export let grammarOrigin;
         <!-- {:else}
         <Sentances grammarOrigin ="Default" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} cases={cases}/> -->
        
+       <!-- Re-work this so that each language has its own component -->
 
     </div>
 
