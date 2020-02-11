@@ -3,6 +3,8 @@
 import Dictionary from './Dictionary.svelte'
 import ConjugationTable from './ConjugationTable.svelte'
 import Sentances from './Sentances.svelte'
+import German from './grammars/German.svelte'
+
 export let syllableBank;
 export let mary;
 export let john;
@@ -29,16 +31,14 @@ export let grammarOrigin;
         {original: "Say", IPA: undefined, latin: undefined}, {original: "To Be", IPA: undefined, latin: undefined}, 
         {original: "Want", IPA: undefined, latin: undefined},
         ];
-
-    const adjectives = [{original: "Big", IPA: undefined, latin: undefined}, 
-        {original: "Cute", IPA: undefined, latin: undefined}, {original: "Fast", IPA: undefined, latin: undefined}, 
-        {original: "Hungry", IPA: undefined, latin: undefined},
+    const adjectives = [{original: "Big", IPA: undefined, latin: undefined}, {original: "Cute", IPA: undefined, latin: undefined}, 
+        {original: "Fast", IPA: undefined, latin: undefined}, {original: "Hungry", IPA: undefined, latin: undefined},
         ];
 
     const pronouns = [{original: "I", IPA: undefined, latin: undefined},{original:"We", IPA: undefined, latin: undefined},
-        {original:"You", IPA: undefined, latin: undefined},{original:"You all", IPA: undefined, latin: undefined},
-        {original:"He", IPA: undefined, latin: undefined},{original:"She", IPA: undefined, latin: undefined},
-        {original:"It", IPA: undefined, latin: undefined},{original:"They", IPA: undefined, latin: undefined},
+        {original:"You", IPA: undefined, latin: undefined}, {original:"You all", IPA: undefined, latin: undefined},
+        {original:"He", IPA: undefined, latin: undefined}, {original:"She", IPA: undefined, latin: undefined},
+        {original:"It", IPA: undefined, latin: undefined}, {original:"They", IPA: undefined, latin: undefined},
         ];
 
     const tenses =[{original: "Past", IPA: undefined, latin: undefined},{original: "Present", IPA: undefined, latin: undefined},
@@ -129,7 +129,8 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders || dictionary === determiners){
+            // if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders || dictionary === determiners){
+            if(dictionary !== nouns || dictionary !== verbs || dictionary !== adjectives){
                 newWord = makeBoundMorpheme(syllableBank)
             }else{
                 newWord = makeFreeMorpheme(syllableBank)
@@ -228,6 +229,7 @@ export let grammarOrigin;
         <br/>
     <div id="sentances">
         <h2>Sample Sentences:</h2>
+        <German nouns={nouns} verbs={verbs} adj={adjectives}/>
         <!-- <Sentances grammarOrigin ="analytic"names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases="none"/>
         {:else if grammarOrigin.noun_classes === 2 || grammarOrigin.name === "German"}
         <Sentances grammarOrigin ="fusional" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers={genders} cases={cases}/>
@@ -237,8 +239,11 @@ export let grammarOrigin;
         <Sentances grammarOrigin ="Japanese" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases={particles}/> -->
         <!-- {:else} -->
         <!-- {#if !affixes} -->
-        <Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} 
-        cases={cases} determiners={determiners} pronouns={pronouns}/>
+
+        <!-- ***<Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders}  -->
+        <!-- cases={cases} determiners={determiners} pronouns={pronouns}/> -->
+
+
         <!-- {:else}
         <Sentances grammarOrigin ="Default" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} cases={cases}/> -->
        

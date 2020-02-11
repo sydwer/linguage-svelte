@@ -404,6 +404,9 @@
         border: 2px double grey;
         border-radius: 7px;
     }
+    .selected-language-name{
+        color:#598502;
+    }
 </style>
 
 
@@ -425,11 +428,13 @@
         <Select {items} {groupBy} bind:selectedValue></Select>
         <br>
         <button class="submit-button" on:click={() =>{
-                    selectedPhonology = selectedValue
+                    selectedPhonology = selectedValue;
+                    selectedValue = undefined;
                     }}
                 >Pick Sounds</button>
             {/if}
             {#if selectedPhonology && !selectedGrammar}
+                <h3>It Will Sound Like <span class ="selected-language-name">{selectedPhonology.value}</span>,</h3>
                 <h3>With the Grammar of:</h3>
                 <Select {items} {groupBy} bind:selectedValue></Select>
                 <br>
@@ -440,7 +445,8 @@
             {/if}
         {#if selectedGrammar && !selectedLanguages}
         <div>
-        <h2> Your language will sound like {selectedPhonology.value} with {selectedGrammar.value} grammar.</h2>
+        <h2> Your language will sound like <span class = "selected-language-name">{selectedPhonology.value}</span> with 
+            <span class ="selected-language-name">{selectedGrammar.value}</span> grammar.</h2>
         <h4 id ="correct-message">Is This Correct?</h4>
             <div id= "yes-box">
                 <img id= "yes-arrow" src="./media/check-mark.png" alt = "arrow">
