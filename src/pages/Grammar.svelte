@@ -46,11 +46,11 @@ export let grammarOrigin;
         {original: "Conditional", IPA: undefined, latin: undefined},
         ];
     
-    const particles =[{original: "Topic", IPA: undefined, latin: undefined},{original:"Subject", IPA: undefined, latin: undefined},
-        {original: "Object", IPA: undefined, latin: undefined},{original: "Also/Too", IPA: undefined, latin: undefined},
-        {original: "To/From/By", IPA: undefined, latin: undefined}, {original: "Location/At", IPA: undefined, latin: undefined},
-        {original: "And", IPA: undefined, latin: undefined},{original: "Possesive", IPA: undefined, latin: undefined},
-        {original: "Question Marker", IPA: undefined, latin: undefined},]
+    // const particles =[{original: "Topic", IPA: undefined, latin: undefined},{original:"Subject", IPA: undefined, latin: undefined},
+    //     {original: "Object", IPA: undefined, latin: undefined},{original: "Also/Too", IPA: undefined, latin: undefined},
+    //     {original: "To/From/By", IPA: undefined, latin: undefined}, {original: "Location/At", IPA: undefined, latin: undefined},
+    //     {original: "And", IPA: undefined, latin: undefined},{original: "Possesive", IPA: undefined, latin: undefined},
+    //     {original: "Question Marker", IPA: undefined, latin: undefined},]
     
     const cases = [{original: "Nominative", IPA: undefined, latin: undefined},{original: "Accusative", IPA: undefined, latin: undefined},
         {original: "Dative", IPA: undefined, latin: undefined},{original: "Genative", IPA: undefined, latin: undefined},
