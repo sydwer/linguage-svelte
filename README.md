@@ -33,8 +33,9 @@ Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
   
   The language generated also has a mini-grammar, wherein  a list of necessary (and also novelly generated) grammar markers
   and verb tenses are listed. 
-  12 sample sentances that show a range of verb tenses and grammatical relations are also given
-  with linguistic glosses (This shows the generated sentance in IPA, with grammar markers identified clearly, as well as 
+  
+  12 sample sentences that show a range of verb tenses and grammatical relations are also given
+  with linguistic glosses (this is the generated sentence in IPA, with grammar markers identified clearly, as well as 
   an English translation underneath).
   
 ## Technologies:
