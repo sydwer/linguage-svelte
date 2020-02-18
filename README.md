@@ -46,13 +46,13 @@ Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 - Ruby on Rails
 
 ## To-Do List
-- Finish specialized grammars fro remaining languages
+- Finish specialized grammars for remaining languages
 - Add in a save feature, so that generated languages are not lost upon exiting the page
 - Refactor code to avoid redundant use of variables
 
 ## Status
 
-The project in progress as the *Create* function is undergoing some major changes, and will not be deployed until the specialized grammars have been completed.
+The project is still in progress, as the *Create* function is undergoing some major changes, and will not be deployed until the specialized grammars have been completed.
   
 
 
