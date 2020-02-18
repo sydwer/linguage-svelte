@@ -5,14 +5,14 @@
 Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 
 ### Explore:
-  Users can click on a "card" for one of the languages in lin-guage's database. This displays a page with information about     the selected language.  
+  Users can click on a "card" for one of the languages in Lin-guage's database. This displays a page with information about     the selected language.  
 
   Information includes: an inventory of every IPA (International Phonetic Alphabet) symbol/ sound used in that language, basic   facts including number of speakers or how to say hello, and grammar deatails like what writing system it uses.
 
   *Every page also includes a link to that language's program on Duolingo's website*
   
 ### Compare:
-  The Compare page utilize an algorithum that sorts "language transtions" (learning a second language with attention given to   the first/ "native language") in order of easiest transtion to make, to hardest. 
+  The Compare page utilizes an algorithum that sorts "language transtions" (learning a second language with attention given to   the first/ "native language") ordered easiest transtion to make, to hardest. 
   
   *Ex. "English -> Spanish" is a language transition where English is the native language, and Spanish is the second/ foreign   language to be learned.*
   
