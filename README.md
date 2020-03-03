@@ -12,6 +12,10 @@ Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 
 [Create Page](https://drive.google.com/open?id=1-AE2pRxjTDyH-1gYUzI6-BMQ017FzBk_)
 
+#### Video Demo Link
+
+[Youtube](https://youtu.be/pdzAmopLI8s)
+
 ### Explore:
   Users can click on a "card" for one of the languages in Lin-guage's database. This displays a page with information about     the selected language.  
 
