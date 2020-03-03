@@ -4,6 +4,14 @@
 ## General Info
 Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 
+#### Screencapture Links
+
+[Explore Page](https://drive.google.com/open?id=1UUtZdxB4z3mBVbZK3sNCTdT8WSEF2eKQ)
+
+[Comparison List](https://drive.google.com/open?id=1ik98Vsg0wsdQ_87M_vg-HhaYR1vEGH_4)
+
+[Create Page](https://drive.google.com/open?id=1-AE2pRxjTDyH-1gYUzI6-BMQ017FzBk_)
+
 ### Explore:
   Users can click on a "card" for one of the languages in Lin-guage's database. This displays a page with information about     the selected language.  
 
