@@ -46,11 +46,11 @@ export let grammarOrigin;
         {original: "Conditional", IPA: undefined, latin: undefined},
         ];
     
-    // const particles =[{original: "Topic", IPA: undefined, latin: undefined},{original:"Subject", IPA: undefined, latin: undefined},
-    //     {original: "Object", IPA: undefined, latin: undefined},{original: "Also/Too", IPA: undefined, latin: undefined},
-    //     {original: "To/From/By", IPA: undefined, latin: undefined}, {original: "Location/At", IPA: undefined, latin: undefined},
-    //     {original: "And", IPA: undefined, latin: undefined},{original: "Possesive", IPA: undefined, latin: undefined},
-    //     {original: "Question Marker", IPA: undefined, latin: undefined},]
+    const particles =[{original: "Topic", IPA: undefined, latin: undefined},{original:"Subject", IPA: undefined, latin: undefined},
+        {original: "Object", IPA: undefined, latin: undefined},{original: "Also/Too", IPA: undefined, latin: undefined},
+        {original: "To/From/By", IPA: undefined, latin: undefined}, {original: "Location/At", IPA: undefined, latin: undefined},
+        {original: "And", IPA: undefined, latin: undefined},{original: "Possesive", IPA: undefined, latin: undefined},
+        {original: "Question Marker", IPA: undefined, latin: undefined},]
     
     const cases = [{original: "Nominative", IPA: undefined, latin: undefined},{original: "Accusative", IPA: undefined, latin: undefined},
         {original: "Dative", IPA: undefined, latin: undefined},{original: "Genative", IPA: undefined, latin: undefined},
@@ -194,7 +194,7 @@ export let grammarOrigin;
     <h1>Basic Grammar:</h1>
     <div id="grammar-details"></div>
         {#if grammarOrigin.name === "Japanese"}
-            <!-- <Dictionary category="Particles" dictionary={particles}/> -->
+           
             <h2>Particles:</h2>
             <ConjugationTable allInfo={particles} columns= "1"/>
             
@@ -229,7 +229,7 @@ export let grammarOrigin;
         <br/>
     <div id="sentances">
         <h2>Sample Sentences:</h2>
-        <German nouns={nouns} verbs={verbs} adj={adjectives}/>
+        <!-- <German nouns={nouns} verbs={verbs} adj={adjectives}/> -->
         <!-- <Sentances grammarOrigin ="analytic"names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases="none"/>
         {:else if grammarOrigin.noun_classes === 2 || grammarOrigin.name === "German"}
         <Sentances grammarOrigin ="fusional" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers={genders} cases={cases}/>
@@ -240,8 +240,8 @@ export let grammarOrigin;
         <!-- {:else} -->
         <!-- {#if !affixes} -->
 
-        <!-- ***<Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders}  -->
-        <!-- cases={cases} determiners={determiners} pronouns={pronouns}/> -->
+        <Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} 
+        <!-- cases={cases} determiners={determiners} pronouns={pronouns}/> 
 
 
         <!-- {:else}
