@@ -16,7 +16,7 @@
     const question = {IPA: undefined, latin: undefined}
     // Declaring like this makes it possible to use 'class' function on the dictionary without needing to repeat variables
     // AND have a findWord function
-    const particles =[topic, subject, object, also, from, location, and, possesive, question]
+    const particles = [topic, subject, object, also, from, location, and, possesive, question]
 
         // will need unique verbs/encodeURIComponent, since verbs carry inflection for ability or thinking/saying etc
 </script>
