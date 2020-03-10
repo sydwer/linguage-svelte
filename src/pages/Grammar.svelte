@@ -17,29 +17,9 @@ export let grammarOrigin;
     // const names = {mary: maryName, john: johnName}
     const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
 
-
-
-    // const nouns = [{apple:{original: "Apple", IPA: undefined, latin: undefined}},{bear:{original: "Bear", IPA: undefined, latin: undefined}},
-    //     {book:{original: "Book", IPA: undefined, latin: undefined}}, {cat:{original: "Cat", IPA: undefined, latin: undefined}}, 
-    //     {dinner:{original: "Dinner", IPA: undefined, latin: undefined}}, {fish:{original: "Fish", IPA: undefined, latin: undefined}},
-    //     {hello:{original: "Hello", IPA: undefined, latin: undefined}}, {house:{original: "House", IPA: undefined, latin: undefined}},
-    //     {hunger:{original: "Hunger", IPA: undefined, latin: undefined}}, {river:{original: "River", IPA: undefined, latin: undefined}},
-    //     {rock:{original: "Rock", IPA: undefined, latin: undefined}}, {ten:{original: "Ten", IPA: undefined, latin: undefined}},
-    //     {tree:{original: "Tree", IPA: undefined, latin: undefined}},
-    //     ];
     const nouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
         {original:"Hello"}, {original:"House"},{original:"Hunger"}, {original:"River"},{original:"Rock"}, {original:"Ten"},{original:"Tree"},
         ];
-
-
-    // const nouns = [{original: "Apple", IPA: undefined, latin: undefined},{original: "Bear", IPA: undefined, latin: undefined},
-    //     {original: "Book", IPA: undefined, latin: undefined}, {original: "Cat", IPA: undefined, latin: undefined}, 
-    //     {original: "Dinner", IPA: undefined, latin: undefined}, {original: "Fish", IPA: undefined, latin: undefined},
-    //     {original: "Hello", IPA: undefined, latin: undefined}, {original: "House", IPA: undefined, latin: undefined},
-    //     {original: "Hunger", IPA: undefined, latin: undefined}, {original: "River", IPA: undefined, latin: undefined},
-    //     {original: "Rock", IPA: undefined, latin: undefined}, {original: "Ten", IPA: undefined, latin: undefined},
-    //     {original: "Tree", IPA: undefined, latin: undefined},
-    //     ];
         // Original is used Headers, rather than English:, inorder to imply that the two following entries are modified versions of the first
 
     const verbs = [{original: "Able To"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
@@ -107,7 +87,8 @@ export let grammarOrigin;
         const randomSyllablesLatin = []
         let syllableAmount = undefined;
         const randomNumber = Math.floor(Math.random() * 10)
-        if (randomNumber < 2){
+        console.log(randomNumber)
+        if (randomNumber === 1){
             syllableAmount = 1;
         }else if(randomNumber < 9){
             syllableAmount = 2
@@ -132,11 +113,14 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            // if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders || dictionary === determiners){
-            if(dictionary !== nouns || dictionary !== verbs || dictionary !== adjectives){
-                newWord = makeBoundMorpheme(syllableBank)
-            }else{
+            if(dictionary === nouns || dictionary === verbs || dictionary === adjectives){
                 newWord = makeFreeMorpheme(syllableBank)
+            
+            // if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders || dictionary === determiners){
+            // if(dictionary !== nouns || dictionary !== verbs || dictionary !== adjectives){
+            //     newWord = makeBoundMorpheme(syllableBank)
+            }else{
+                newWord = makeBoundMorpheme(syllableBank)
             }
             dictionary[i].IPA = newWord.IPA
             dictionary[i].latin = newWord.latin
