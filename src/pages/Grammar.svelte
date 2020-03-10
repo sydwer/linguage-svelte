@@ -4,72 +4,76 @@ import Dictionary from './Dictionary.svelte'
 import ConjugationTable from './ConjugationTable.svelte'
 import Sentances from './Sentances.svelte'
 import German from './grammars/German.svelte'
+import English from './grammars/English.svelte'
 
 export let syllableBank;
 export let mary;
 export let john;
 export let grammarOrigin;
 
-    const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}];
 
-    // Create a db for these, get this chunk off code off the front-end, 
-    // may need reworking though once persisting a user's language becomes a feature
+    // const maryName = {IPA: mary, latin: "Mary"};
+    // const johnName = {IPA: john, latin: "John"}
+    // const names = {mary: maryName, john: johnName}
+    const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
 
-    const nouns = [{original: "Apple", IPA: undefined, latin: undefined},{original: "Bear", IPA: undefined, latin: undefined},
-        {original: "Book", IPA: undefined, latin: undefined}, {original: "Cat", IPA: undefined, latin: undefined}, 
-        {original: "Dinner", IPA: undefined, latin: undefined}, {original: "Fish", IPA: undefined, latin: undefined},
-        {original: "Hello", IPA: undefined, latin: undefined}, {original: "House", IPA: undefined, latin: undefined},
-        {original: "Hunger", IPA: undefined, latin: undefined}, {original: "River", IPA: undefined, latin: undefined},
-        {original: "Rock", IPA: undefined, latin: undefined}, {original: "Ten", IPA: undefined, latin: undefined},
-        {original: "Tree", IPA: undefined, latin: undefined},
+
+
+    // const nouns = [{apple:{original: "Apple", IPA: undefined, latin: undefined}},{bear:{original: "Bear", IPA: undefined, latin: undefined}},
+    //     {book:{original: "Book", IPA: undefined, latin: undefined}}, {cat:{original: "Cat", IPA: undefined, latin: undefined}}, 
+    //     {dinner:{original: "Dinner", IPA: undefined, latin: undefined}}, {fish:{original: "Fish", IPA: undefined, latin: undefined}},
+    //     {hello:{original: "Hello", IPA: undefined, latin: undefined}}, {house:{original: "House", IPA: undefined, latin: undefined}},
+    //     {hunger:{original: "Hunger", IPA: undefined, latin: undefined}}, {river:{original: "River", IPA: undefined, latin: undefined}},
+    //     {rock:{original: "Rock", IPA: undefined, latin: undefined}}, {ten:{original: "Ten", IPA: undefined, latin: undefined}},
+    //     {tree:{original: "Tree", IPA: undefined, latin: undefined}},
+    //     ];
+    const nouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
+        {original:"Hello"}, {original:"House"},{original:"Hunger"}, {original:"River"},{original:"Rock"}, {original:"Ten"},{original:"Tree"},
         ];
+
+
+    // const nouns = [{original: "Apple", IPA: undefined, latin: undefined},{original: "Bear", IPA: undefined, latin: undefined},
+    //     {original: "Book", IPA: undefined, latin: undefined}, {original: "Cat", IPA: undefined, latin: undefined}, 
+    //     {original: "Dinner", IPA: undefined, latin: undefined}, {original: "Fish", IPA: undefined, latin: undefined},
+    //     {original: "Hello", IPA: undefined, latin: undefined}, {original: "House", IPA: undefined, latin: undefined},
+    //     {original: "Hunger", IPA: undefined, latin: undefined}, {original: "River", IPA: undefined, latin: undefined},
+    //     {original: "Rock", IPA: undefined, latin: undefined}, {original: "Ten", IPA: undefined, latin: undefined},
+    //     {original: "Tree", IPA: undefined, latin: undefined},
+    //     ];
         // Original is used Headers, rather than English:, inorder to imply that the two following entries are modified versions of the first
 
-    const verbs = [{original: "Able To", IPA: undefined, latin: undefined},{original: "Eat", IPA: undefined, latin: undefined}, 
-        {original: "Enjoy", IPA: undefined, latin: undefined}, {original: "Die", IPA: undefined, latin: undefined}, 
-        {original: "Give", IPA: undefined, latin: undefined}, {original: "Have", IPA: undefined, latin: undefined}, 
-        {original: "Say", IPA: undefined, latin: undefined}, {original: "To Be", IPA: undefined, latin: undefined}, 
-        {original: "Want", IPA: undefined, latin: undefined},
+    const verbs = [{original: "Able To"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
+        {original: "Say"}, {original: "To Be"}, {original: "Want"},
         ];
-    const adjectives = [{original: "Big", IPA: undefined, latin: undefined}, {original: "Cute", IPA: undefined, latin: undefined}, 
-        {original: "Fast", IPA: undefined, latin: undefined}, {original: "Hungry", IPA: undefined, latin: undefined},
+    const adjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
         ];
 
-    const pronouns = [{original: "I", IPA: undefined, latin: undefined},{original:"We", IPA: undefined, latin: undefined},
-        {original:"You", IPA: undefined, latin: undefined}, {original:"You all", IPA: undefined, latin: undefined},
-        {original:"He", IPA: undefined, latin: undefined}, {original:"She", IPA: undefined, latin: undefined},
-        {original:"It", IPA: undefined, latin: undefined}, {original:"They", IPA: undefined, latin: undefined},
+    const pronouns = [{original: "I"},{original:"We"},{original:"You"}, {original:"You all"},{original:"He"}, {original:"She"},
+        {original:"It"}, {original:"They"},
         ];
 
-    const tenses =[{original: "Past", IPA: undefined, latin: undefined},{original: "Present", IPA: undefined, latin: undefined},
-        {original: "Future", IPA: undefined, latin: undefined}, {original: "Imperfect", IPA: undefined, latin: undefined},
-        {original: "Conditional", IPA: undefined, latin: undefined},
+    const tenses =[{original: "Past"},{original: "Present"},{original: "Future"}, {original: "Imperfect"},
+        {original: "Conditional"},
         ];
     
-    const particles =[{original: "Topic", IPA: undefined, latin: undefined},{original:"Subject", IPA: undefined, latin: undefined},
-        {original: "Object", IPA: undefined, latin: undefined},{original: "Also/Too", IPA: undefined, latin: undefined},
-        {original: "To/From/By", IPA: undefined, latin: undefined}, {original: "Location/At", IPA: undefined, latin: undefined},
-        {original: "And", IPA: undefined, latin: undefined},{original: "Possesive", IPA: undefined, latin: undefined},
-        {original: "Question Marker", IPA: undefined, latin: undefined},]
+    const particles =[{original: "Topic"},{original:"Subject"},{original: "Object"},{original: "Also/Too"},{original: "To/From/By"}, {original: "Location/At"},
+        {original: "And"},{original: "Possesive"},{original: "Question Marker"},
+        ];
     
-    const cases = [{original: "Nominative", IPA: undefined, latin: undefined},{original: "Accusative", IPA: undefined, latin: undefined},
-        {original: "Dative", IPA: undefined, latin: undefined},{original: "Genative", IPA: undefined, latin: undefined},
+    const cases = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},{original: "Genative"},
         ];
 
-    const genders = [{original: "Masculine", IPA: undefined, latin: undefined},{original: "Feminine", IPA: undefined, latin: undefined},
-        {original: "Neutral", IPA: undefined, latin: undefined},{original: "Plural", IPA: undefined, latin: undefined},
+    const genders = [{original: "Masculine"},{original: "Feminine"},{original: "Neutral"},{original: "Plural"},
         ];
 
-    const classes = [{original: "People", IPA: undefined, latin: undefined}, {original: "Inanimate Objects", IPA: undefined, latin: undefined},
-        {original: "Names and Kinship Terms", IPA: undefined, latin: undefined},{original: "Round Objects", IPA: undefined, latin: undefined},
-        {original: "Food", IPA: undefined, latin: undefined}, {original: "Tools", IPA: undefined, latin: undefined},
-        {original: "Countable Items", IPA: undefined, latin: undefined}, {original: "Infinitive Verbs", IPA: undefined, latin: undefined},
-        {original: "Known Location", IPA: undefined, latin: undefined}, {original: "Ambiguous Location", IPA: undefined, latin: undefined},
-        {original: "Location in Relation to Another Object", IPA: undefined, latin: undefined},
+    const classes = [{original: "People"}, {original: "Inanimate Objects"},{original: "Names and Kinship Terms"}, 
+        {original: "Round Objects"},{original: "Food"}, {original: "Tools"},{original: "Countable Items"}, 
+        {original: "Infinitive Verbs"},{original: "Known Location"}, {original: "Ambiguous Location"},
+        {original: "Location in Relation to Another Object"},
         ];
 
-    const determiners = [{original: "The", IPA: undefined, latin: undefined},{original: "A", IPA: undefined, latin: undefined},
-    {original: "Adverb Marker", IPA: undefined, latin: undefined},]
+    const determiners = [{original: "The"},{original: "A"},{original: "Adverb Marker"},
+    ];
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(nouns);
@@ -87,11 +91,10 @@ export let grammarOrigin;
         if(grammarOrigin.name === "Swahili"){
             makeDictionary(classes)
         }
-        // if(grammarOrigin.noun_classes > 0 && grammarOrigin.name !== "Swahili"){
-        //     makeDictionary(genders)
-        // }
     }
        
+
+    const dictionary = {names, nouns, pronouns, verbs, adjectives}
 
     function makeBoundMorpheme(syllables){
         const morpheme = syllables[Math.floor(Math.random() * syllables.length)]
@@ -192,7 +195,11 @@ export let grammarOrigin;
     </div>
     <div id="grammar">
     <h1>Basic Grammar:</h1>
-    <div id="grammar-details"></div>
+    <!-- <div id="grammar-details"></div> -->
+    {#if grammarOrigin.name === "English"}
+        <English syllables={syllableBank} dictionary={dictionary}/>
+    {:else}
+    <!-- Place holder grammar- delete once specialized fiels all built -->
         {#if grammarOrigin.name === "Japanese"}
            
             <h2>Particles:</h2>
@@ -229,28 +236,12 @@ export let grammarOrigin;
         <br/>
     <div id="sentances">
         <h2>Sample Sentences:</h2>
-        <!-- <German nouns={nouns} verbs={verbs} adj={adjectives}/> -->
-        <!-- <Sentances grammarOrigin ="analytic"names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases="none"/>
-        {:else if grammarOrigin.noun_classes === 2 || grammarOrigin.name === "German"}
-        <Sentances grammarOrigin ="fusional" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers={genders} cases={cases}/>
-        {:else if grammarOrigin.name === "Swahili"}
-        <Sentances grammarOrigin = "Swahili" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers={classes} cases="none"/>
-        {:else if grammarOrigin.name === "Japanese"}
-        <Sentances grammarOrigin ="Japanese" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} markers="none" cases={particles}/> -->
-        <!-- {:else} -->
-        <!-- {#if !affixes} -->
-
         <Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} 
         <!-- cases={cases} determiners={determiners} pronouns={pronouns}/> 
 
-
-        <!-- {:else}
-        <Sentances grammarOrigin ="Default" names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} cases={cases}/> -->
-       
-       <!-- Re-work this so that each language has its own component -->
-
     </div>
-
+    <!-- delete this once special grammar files all made -->
+    {/if}
     </div>
 </div>
 
