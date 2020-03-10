@@ -182,9 +182,10 @@
 
     function makeConsonantCluster(sonorants,numberOfSyllables){
         const consonantClusterSyllables = [];
-        const startingSounds = filterPhonemes("s", "latin").concat(filterPhonemes("sh", "latin"));
+        const s = filterPhonemes("s", "latin").concat(filterPhonemes("sh", "latin"));
         const allPlosives = filterPhonemes("plosive", "manner");
         const plosives = filterPlosives(allPlosives);
+        const startingSounds = s.concat(plosives);
         const laterals = filterPhonemes("lateral approximant", "manner");
         var i;
         for(i = 0; i < numberOfSyllables; i ++){
