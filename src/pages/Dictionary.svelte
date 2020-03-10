@@ -19,8 +19,6 @@
 
 <h2>{category}:</h2>
 {#each dictionary as word}
-<!-- <p>{word.original}:</p>
-<p>{word.latin}   (/{word.IPA}/) </p> -->
 <p><span>{word.original}</span>: {word.latin}   (/{word.IPA}/) </p>
 {/each}
 
