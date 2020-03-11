@@ -55,7 +55,7 @@ export let grammarOrigin;
     const determiners = [{original: "The"},{original: "A"},{original: "Adverb Marker"},{original: "An"},
     ];
 
-    const dictionary = {names, nouns, pronouns, verbs, adjectives, determiners, tenses}
+    const dictionary = {names, nouns, pronouns, verbs, adjectives, determiners}
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(nouns);

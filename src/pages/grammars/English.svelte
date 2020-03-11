@@ -8,8 +8,10 @@
     const possesive = {original: "'s"};
     const plural = {original: "s"};
     const tenses =[{original: "Past"},{original: "Present"},
-        ];
-        // require helper verbs: {original: "Future"}, {original: "Imperfect"},{original: "Conditional"}
+    ];
+    const helperVerbs =[{original: "Future"}, {original: "Imperfect"}, {original: "Conditional"}
+    ];
+    
 
     function makeGrammar(word){
         const randomSyllable = syllables[Math.floor(Math.random() * syllables.length)];
@@ -26,6 +28,7 @@
 
     makeGrammar(possesive);
     makeGrammar(plural);
+    tenses.map()
     console.log(dictionary)
 
    
