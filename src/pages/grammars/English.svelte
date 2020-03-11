@@ -17,11 +17,14 @@ const names = {};
 // GRAMMAR DICTIONARIES
     const possesive = {original:"Possesive", latin:"'s"};
     const plural = {original: "Plural", latin: "s"};
-    
-    const oldTenses =[{original: "Past"},{original: "Present"},{original: "Future"}, {original: "Imperfect"}, 
-    {original: "Conditional"}
+
+    const oldTenses =[{original: "Past"},{original: "Present"}
     ];
     const tenses = {};
+    const oldHelperVerbs =[{original: "Future"}, {original: "Imperfect"}, 
+    {original: "Conditional"}
+    ];
+    const helperVerbs ={};
     const oldDeterminers = [{original: "The"}, {original: "A"},{original: "This"}, {original: "That"}
     ,]
     const determiners = {};
@@ -46,7 +49,7 @@ const names = {};
     makeGrammar(plural);
     const endings = [possesive,plural];
     oldTenses.map(makeGrammar);
-    // oldHelperVerbs.map(makeGrammar);
+    oldHelperVerbs.map(makeGrammar);
     oldDeterminers.map(makeGrammar);
     
     
@@ -67,6 +70,7 @@ const names = {};
     markWord(oldAdjectives,adjectives);
     markWord(oldNames,names);
     markWord(oldVerbs,verbs);
+    markWord(oldHelperVerbs,helperVerbs);
     markWord(oldDeterminers, determiners);
 
    
@@ -85,11 +89,14 @@ h4{
     justify-content: space-evenly;
 }
 </style>
-
+<h2>Verb Endings</h2>
 <ConjugationTable allInfo={oldTenses} columns="1"/>
+<h2>"Helper Verbs"</h2>
+<ConjugationTable allInfo={oldHelperVerbs} columns="1"/>
+<h2>Useful Noun Endings</h2>
 <ConjugationTable allInfo={endings} columns="1"/>
 
-
+<h2> Sample Sentances:</h2>
 <div>
     <h4><span>{names.mary.latin}</span> <span>{verbs.say.latin}{tenses.present.latin}</span> 
     <span>"{nouns.hello.latin}"</span></h4>
