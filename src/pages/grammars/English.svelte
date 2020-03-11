@@ -2,15 +2,14 @@
     export let syllables;
     export let dictionary;
 
-    console.log(dictionary.names.mary)
-    console.log(dictionary.nouns.keys)
-    // console.log(dictionary.nouns.bear.original)
     const possesive = {original: "'s"};
     const plural = {original: "s"};
     const tenses =[{original: "Past"},{original: "Present"},
     ];
     const helperVerbs =[{original: "Future"}, {original: "Imperfect"}, {original: "Conditional"}
     ];
+    const determiners = [{original: "The"}, {original: "A"},{original: "This"}, {original: "That"}
+    ,]
     
 
     function makeGrammar(word){
@@ -28,8 +27,24 @@
 
     makeGrammar(possesive);
     makeGrammar(plural);
-    tenses.map()
-    console.log(dictionary)
+    tenses.map(makeGrammar);
+    helperVerbs.map(makeGrammar);
+    determiners.map(makeGrammar);
+    
+        const newTenses = {};
+    function markWord(words, newDictionary){
+        words.map(word =>{
+            const newKey = word.original.toLowerCase();
+            // let newWord = { [newKey]: word};
+            // word = { [newKey]: word};
+            // newDictionary.push(word)
+            newDictionary[newKey] = word
+        })
+    }
+
+    markWord(tenses,newTenses);
+    console.log(tenses)
+    console.log(newTenses.past)
 
    
     

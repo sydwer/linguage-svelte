@@ -52,10 +52,9 @@ export let grammarOrigin;
         {original: "Location in Relation to Another Object"},
         ];
 
-    const determiners = [{original: "The"},{original: "A"},{original: "Adverb Marker"},{original: "An"},
-    ];
+    const determiners = [{original: "The"},{original: "A"}]
 
-    const dictionary = {names, nouns, pronouns, verbs, adjectives, determiners}
+    const dictionary = {names, nouns, pronouns, verbs, adjectives}
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(nouns);
@@ -66,7 +65,6 @@ export let grammarOrigin;
         makeDictionary(cases);
         makeDictionary(genders);
         makeDictionary(determiners);
-        // makeDictionary(classes);
         if(grammarOrigin.name === "Japanese"){
             makeDictionary(particles);
         }
