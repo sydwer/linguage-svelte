@@ -1,16 +1,31 @@
 <script>
-    export let syllables;
-    export let dictionary;
+import ConjugationTable from '../ConjugationTable.svelte'
+export let syllables;
+export let dictionary;
 
-    const possesive = {original: "'s"};
-    const plural = {original: "s"};
-    const tenses =[{original: "Past"},{original: "Present"},
-    ];
-    const helperVerbs =[{original: "Future"}, {original: "Imperfect"}, {original: "Conditional"}
-    ];
-    const determiners = [{original: "The"}, {original: "A"},{original: "This"}, {original: "That"}
-    ,]
+const oldNouns = dictionary.nouns;  
+const nouns = {}; 
+const oldPronouns = dictionary.pronouns;
+const pronouns ={};   
+const oldVerbs = dictionary.verbs;   
+const verbs ={};
+const oldAdjectives = dictionary.adjectives; 
+const adjectives = {};  
+const oldNames = dictionary.names;  
+const names = {}; 
+
+// GRAMMAR DICTIONARIES
+    const possesive = {original:"Possesive", latin:"'s"};
+    const plural = {original: "Plural", latin: "s"};
     
+    const oldTenses =[{original: "Past"},{original: "Present"},{original: "Future"}, {original: "Imperfect"}, 
+    {original: "Conditional"}
+    ];
+    const tenses = {};
+    const oldDeterminers = [{original: "The"}, {original: "A"},{original: "This"}, {original: "That"}
+    ,]
+    const determiners = {};
+
 
     function makeGrammar(word){
         const randomSyllable = syllables[Math.floor(Math.random() * syllables.length)];
@@ -18,8 +33,10 @@
         let latin = randomSyllable.latin;
         if(word === possesive){
             word.IPA = "'" + IPA;
-            word.latin = "'" + latin;
-        }else{
+        } else if(word === plural){
+            word.IPA = IPA
+        }
+        else{
             word.IPA = IPA;
             word.latin = latin;
         }
@@ -27,24 +44,30 @@
 
     makeGrammar(possesive);
     makeGrammar(plural);
-    tenses.map(makeGrammar);
-    helperVerbs.map(makeGrammar);
-    determiners.map(makeGrammar);
+    const endings = [possesive,plural];
+    oldTenses.map(makeGrammar);
+    // oldHelperVerbs.map(makeGrammar);
+    oldDeterminers.map(makeGrammar);
     
-        const newTenses = {};
-    function markWord(words, newDictionary){
-        words.map(word =>{
-            const newKey = word.original.toLowerCase();
-            // let newWord = { [newKey]: word};
-            // word = { [newKey]: word};
-            // newDictionary.push(word)
-            newDictionary[newKey] = word
+    
+    function markWord(dictionary, newDictionary){
+        dictionary.map(word =>{
+            if(dictionary === oldNames){
+                newDictionary[word.latin.toLowerCase()] = word
+            }else{
+                newDictionary[word.original.toLowerCase()] = word
+            }
+
         })
     }
 
-    markWord(tenses,newTenses);
-    console.log(tenses)
-    console.log(newTenses.past)
+    markWord(oldTenses,tenses);
+    markWord(oldNouns,nouns);
+    markWord(oldPronouns,pronouns);
+    markWord(oldAdjectives,adjectives);
+    markWord(oldNames,names);
+    markWord(oldVerbs,verbs);
+    markWord(oldDeterminers, determiners);
 
    
     
@@ -53,6 +76,30 @@
 
 
 <style>
+div{
+    width: 100%
+}
+h4{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
 </style>
 
-<h1>hi</h1>
+<ConjugationTable allInfo={oldTenses} columns="1"/>
+<ConjugationTable allInfo={endings} columns="1"/>
+
+
+<div>
+    <h4><span>{names.mary.latin}</span> <span>{verbs.say.latin}{tenses.present.latin}</span> 
+    <span>"{nouns.hello.latin}"</span></h4>
+
+    <h4><span>{names.mary.IPA}</span> <span>{verbs.say.IPA}{tenses.present.IPA}</span> 
+    <span>"{nouns.hello.IPA}"</span></h4>
+
+    <h4><span>Mary</span> <span>say.PRES</span> <span>"hello"</span></h4>
+    
+    <h4>'Mary says "hello".'</h4>
+    <!-- Spans are ugly here, but necessary if I want the proper 'words should be lined up with what they  -->
+    <!-- reference convention of linguistics ' -->
+</div>
