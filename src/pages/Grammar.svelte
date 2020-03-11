@@ -52,8 +52,9 @@ export let grammarOrigin;
         {original: "Location in Relation to Another Object"},
         ];
 
-    const determiners = [{original: "The"},{original: "A"},{original: "Adverb Marker"},
-    ];
+    const determiners = [{original: "The"},{original: "A"}]
+
+    const dictionary = {names, nouns, pronouns, verbs, adjectives}
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
         makeDictionary(nouns);
@@ -64,7 +65,6 @@ export let grammarOrigin;
         makeDictionary(cases);
         makeDictionary(genders);
         makeDictionary(determiners);
-        // makeDictionary(classes);
         if(grammarOrigin.name === "Japanese"){
             makeDictionary(particles);
         }
@@ -74,7 +74,7 @@ export let grammarOrigin;
     }
        
 
-    const dictionary = {names, nouns, pronouns, verbs, adjectives}
+    
 
     function makeBoundMorpheme(syllables){
         const morpheme = syllables[Math.floor(Math.random() * syllables.length)]
@@ -86,8 +86,7 @@ export let grammarOrigin;
         const randomSyllablesIPA = []
         const randomSyllablesLatin = []
         let syllableAmount = undefined;
-        const randomNumber = Math.floor(Math.random() * 10)
-        console.log(randomNumber)
+        const randomNumber = Math.floor(Math.random() * 10);
         if (randomNumber === 1){
             syllableAmount = 1;
         }else if(randomNumber < 9){
