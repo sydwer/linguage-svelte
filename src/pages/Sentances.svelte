@@ -115,6 +115,7 @@ div{
     {/if}
     <h4>DET.NOM cat.NOM.PL eat.FUT fish.ACC</h4>
     <h4>'The cats will eat fish.'</h4>
+    
 </div>
 <br/>
 
@@ -128,6 +129,7 @@ div{
     {/if}
     <h4>1PL have.PRES hunger</h4>
     <h4> 'We're hungry.'</h4>
+    
 </div>
 
 <div>
@@ -135,6 +137,7 @@ div{
     <h4>{i.IPA} {give.IPA}{ipfv.IPA} {book.IPA} {a.IPA}{gen.IPA} {i.IPA} {he.IPA}{dat.IPA} </h4>
     <h4>1SG.NOM give.COND book DET.GEN 1SG 3SG/MASC.DAT</h4>
     <h4>'I would give him my book.'</h4>
+    
 </div>
 <br/>
 
@@ -143,6 +146,7 @@ div{
     <h4>{i.IPA} {want.IPA}{past.IPA} {a.IPA}{dat.IPA} {rock.IPA}{dat.IPA} {a.IPA}{gen.IPA} {river.IPA}{gen.IPA}</h4>
     <h4>1SG want.PAST DET.DAT rock.DAT DET.GEN river.GEN</h4>
     <h4>'I wanted a rock from the river.'</h4>
+    
 </div>
 
 <div id="bear-sentence">
@@ -159,4 +163,5 @@ div{
     {/if}
     <h4>DET.NOM bear.NOM big.NOM able.COND ten fish.ACC.PL fast.ADV eat.INF</h4>
     <h4>'A big bear could eat 10 fish quickly.'</h4>
+    
 </div>
