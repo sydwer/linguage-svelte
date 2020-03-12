@@ -22,8 +22,8 @@ export let grammarOrigin;
         ];
         // Original is used Headers, rather than English:, inorder to imply that the two following entries are modified versions of the first
 
-    const verbs = [{original: "Able To"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
-        {original: "Say"}, {original: "To Be"}, {original: "Want"},
+    const verbs = [{original: "Able"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
+        {original: "Say"}, {original: "Copula"}, {original: "Want"},
         ];
     const adjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
         ];
@@ -174,7 +174,9 @@ export let grammarOrigin;
         <Dictionary category="Pronouns" dictionary={pronouns}/>
         <Dictionary category="Adjectives" dictionary={adjectives}/>
         <Dictionary category="Verbs" dictionary={verbs}/>
+        {#if grammarOrigin.name !== "English"}
         <Dictionary category="Other" dictionary={determiners}/>
+        {/if}
     </div>
     <div id="grammar">
     <h1>Basic Grammar:</h1>
