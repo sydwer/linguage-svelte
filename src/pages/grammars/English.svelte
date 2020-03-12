@@ -96,13 +96,13 @@ h4{
 <h2>Useful Noun Endings</h2>
 <ConjugationTable allInfo={endings} columns="1"/>
 
-<h2> Sample Sentances:</h2>
+<h2> Sample Sentences:</h2>
 <div>
-    <h4><span>{names.mary.latin}</span> <span>{verbs.say.latin}{tenses.present.latin}</span> 
-    <span>"{nouns.hello.latin}"</span></h4>
-
-    <h4><span>{names.mary.IPA}</span> <span>{verbs.say.IPA}{tenses.present.IPA}</span> 
+    <h4><span>{names.mary.IPA}</span> <span>{verbs.say.IPA}-{tenses.present.IPA}</span> 
     <span>"{nouns.hello.IPA}"</span></h4>
+
+    <h4><span>{names.mary.latin}</span> <span>{verbs.say.latin}-{tenses.present.latin}</span> 
+    <span>"{nouns.hello.latin}"</span></h4>
 
     <h4><span>Mary</span> <span>say.PRES</span> <span>"hello"</span></h4>
     
@@ -110,3 +110,20 @@ h4{
     <!-- Spans are ugly here, but necessary if I want the proper 'words should be lined up with what they  -->
     <!-- reference convention of linguistics ' -->
 </div>
+<div>
+    <h4><span>{determiners.the.IPA}</span><span>{nouns.tree.IPA}</span><span>{verbs.die.IPA}-
+    {tenses.past.IPA}</span></h4>
+
+    <h4><span>{determiners.the.latin}</span><span>{nouns.tree.latin}</span><span>{verbs.die.latin}-
+    {tenses.past.latin}</span></h4>
+
+    <h4><span>DET</span><span>tree</span><span>die.PAST</span></h4>
+
+    <h4>'The tree died.'</h4>
+</div>
+ <!-- <h4>'A big bear could eat 10 fish quickly.'</h4>
+     <h4>'I wanted a rock from the river.'</h4>
+    <h4>'I would give him my book.'</h4>
+    <h4> 'We're hungry.'</h4>
+      <h4>'The cats will eat fish.'</h4>
+    <h4>'The tree died.'</h4> -->
