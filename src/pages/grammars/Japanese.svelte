@@ -1,22 +1,17 @@
 <script>
     export let syllables;
-    export let nouns;
-    export let verbs;
-    export let adj;
-    // the nouns verbs and adj's are universally used so they'll be sent in and sifted through for each language
-    // ONLY GRAMMAR BASED AFFIXES CAN BE SEPERATE IN EACH grammarOrigin, dictionary level words have to be parent level component, EventSource.
-    const topic = {IPA: undefined, latin: undefined}
-    const subject = {IPA: undefined, latin: undefined}
-    const object = {IPA: undefined, latin: undefined}
-    const also = {IPA: undefined, latin: undefined}
-    const from = {IPA: undefined, latin: undefined}
-    const location = {IPA: undefined, latin: undefined}
-    const and = {IPA: undefined, latin: undefined}
-    const possesive = {IPA: undefined, latin: undefined}
-    const question = {IPA: undefined, latin: undefined}
-    // Declaring like this makes it possible to use 'class' function on the dictionary without needing to repeat variables
-    // AND have a findWord function
-    const particles = [topic, subject, object, also, from, location, and, possesive, question]
+  
 
         // will need unique verbs/encodeURIComponent, since verbs carry inflection for ability or thinking/saying etc
 </script>
+
+<!-- Change nouns and verbs so the sentences are different from other langs -->
+
+
+ <!-- <h4>'A big bear could eat 10 fish quickly.'</h4>
+     <h4>'I wanted a rock from the river.'</h4>
+    <h4>'I would give him my book.'</h4>
+    <h4> 'We're hungry.'</h4>
+      <h4>'The cats will eat fish.'</h4>
+    <h4>'The tree died.'</h4>
+    <h4>'Mary says "hello".'</h4> -->
