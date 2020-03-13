@@ -2,18 +2,25 @@
 import ConjugationTable from '../ConjugationTable.svelte'
 export let syllables;
 export let dictionary;
+export let makeBoundMorpheme;
+export let markWord;
 
-const oldNouns = dictionary.nouns;  
-const nouns = {}; 
-const oldPronouns = dictionary.pronouns;
-const pronouns ={};   
-const oldVerbs = dictionary.verbs;   
-const verbs ={};
-const oldAdjectives = dictionary.adjectives; 
-const adjectives = {};  
-const oldNames = dictionary.names;  
-const names = {}; 
-
+// const oldNouns = dictionary.nouns;  
+// const nouns = {}; 
+// const oldPronouns = dictionary.pronouns;
+// const pronouns ={};   
+// const oldVerbs = dictionary.verbs;   
+// const verbs ={};
+// const oldAdjectives = dictionary.adjectives; 
+// const adjectives = {};  
+// const oldNames = dictionary.names;  
+// const names = {}; 
+    console.log(dictionary)
+    const names = dictionary.names;
+    const nouns = dictionary.nouns;
+    const pronouns = dictionary.pronouns;
+    const verbs = dictionary.verbs;
+    const adjectives = dictionary.adjectives;
 // GRAMMAR DICTIONARIES
     const possesive = {original:"Possesive", latin:"'s", IPA: "s"};
     const plural = {original: "Plural", latin: "s", IPA: "s"};
@@ -55,7 +62,6 @@ const names = {};
             word.IPA = IPA;
             word.latin = latin;
         // }
-        console.log(advAdj)
     }
 
     // makeGrammar(possesive);
@@ -69,23 +75,25 @@ const names = {};
     const endings = [possesive,plural,advAdj];
     
     
-    function markWord(dictionary, newDictionary){
-        dictionary.map(word =>{
-            if(dictionary === oldNames){
-                newDictionary[word.latin.toLowerCase()] = word
-            }else{
-                newDictionary[word.original.toLowerCase()] = word
-            }
+    // function markWord(dictionary, newDictionary){
+    //     dictionary.map(word =>{
+    //         if(dictionary === oldNames){
+    //             newDictionary[word.latin.toLowerCase()] = word
+    //         }else{
+    //             newDictionary[word.original.toLowerCase()] = word
+    //         }
 
-        })
-    }
+    //     })
+    // }
 
+
+    // markWord(oldTenses,tenses);
+    // markWord(oldNouns,nouns);
+    // markWord(oldPronouns,pronouns);
+    // markWord(oldAdjectives,adjectives);
+    // markWord(oldNames,names);
+    // markWord(oldVerbs,verbs);
     markWord(oldTenses,tenses);
-    markWord(oldNouns,nouns);
-    markWord(oldPronouns,pronouns);
-    markWord(oldAdjectives,adjectives);
-    markWord(oldNames,names);
-    markWord(oldVerbs,verbs);
     markWord(oldHelperVerbs,helperVerbs);
     markWord(oldDeterminers, determiners);
     markWord(oldCasePronouns, casePronouns);

@@ -15,64 +15,90 @@ export let grammarOrigin;
     // const maryName = {IPA: mary, latin: "Mary"};
     // const johnName = {IPA: john, latin: "John"}
     // const names = {mary: maryName, john: johnName}
-    const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
+    const defaultNames = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
 
-    const nouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
+    const defaultNouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
         {original:"Hello"}, {original:"House"},{original:"Hunger"}, {original:"River"},{original:"Rock"}, {original:"Ten"},{original:"Tree"},
         ];
         // Original is used Headers, rather than English:, inorder to imply that the two following entries are modified versions of the first
 
-    const verbs = [{original: "Able"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
+    const defaultVerbs = [{original: "Able"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
         {original: "Say"}, {original: "Copula"}, {original: "Want"},
         ];
-    const adjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
+    const defaultAdjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
         ];
 
-    const pronouns = [{original: "I"},{original:"We"},{original:"You"}, {original:"You all"},{original:"He"}, {original:"She"},
+    const defaultPronouns = [{original: "I"},{original:"We"},{original:"You"}, {original:"You all"},{original:"He"}, {original:"She"},
         {original:"It"}, {original:"They"},
         ];
 
-    const tenses =[{original: "Past"},{original: "Present"},{original: "Future"}, {original: "Imperfect"},
-        {original: "Conditional"},
-        ];
+    const names = {};
+    const nouns = {};
+    const pronouns ={};
+    const verbs = {};
+    const adjectives = {};
+
+    // const tenses =[{original: "Past"},{original: "Present"},{original: "Future"}, {original: "Imperfect"},
+    //     {original: "Conditional"},
+    //     ];
     
-    const particles =[{original: "Topic"},{original:"Subject"},{original: "Object"},{original: "Also/Too"},{original: "To/From/By"}, {original: "Location/At"},
-        {original: "And"},{original: "Possesive"},{original: "Question Marker"},
-        ];
+    // const particles =[{original: "Topic"},{original:"Subject"},{original: "Object"},{original: "Also/Too"},{original: "To/From/By"}, {original: "Location/At"},
+    //     {original: "And"},{original: "Possesive"},{original: "Question Marker"},
+    //     ];
     
-    const cases = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},{original: "Genative"},
-        ];
+    // const cases = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},{original: "Genative"},
+    //     ];
 
-    const genders = [{original: "Masculine"},{original: "Feminine"},{original: "Neutral"},{original: "Plural"},
-        ];
+    // const genders = [{original: "Masculine"},{original: "Feminine"},{original: "Neutral"},{original: "Plural"},
+    //     ];
 
-    const classes = [{original: "People"}, {original: "Inanimate Objects"},{original: "Names and Kinship Terms"}, 
-        {original: "Round Objects"},{original: "Food"}, {original: "Tools"},{original: "Countable Items"}, 
-        {original: "Infinitive Verbs"},{original: "Known Location"}, {original: "Ambiguous Location"},
-        {original: "Location in Relation to Another Object"},
-        ];
+    // const classes = [{original: "People"}, {original: "Inanimate Objects"},{original: "Names and Kinship Terms"}, 
+    //     {original: "Round Objects"},{original: "Food"}, {original: "Tools"},{original: "Countable Items"}, 
+    //     {original: "Infinitive Verbs"},{original: "Known Location"}, {original: "Ambiguous Location"},
+    //     {original: "Location in Relation to Another Object"},
+    //     ];
 
-    const determiners = [{original: "The"},{original: "A"}]
+    // const determiners = [{original: "The"},{original: "A"}]
 
-    const dictionary = {names, nouns, pronouns, verbs, adjectives}
     // ^^^Sort alphabetically and by part of speech^^^// 
     if(syllableBank){
-        makeDictionary(nouns);
-        makeDictionary(verbs);
-        makeDictionary(adjectives);
-        makeDictionary(pronouns);
-        makeDictionary(tenses);
-        makeDictionary(cases);
-        makeDictionary(genders);
-        makeDictionary(determiners);
-        if(grammarOrigin.name === "Japanese"){
-            makeDictionary(particles);
-        }
-        if(grammarOrigin.name === "Swahili"){
-            makeDictionary(classes)
-        }
+        makeDictionary(defaultNouns);
+        makeDictionary(defaultVerbs);
+        makeDictionary(defaultAdjectives);
+        makeDictionary(defaultPronouns);
+        // makeDictionary(tenses);
+        // makeDictionary(cases);
+        // makeDictionary(genders);
+        // makeDictionary(determiners);
+        addKeys();
+        // if(grammarOrigin.name === "Japanese"){
+            //     makeDictionary(particles);
+        // }
+        // if(grammarOrigin.name === "Swahili"){
+            //     makeDictionary(classes)
+        // }
+    }
+
+    function addKeys(){
+        markWord(defaultNames, names);
+        markWord(defaultNouns, nouns);
+        markWord(defaultPronouns, pronouns);
+        markWord(defaultVerbs, verbs);
+        markWord(defaultAdjectives, adjectives);
+    }
+
+      function markWord(dictionary, newDictionary){
+          dictionary.map(word =>{
+              if(dictionary === defaultNames){
+                  newDictionary[word.latin.toLowerCase()] = word
+            }else{
+                newDictionary[word.original.toLowerCase()] = word
+            }
+
+        })
     }
        
+    const dictionary = {names, nouns, pronouns, verbs, adjectives}
 
     
 
@@ -112,20 +138,30 @@ export let grammarOrigin;
         let newWord = undefined;
         var i;
         for (i = 0; i < dictionary.length; i++){
-            if(dictionary === nouns || dictionary === verbs || dictionary === adjectives){
-                newWord = makeFreeMorpheme(syllableBank)
-            
-            // if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders || dictionary === determiners){
-            // if(dictionary !== nouns || dictionary !== verbs || dictionary !== adjectives){
-            //     newWord = makeBoundMorpheme(syllableBank)
-            }else{
-                newWord = makeBoundMorpheme(syllableBank)
-            }
+            newWord = makeFreeMorpheme(syllableBank)
             dictionary[i].IPA = newWord.IPA
             dictionary[i].latin = newWord.latin
         }
         // console.log(tenses)
     }
+    // function makeDictionary(dictionary){
+    //     let newWord = undefined;
+    //     var i;
+    //     for (i = 0; i < dictionary.length; i++){
+    //         if(dictionary === nouns || dictionary === verbs || dictionary === adjectives){
+    //             newWord = makeFreeMorpheme(syllableBank)
+            
+    //         // if (dictionary === pronouns || dictionary === particles || dictionary === cases || dictionary === genders || dictionary === determiners){
+    //         // if(dictionary !== nouns || dictionary !== verbs || dictionary !== adjectives){
+    //         //     newWord = makeBoundMorpheme(syllableBank)
+    //         }else{
+    //             newWord = makeBoundMorpheme(syllableBank)
+    //         }
+    //         dictionary[i].IPA = newWord.IPA
+    //         dictionary[i].latin = newWord.latin
+    //     }
+    //     // console.log(tenses)
+    // }
 
 </script>
 
@@ -170,21 +206,28 @@ export let grammarOrigin;
         <h1>Dictionary:</h1>
         <h4>*Paranthesis indicate the IPA <br/>
         transcription of each word*</h4>
-        <Dictionary category="Nouns" dictionary={nouns}/>
-        <Dictionary category="Pronouns" dictionary={pronouns}/>
-        <Dictionary category="Adjectives" dictionary={adjectives}/>
-        <Dictionary category="Verbs" dictionary={verbs}/>
-        {#if grammarOrigin.name !== "English"}
+        <Dictionary category="Nouns" dictionary={defaultNouns}/>
+        <Dictionary category="Pronouns" dictionary={defaultPronouns}/>
+        <Dictionary category="Adjectives" dictionary={defaultAdjectives}/>
+        <Dictionary category="Verbs" dictionary={defaultVerbs}/>
+        <!-- {#if grammarOrigin.name !== "English"}
         <Dictionary category="Other" dictionary={determiners}/>
-        {/if}
+        {/if} -->
     </div>
     <div id="grammar">
     <h1>Basic Grammar:</h1>
     <!-- <div id="grammar-details"></div> -->
     {#if grammarOrigin.name === "English"}
-        <English syllables={syllableBank} dictionary={dictionary}/>
+        <English syllables={syllableBank} dictionary={dictionary} makeBoundMorpheme={makeBoundMorpheme}
+            markWord={markWord}
+        />
+    {:else if grammarOrigin.name === "German"}
+        <German syllables={syllableBank} dictionary={dictionary} makeBoundMorpheme={makeBoundMorpheme}
+            markWord={markWord}
+        />
     {:else}
-    <!-- Place holder grammar- delete once specialized fiels all built -->
+    <h1> Oops! Looks like this grammar option is under construction, check back soon for an update!</h1>
+    <!-- Place holder grammar- delete once specialized fiels all built
         {#if grammarOrigin.name === "Japanese"}
            
             <h2>Particles:</h2>
@@ -192,7 +235,7 @@ export let grammarOrigin;
             
         {/if}
         <h2>Pronouns:</h2>
-        <ConjugationTable allInfo={pronouns} columns="2"/>
+        <ConjugationTable allInfo={defaultPronouns} columns="2"/>
         <br/>
           {#if grammarOrigin.noun_classes > 0}
         <h2>Noun Classes/Genders:</h2>
@@ -218,13 +261,13 @@ export let grammarOrigin;
             <ConjugationTable allInfo={cases} columns="1"/>
         {/if}
         <br/>
-        <br/>
-    <div id="sentances">
+        <br/> -->
+    <!-- <div id="sentances">
         <h2>Sample Sentences:</h2>
         <Sentances names={names} nouns={nouns} verbs={verbs} adjectives={adjectives} tenses={tenses} genders={genders} 
         <!-- cases={cases} determiners={determiners} pronouns={pronouns}/> 
 
-    </div>
+    </div> -->
     <!-- delete this once special grammar files all made -->
     {/if}
     </div>
