@@ -226,7 +226,10 @@ export let grammarOrigin;
             markWord={markWord}
         />
     {:else}
-    <h1> Oops! Looks like this grammar option is under construction, check back soon for an update!</h1>
+    <br>
+    <br>
+    <br>
+    <h2> Oops! Looks like this grammar option is under construction, check back soon for an update!</h2>
     <!-- Place holder grammar- delete once specialized fiels all built
         {#if grammarOrigin.name === "Japanese"}
            
