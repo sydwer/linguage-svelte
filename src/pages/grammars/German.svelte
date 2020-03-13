@@ -1,4 +1,11 @@
 <script>
+export let syllables;
+export let dictionary;
+export let makeBoundMorpheme;
+export let markWord;
+
+console.log(makeBoundMorpheme(syllables));
+
 
 </script>
 
