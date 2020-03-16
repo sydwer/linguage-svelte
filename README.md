@@ -4,7 +4,7 @@
 ## General Info
 Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 
-#### Screencapture Links
+#### Screencapture Links:
 
 [Explore Page](https://drive.google.com/open?id=1UUtZdxB4z3mBVbZK3sNCTdT8WSEF2eKQ)
 
@@ -12,7 +12,7 @@ Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 
 [Create Page](https://drive.google.com/open?id=1-AE2pRxjTDyH-1gYUzI6-BMQ017FzBk_)
 
-#### Video Demo Link
+#### Video Demo Link:
 
 [Youtube](https://youtu.be/ieza_VHx8rk)
 
@@ -60,6 +60,12 @@ Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 
 ## To-Do List
 - Finish specialized grammars for remaining languages
+
+  _Currently complete grammars are:_
+  
+    - _English_
+    - _German_
+    
 - Add in a save feature, so that generated languages are not lost upon exiting the page
 - Refactor code to avoid redundant use of variables
 
