@@ -19,26 +19,25 @@ Lin-guage has three major functionalities: *Explore*, *Compare*, and *Create*
 ### Explore:
   Users can click on a "card" for one of the languages in Lin-guage's database. This displays a page with information about     the selected language.  
 
-  Information includes: an inventory of every IPA (International Phonetic Alphabet) symbol/ sound used in that language, basic   facts including number of speakers or how to say hello, and grammar deatails like what writing system it uses.
+  Information includes: an inventory of every IPA (International Phonetic Alphabet) symbol/ sound used in that language, basic   facts including number of speakers or how to say hello, and grammar details like what writing system it uses.
 
   *Every page also includes a link to that language's program on Duolingo's website*
   
 ### Compare:
-  The Compare page utilizes an algorithum that sorts "language transtions" (learning a second language with attention given to   the first/ "native language") ordered easiest transtion to make, to hardest. 
+  The Compare page utilizes an algorithm that sorts "language transtions" (learning a second language with attention given to   the first/ "native language") ordered easiest transition to make, to hardest. 
   
   *Ex. "English -> Spanish" is a language transition where English is the native language, and Spanish is the second/ foreign   language to be learned.*
   
   Clicking on a language comparison in the list displays a side by side table of the two languages. This table shows all
-  language info/traits for both languages that are used in the algorithum, so that users can get a more detailed compare
+  language info/traits for both languages that are used in the algorithm, so that users can get a more detailed compare
   and contrast realtionship between them.
   
 ### Create:
   Users can create their own language with the Create functionaility. The user selects what language they like the "sound of"
-  and one they like the grammar structure of. Lin-guage then runs an algorithum that creates a completley unique language
-  based on these choices.
+  and one they like the grammar structure of. Lin-guage then runs an series of functions that creates a completely unique   language based on these choices.
   
   Every time this function is used, a new mini dictionary of randomly generated nouns, pronouns, verbs, adjectives, and 
-  necessary grammar markers is generated based on the phonology(sound patterns and sound inventory) selected by the user.
+  necessary grammar markers is created based on the phonology(sound patterns and sound inventory) selected by the user.
   
   These words are then used to fill in templates for the selected grammar. There is a unique grammar specialized for each 
   language in the database.
