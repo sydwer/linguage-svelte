@@ -1,6 +1,11 @@
 <script>
     export let dictionary;
-    export let category
+    export let category;
+
+    console.log(dictionary.length)
+    dictionary.forEach(element=>console.log(element))
+
+  
 </script>
 
 <style>
@@ -18,7 +23,10 @@
 </style>
 
 <h2>{category}:</h2>
+
+
 {#each dictionary as word}
 <p><span>{word.original}</span>: {word.latin}   (/{word.IPA}/) </p>
 {/each}
+
 

@@ -1,26 +1,15 @@
 <script>
 import ConjugationTable from '../ConjugationTable.svelte'
-export let syllables;
 export let dictionary;
-export let makeBoundMorpheme;
+export let makeGrammar;
 export let markWord;
 
-// const oldNouns = dictionary.nouns;  
-// const nouns = {}; 
-// const oldPronouns = dictionary.pronouns;
-// const pronouns ={};   
-// const oldVerbs = dictionary.verbs;   
-// const verbs ={};
-// const oldAdjectives = dictionary.adjectives; 
-// const adjectives = {};  
-// const oldNames = dictionary.names;  
-// const names = {}; 
-    console.log(dictionary)
     const names = dictionary.names;
     const nouns = dictionary.nouns;
     const pronouns = dictionary.pronouns;
     const verbs = dictionary.verbs;
     const adjectives = dictionary.adjectives;
+    // const adjectives = dictionary.defaultAdjectives;
 // GRAMMAR DICTIONARIES
     const possesive = {original:"Possesive", latin:"'s", IPA: "s"};
     const plural = {original: "Plural", latin: "s", IPA: "s"};
@@ -49,20 +38,20 @@ export let markWord;
     const determiners = {};
 
 
-    function makeGrammar(word){
-        const randomSyllable = syllables[Math.floor(Math.random() * syllables.length)];
-        let IPA = randomSyllable.IPA;
-        let latin = randomSyllable.latin;
-        // if(word === possesive){
-        //     word.IPA = "'" + IPA;
-        // } else if(word === plural || word === advAdj){
-        //     word.IPA = IPA
-        // }
-        // else{
-            word.IPA = IPA;
-            word.latin = latin;
-        // }
-    }
+    // function makeGrammar(word){
+    //     const randomSyllable = syllables[Math.floor(Math.random() * syllables.length)];
+    //     let IPA = randomSyllable.IPA;
+    //     let latin = randomSyllable.latin;
+    //     // if(word === possesive){
+    //     //     word.IPA = "'" + IPA;
+    //     // } else if(word === plural || word === advAdj){
+    //     //     word.IPA = IPA
+    //     // }
+    //     // else{
+    //         word.IPA = IPA;
+    //         word.latin = latin;
+    //     // }
+    // }
 
     // makeGrammar(possesive);
     // makeGrammar(plural);

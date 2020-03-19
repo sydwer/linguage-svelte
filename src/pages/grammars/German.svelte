@@ -1,10 +1,15 @@
 <script>
-export let syllables;
+// export let syllables;
 export let dictionary;
-export let makeBoundMorpheme;
+export let makeGrammar;
 export let markWord;
 
-console.log(makeBoundMorpheme(syllables));
+
+const test = {original: "test"};
+
+
+makeGrammar(test)
+// console.log(test)
 
 
 </script>

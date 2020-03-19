@@ -12,48 +12,94 @@ export let john;
 export let grammarOrigin;
 
 
-    const defaultNames = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
+    const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
 
-    const defaultNouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
+    const nouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
         {original:"Hello"}, {original:"House"},{original:"Hunger"}, {original:"River"},{original:"Rock"}, {original:"Ten"},{original:"Tree"},
         ];
         // Original is used Headers, rather than English:, inorder to imply that the two following entries are modified versions of the first
 
-    const defaultVerbs = [{original: "Able"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
+    const verbs = [{original: "Able"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
         {original: "Say"}, {original: "Copula"}, {original: "Want"},
         ];
-    const defaultAdjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
+    const adjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
         ];
 
-    const defaultPronouns = [{original: "I"},{original:"We"},{original:"You"}, {original:"You all"},{original:"He"}, {original:"She"},
+    const pronouns = [{original: "I"},{original:"We"},{original:"You"}, {original:"You all"},{original:"He"}, {original:"She"},
         {original:"It"}, {original:"They"},
         ];
+    // const defaultNames = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
 
-    const names = {};
-    const nouns = {};
-    const pronouns ={};
-    const verbs = {};
-    const adjectives = {};
+    // const defaultNouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
+    //     {original:"Hello"}, {original:"House"},{original:"Hunger"}, {original:"River"},{original:"Rock"}, {original:"Ten"},{original:"Tree"},
+    //     ];
+    //     // Original is used Headers, rather than English:, inorder to imply that the two following entries are modified versions of the first
+
+    // const defaultVerbs = [{original: "Able"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
+    //     {original: "Say"}, {original: "Copula"}, {original: "Want"},
+    //     ];
+    // const defaultAdjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
+    //     ];
+
+    // const defaultPronouns = [{original: "I"},{original:"We"},{original:"You"}, {original:"You all"},{original:"He"}, {original:"She"},
+    //     {original:"It"}, {original:"They"},
+    //     ];
+
+    // const names = {};
+    // const nouns = {};
+    // const pronouns ={};
+    // const verbs = {};
+    // const adjectives = {};
+
+    let test = [{original: "one"}, {original: "dos"}];
 
     if(syllableBank){
-        makeDictionary(defaultNouns);
-        makeDictionary(defaultVerbs);
-        makeDictionary(defaultAdjectives);
-        makeDictionary(defaultPronouns);
+        makeDictionary(nouns);
+        makeDictionary(verbs);
+        makeDictionary(adjectives);
+        makeDictionary(pronouns);
+        makeDictionary(test);
         addKeys();
     }
 
     function addKeys(){
-        markWord(defaultNames, names);
-        markWord(defaultNouns, nouns);
-        markWord(defaultPronouns, pronouns);
-        markWord(defaultVerbs, verbs);
-        markWord(defaultAdjectives, adjectives);
+        markWordTest(names);
+        markWordTest(nouns);
+        markWordTest(pronouns);
+        markWordTest(verbs);
+        // markWordTest(defaultAdjectives, adjectives);
+        markWordTest(adjectives);
+        markWordTest(test);
+        testTheTest();
+    }
+    // if(syllableBank){
+    //     makeDictionary(defaultNouns);
+    //     makeDictionary(defaultVerbs);
+    //     makeDictionary(defaultAdjectives);
+    //     makeDictionary(defaultPronouns);
+    //     makeDictionary(test);
+    //     addKeys();
+    // }
+
+    // function addKeys(){
+    //     markWord(defaultNames, names);
+    //     markWord(defaultNouns, nouns);
+    //     markWord(defaultPronouns, pronouns);
+    //     markWord(defaultVerbs, verbs);
+    //     // markWord(defaultAdjectives, adjectives);
+    //     markWordTest(defaultAdjectives);
+    //     markWordTest(test);
+    //     testTheTest();
+    // }
+
+    function testTheTest(){
+        // console.log(adjectives)
     }
 
       function markWord(dictionary, newDictionary){
           dictionary.map(word =>{
-              if(dictionary === defaultNames){
+              if(dictionary === names){
+            //   if(dictionary === defaultNames){
                   newDictionary[word.latin.toLowerCase()] = word
             }else{
                 newDictionary[word.original.toLowerCase()] = word
@@ -63,29 +109,48 @@ export let grammarOrigin;
         dictionary = newDictionary;
    
     }
-    //   function markWordTest(dictionary){
-    //       const newDictionary = {};
-    //       dictionary.map(word =>{
-    //           if(dictionary === defaultNames){
-    //               newDictionary[word.latin.toLowerCase()] = word
-    //         }else{
-    //             newDictionary[word.original.toLowerCase()] = word
-    //         }
 
-    //     })
-    //     dictionary = newDictionary;
-    
-    // }
+      function markWordTest(dictionary){
+          let newDictionary = {};
+          dictionary.map(word =>{
+              if(dictionary === names){
+            //   if(dictionary === defaultNames){
+                  dictionary[word.latin.toLowerCase()] = word
+            }else{
+                dictionary[word.original.toLowerCase()] = word
+            }
+
+        })
+        // dictionary.length = 0;
+        // dictionary = newDictionary;
+    }
        
     const standardDictionary = {names, nouns, pronouns, verbs, adjectives}
-    console.log(standardDictionary)
+    // const testDictionary = {names, nouns, pronouns, verbs, defaultAdjectives}
+    // console.log(standardDictionary)
 
     
 
-    function makeBoundMorpheme(syllables){
-        const morpheme = syllables[Math.floor(Math.random() * syllables.length)]
-        return morpheme
+    // function makeBoundMorpheme(syllables){
+    //     const morpheme = syllables[Math.floor(Math.random() * syllables.length)]
+    //     return morpheme
+    // }
+
+        function makeGrammar(word){
+        const randomSyllable = syllableBank[Math.floor(Math.random() * syllableBank.length)];
+        let IPA = randomSyllable.IPA;
+        let latin = randomSyllable.latin;
+        // if(word === possesive){
+        //     word.IPA = "'" + IPA;
+        // } else if(word === plural || word === advAdj){
+        //     word.IPA = IPA
+        // }
+        // else{
+            word.IPA = IPA;
+            word.latin = latin;
+        // }
     }
+
 
     function makeFreeMorpheme(syllables){
         //want 2-4 syllables so 1-3, and then add one?
@@ -151,25 +216,25 @@ export let grammarOrigin;
         text-decoration: underline;
         margin: 0;
     }
-    #sentances>h2{
-        display: flex;
-        justify-content: center;
-    }
+  
    
 
 </style>
 
-<!-- <h1>Agglutinative Grammar Component Test:</h1> -->
-<!-- <h2>{mary} {john} </h2> -->
+
 <div id="main"> 
     <div id="dictionary">
         <h1>Dictionary:</h1>
         <h4>*Paranthesis indicate the IPA <br/>
         transcription of each word*</h4>
-        <Dictionary category="Nouns" dictionary={defaultNouns}/>
+        <Dictionary category="Nouns" dictionary={nouns}/>
+        <Dictionary category="Pronouns" dictionary={pronouns}/>
+        <Dictionary category="Adjectives" dictionary={adjectives}/>
+        <Dictionary category="Verbs" dictionary={verbs}/>
+        <!-- <Dictionary category="Nouns" dictionary={defaultNouns}/>
         <Dictionary category="Pronouns" dictionary={defaultPronouns}/>
         <Dictionary category="Adjectives" dictionary={defaultAdjectives}/>
-        <Dictionary category="Verbs" dictionary={defaultVerbs}/>
+        <Dictionary category="Verbs" dictionary={defaultVerbs}/> -->
         <!-- {#if grammarOrigin.name !== "English"}
         <Dictionary category="Other" dictionary={determiners}/>
         {/if} -->
@@ -178,11 +243,9 @@ export let grammarOrigin;
     <h1>Basic Grammar:</h1>
     <!-- <div id="grammar-details"></div> -->
     {#if grammarOrigin.name === "English"}
-        <English syllables={syllableBank} dictionary={standardDictionary} makeBoundMorpheme={makeBoundMorpheme}
-            markWord={markWord}
-        />
+        <English  dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWord}/>
     {:else if grammarOrigin.name === "German"}
-        <German syllables={syllableBank} dictionary={standardDictionary} makeBoundMorpheme={makeBoundMorpheme}
+        <German dictionary={standardDictionary} makeGrammar={makeGrammar}
             markWord={markWord}
         />
     {:else}
