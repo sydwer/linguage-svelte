@@ -35,11 +35,14 @@ export let grammarOrigin;
     const verbs = {};
     const adjectives = {};
 
+    let test = [{original: "one"}, {original: "dos"}];
+
     if(syllableBank){
         makeDictionary(defaultNouns);
         makeDictionary(defaultVerbs);
         makeDictionary(defaultAdjectives);
         makeDictionary(defaultPronouns);
+        makeDictionary(test);
         addKeys();
     }
 
@@ -48,7 +51,14 @@ export let grammarOrigin;
         markWord(defaultNouns, nouns);
         markWord(defaultPronouns, pronouns);
         markWord(defaultVerbs, verbs);
-        markWord(defaultAdjectives, adjectives);
+        // markWord(defaultAdjectives, adjectives);
+        markWordTest(defaultAdjectives);
+        markWordTest(test);
+        testTheTest();
+    }
+
+    function testTheTest(){
+        console.log(defaultAdjectives)
     }
 
       function markWord(dictionary, newDictionary){
@@ -63,29 +73,32 @@ export let grammarOrigin;
         dictionary = newDictionary;
    
     }
-    //   function markWordTest(dictionary){
-    //       const newDictionary = {};
-    //       dictionary.map(word =>{
-    //           if(dictionary === defaultNames){
-    //               newDictionary[word.latin.toLowerCase()] = word
-    //         }else{
-    //             newDictionary[word.original.toLowerCase()] = word
-    //         }
 
-    //     })
-    //     dictionary = newDictionary;
-    
-    // }
+      function markWordTest(dictionary){
+          console.log(dictionary, "start")
+          let newDictionary = {};
+          dictionary.map(word =>{
+              if(dictionary === defaultNames){
+                  dictionary[word.latin.toLowerCase()] = word
+            }else{
+                dictionary[word.original.toLowerCase()] = word
+            }
+
+        })
+        dictionary.length = 0;
+        dictionary = newDictionary;
+    }
        
     const standardDictionary = {names, nouns, pronouns, verbs, adjectives}
-    console.log(standardDictionary)
+    const testDictionary = {names, nouns, pronouns, verbs, defaultAdjectives}
+    // console.log(standardDictionary)
 
     
 
-    function makeBoundMorpheme(syllables){
-        const morpheme = syllables[Math.floor(Math.random() * syllables.length)]
-        return morpheme
-    }
+    // function makeBoundMorpheme(syllables){
+    //     const morpheme = syllables[Math.floor(Math.random() * syllables.length)]
+    //     return morpheme
+    // }
 
         function makeGrammar(word){
         const randomSyllable = syllableBank[Math.floor(Math.random() * syllableBank.length)];
@@ -167,16 +180,12 @@ export let grammarOrigin;
         text-decoration: underline;
         margin: 0;
     }
-    #sentances>h2{
-        display: flex;
-        justify-content: center;
-    }
+  
    
 
 </style>
 
-<!-- <h1>Agglutinative Grammar Component Test:</h1> -->
-<!-- <h2>{mary} {john} </h2> -->
+
 <div id="main"> 
     <div id="dictionary">
         <h1>Dictionary:</h1>
@@ -194,9 +203,8 @@ export let grammarOrigin;
     <h1>Basic Grammar:</h1>
     <!-- <div id="grammar-details"></div> -->
     {#if grammarOrigin.name === "English"}
-        <English  dictionary={standardDictionary} makeGrammar={makeGrammar}
-            markWord={markWord}
-        />
+        <English  dictionary={testDictionary} makeGrammar={makeGrammar} markWord={markWord}/>
+        <!-- <English  dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWord}/> -->
     {:else if grammarOrigin.name === "German"}
         <German dictionary={standardDictionary} makeGrammar={makeGrammar}
             markWord={markWord}
