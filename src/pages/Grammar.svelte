@@ -87,6 +87,22 @@ export let grammarOrigin;
         return morpheme
     }
 
+        function makeGrammar(word){
+        const randomSyllable = syllableBank[Math.floor(Math.random() * syllableBank.length)];
+        let IPA = randomSyllable.IPA;
+        let latin = randomSyllable.latin;
+        // if(word === possesive){
+        //     word.IPA = "'" + IPA;
+        // } else if(word === plural || word === advAdj){
+        //     word.IPA = IPA
+        // }
+        // else{
+            word.IPA = IPA;
+            word.latin = latin;
+        // }
+    }
+
+
     function makeFreeMorpheme(syllables){
         //want 2-4 syllables so 1-3, and then add one?
         const randomSyllablesIPA = []
@@ -178,11 +194,11 @@ export let grammarOrigin;
     <h1>Basic Grammar:</h1>
     <!-- <div id="grammar-details"></div> -->
     {#if grammarOrigin.name === "English"}
-        <English syllables={syllableBank} dictionary={standardDictionary} makeBoundMorpheme={makeBoundMorpheme}
+        <English  dictionary={standardDictionary} makeGrammar={makeGrammar}
             markWord={markWord}
         />
     {:else if grammarOrigin.name === "German"}
-        <German syllables={syllableBank} dictionary={standardDictionary} makeBoundMorpheme={makeBoundMorpheme}
+        <German dictionary={standardDictionary} makeGrammar={makeGrammar}
             markWord={markWord}
         />
     {:else}
