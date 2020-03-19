@@ -8,8 +8,8 @@ export let markWord;
     const nouns = dictionary.nouns;
     const pronouns = dictionary.pronouns;
     const verbs = dictionary.verbs;
-    // const adjectives = dictionary.adjectives;
-    const adjectives = dictionary.defaultAdjectives;
+    const adjectives = dictionary.adjectives;
+    // const adjectives = dictionary.defaultAdjectives;
 // GRAMMAR DICTIONARIES
     const possesive = {original:"Possesive", latin:"'s", IPA: "s"};
     const plural = {original: "Plural", latin: "s", IPA: "s"};

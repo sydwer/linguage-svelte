@@ -9,7 +9,7 @@ const test = {original: "test"};
 
 
 makeGrammar(test)
-console.log(test)
+// console.log(test)
 
 
 </script>
