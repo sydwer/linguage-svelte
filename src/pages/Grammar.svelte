@@ -58,7 +58,7 @@ export let grammarOrigin;
         makeDictionary(verbs);
         makeDictionary(adjectives);
         makeDictionary(pronouns);
-        makeDictionary(test);
+        // makeDictionary(test);
         addKeys();
     }
 
@@ -70,7 +70,7 @@ export let grammarOrigin;
         // markWordTest(defaultAdjectives, adjectives);
         markWordTest(adjectives);
         markWordTest(test);
-        testTheTest();
+        // testTheTest();
     }
     // if(syllableBank){
     //     makeDictionary(defaultNouns);
@@ -111,7 +111,7 @@ export let grammarOrigin;
     }
 
       function markWordTest(dictionary){
-          let newDictionary = {};
+        //   let dictionary = [{}];
           dictionary.map(word =>{
               if(dictionary === names){
             //   if(dictionary === defaultNames){
@@ -119,8 +119,9 @@ export let grammarOrigin;
             }else{
                 dictionary[word.original.toLowerCase()] = word
             }
-
+                
         })
+        // rework so that the dictionary only has entries with name MSMediaKeySession, not index numbers
         // dictionary.length = 0;
         // dictionary = newDictionary;
     }
@@ -245,7 +246,7 @@ export let grammarOrigin;
     {#if grammarOrigin.name === "English"}
         <English  dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWordTest}/>
     {:else if grammarOrigin.name === "German"}
-        <German dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWord}/>
+        <German dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWordTest}/>
     {:else}
     <br>
     <br>

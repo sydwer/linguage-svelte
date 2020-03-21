@@ -2,8 +2,7 @@
     export let dictionary;
     export let category;
 
-    console.log(dictionary.length)
-    dictionary.forEach(element=>console.log(element))
+  
 
   
 </script>
