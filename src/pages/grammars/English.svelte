@@ -14,28 +14,28 @@ export let markWord;
     const possesive = {original:"Possesive", latin:"'s", IPA: "s"};
     const plural = {original: "Plural", latin: "s", IPA: "s"};
     const advAdj = {original: "Adverb/Adjective", latin: "y", IPA: "i"};
-    const oldCasePronouns = [{original: "Me"},{original: "Him"}, 
+    const casePronouns = [{original: "Me"},{original: "Him"}, 
         {original: "Her"},{original: "Them"},{original: "My"},{original: "Your"},
         {original: "His"},{original: "Hers"},{original: "Their"}
     ];
-    const  casePronouns = {};
-    const oldPrepositions = [{original: "Around"},{original: "By"},{original: "From"},
+    // const  casePronouns = {};
+    const prepositions = [{original: "Around"},{original: "By"},{original: "From"},
     {original: "To"},{original: "Through"},{original: "Toward"}
     ];
-    const prepositions = {};
+    // const prepositions = {};
 
-    const oldTenses =[{original: "Past"},{original: "Present"}
+    const tenses =[{original: "Past"},{original: "Present"}
     ];
-    const tenses = {};
+    // const tenses = {};
 
-    const oldHelperVerbs =[{original: "Future"}, {original: "Imperfect"}, 
+    const helperVerbs =[{original: "Future"}, {original: "Imperfect"}, 
     {original: "Conditional"}
     ];
-    const helperVerbs ={};
+    // const helperVerbs ={};
 
-    const oldDeterminers = [{original: "The"}, {original: "A"},{original: "This"}, {original: "That"}
+    const determiners = [{original: "The"}, {original: "A"},{original: "This"}, {original: "That"}
     ,]
-    const determiners = {};
+    // const determiners = {};
 
 
     // function makeGrammar(word){
@@ -53,15 +53,19 @@ export let markWord;
     //     // }
     // }
 
-    // makeGrammar(possesive);
-    // makeGrammar(plural);
-    // makeGrammar(advAdj);
-    oldTenses.map(makeGrammar);
-    oldHelperVerbs.map(makeGrammar);
-    oldDeterminers.map(makeGrammar);
-    oldCasePronouns.map(makeGrammar);
-    oldPrepositions.map(makeGrammar);
+   
+    tenses.map(makeGrammar);
+    helperVerbs.map(makeGrammar);
+    determiners.map(makeGrammar);
+    casePronouns.map(makeGrammar);
+    prepositions.map(makeGrammar);
     const endings = [possesive,plural,advAdj];
+    // oldTenses.map(makeGrammar);
+    // oldHelperVerbs.map(makeGrammar);
+    // oldDeterminers.map(makeGrammar);
+    // oldCasePronouns.map(makeGrammar);
+    // oldPrepositions.map(makeGrammar);
+    // const endings = [possesive,plural,advAdj];
     
     
     // function markWord(dictionary, newDictionary){
@@ -76,17 +80,17 @@ export let markWord;
     // }
 
 
+    
+    markWord(tenses);
+    markWord(helperVerbs);
+    markWord(determiners);
+    markWord(casePronouns);
+    markWord(prepositions);
     // markWord(oldTenses,tenses);
-    // markWord(oldNouns,nouns);
-    // markWord(oldPronouns,pronouns);
-    // markWord(oldAdjectives,adjectives);
-    // markWord(oldNames,names);
-    // markWord(oldVerbs,verbs);
-    markWord(oldTenses,tenses);
-    markWord(oldHelperVerbs,helperVerbs);
-    markWord(oldDeterminers, determiners);
-    markWord(oldCasePronouns, casePronouns);
-    markWord(oldPrepositions, prepositions);
+    // markWord(oldHelperVerbs,helperVerbs);
+    // markWord(oldDeterminers, determiners);
+    // markWord(oldCasePronouns, casePronouns);
+    // markWord(oldPrepositions, prepositions);
 
    
     
@@ -109,13 +113,21 @@ h4{
 
 
 <h2>Verb Endings</h2>
+<ConjugationTable allInfo={tenses} columns="1"/>
+<h2>"Helper Verbs"</h2>
+<ConjugationTable allInfo={helperVerbs} columns="1"/>
+<h2>Useful Noun Endings</h2>
+<ConjugationTable allInfo={endings} columns="1"/>
+<h2>Prepositions</h2>
+<ConjugationTable allInfo={prepositions} columns="1"/>
+<!-- <h2>Verb Endings</h2>
 <ConjugationTable allInfo={oldTenses} columns="1"/>
 <h2>"Helper Verbs"</h2>
 <ConjugationTable allInfo={oldHelperVerbs} columns="1"/>
 <h2>Useful Noun Endings</h2>
 <ConjugationTable allInfo={endings} columns="1"/>
 <h2>Prepositions</h2>
-<ConjugationTable allInfo={oldPrepositions} columns="1"/>
+<ConjugationTable allInfo={oldPrepositions} columns="1"/> -->
 
 
 <h2> Sample Sentences:</h2>

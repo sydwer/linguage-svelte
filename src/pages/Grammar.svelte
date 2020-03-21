@@ -243,16 +243,17 @@ export let grammarOrigin;
     <h1>Basic Grammar:</h1>
     <!-- <div id="grammar-details"></div> -->
     {#if grammarOrigin.name === "English"}
-        <English  dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWord}/>
+        <English  dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWordTest}/>
     {:else if grammarOrigin.name === "German"}
-        <German dictionary={standardDictionary} makeGrammar={makeGrammar}
-            markWord={markWord}
-        />
+        <German dictionary={standardDictionary} makeGrammar={makeGrammar} markWord={markWord}/>
     {:else}
     <br>
     <br>
     <br>
-    <h2> Oops! Looks like this grammar option is under construction, check back soon for an update!</h2>
+    <h2> 
+    Oops! Looks like this grammar option is under construction, 
+    check back soon for an update!
+    </h2>
     {/if}
     </div>
 </div>
