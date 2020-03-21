@@ -1,5 +1,6 @@
 <script>
-// export let syllables;
+import ConjugationTable from '../ConjugationTable.svelte'
+import GermanGrammarTable from '../tables/GermanGrammarTable.svelte'
 export let dictionary;
 export let makeGrammar;
 export let markWord;
@@ -7,11 +8,10 @@ export let markWord;
 
 const names = dictionary.names;
 const nouns = dictionary.nouns;
-const pronouns = dictionary.pronouns;
 const verbs = dictionary.verbs;
 const adjectives = dictionary.adjectives;
 
-// There's a ton of cases markers in German, see if you can't rework this to be more concise
+// There's a ton of cases markers in German, come back if figuring out a more concide way of doing this
 const mascDet = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},
 {original: "Genitive"},];
 
@@ -48,25 +48,62 @@ const datEndings = [{original: "Masculine"},{original: "Feminine"},{original: "N
 const genEndings = [{original: "Masculine"},{original: "Feminine"},{original: "Neutral"},
 {original: "Plural"},];
 
+const nomPronouns = [{original: "I"},{original: "We"},{original: "You"},
+{original:"You_all"},{original:"He"},{original:"She"},{original:"It"},
+{original:"They"},];
+
+const accPronouns = [{original: "I"},{original: "We"},{original: "You"},
+{original:"You_all"},{original:"He"},{original:"She"},{original:"It"},
+{original:"They"},];
+
+const datPronouns = [{original: "I"},{original: "We"},{original: "You"},
+{original:"You_all"},{original:"He"},{original:"She"},{original:"It"},
+{original:"They"},];
+
+const genPronouns = [{original: "I"},{original: "We"},{original: "You"},
+{original:"You_all"},{original:"He"},{original:"She"},{original:"It"},
+{original:"They"},];
+
+const pronouns = {nom: nomPronouns, acc: accPronouns, dat: datPronouns, gen: genPronouns};
+
 const cases = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
 nomEndings, accEndings, datEndings, genEndings];
 // Det is determiners('the'), and Art is articles('a' or 'an')
+// See if this is better for using in making SVGElementInstanceList, otehrwise get rid of it ^^
+
+const presentTenses =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
+{original: "He/She/It"},{original:"They"},];
+
+const pastTenses =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
+{original: "He/She/It"},{original:"They"},];
 
 const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along"}, {original: "For"}, {original: "Against"},
 {original: "Towards"}, {original: "Without"},{original: "About"},];
 
+
+
+const germanGrammar = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
+nomEndings, accEndings, datEndings, genEndings, presentTenses, pastTenses, prepositions,
+nomPronouns, accPronouns, datPronouns, genPronouns];
+
 function makeGrammarDictionaries(){
-  prepositions.map(makeGrammar);
-  cases.map(caseType => {
-    caseType.map(makeGrammar)
+  germanGrammar.map(dictionary=>{
+    dictionary.map(makeGrammar)
   })
+  // prepositions.map(makeGrammar);
+  // cases.map(caseType => {
+  //   caseType.map(makeGrammar)
+  // })
 }
 
 function makeKeys(){
-  markWord(prepositions);
-  cases.map(caseType => {
-    markWord(caseType)
+  germanGrammar.map(dictionary=>{
+    markWord(dictionary)
   })
+  // markWord(prepositions);
+  // cases.map(caseType => {
+  //   markWord(caseType)
+  // })
 }
 
 function makeGermanGrammar(){
@@ -75,29 +112,22 @@ function makeGermanGrammar(){
 }
 
 makeGermanGrammar();
-
-
-
-
-  // mascDet.map(makeGrammar)
-  // femDet.map(makeGrammar)
-  // neutDet.map(makeGrammar)
-  // plDet.map(makeGrammar)
-  // mascArt.map(makeGrammar)
-  // femArt.map(makeGrammar)
-  // neutArt.map(makeGrammar)
-  // plArt.map(makeGrammar)
-
-
-
-
-// console.log(test)
-
+console.log(pronouns)
 
 </script>
 
 
-
+<style>
+</style>
+<h2>Present Tense Verb Endings:</h2>
+<ConjugationTable allInfo={presentTenses} columns="2"/>
+<br>
+<h2>Past Tense Verb Endings:</h2>
+<ConjugationTable allInfo={pastTenses} columns="2"/>
+<br>
+<h2>Pronouns (by Grammatical Case)</h2>
+<GermanGrammarTable pronouns={pronouns}/>
+<br>
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
 <!-- include nach vs zu example -->
 

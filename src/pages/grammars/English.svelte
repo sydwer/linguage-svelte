@@ -120,12 +120,16 @@ h4{
 
 <h2>Verb Endings</h2>
 <ConjugationTable allInfo={tenses} columns="1"/>
+<br/>
 <h2>"Helper Verbs"</h2>
 <ConjugationTable allInfo={helperVerbs} columns="1"/>
+<br/>
 <h2>Useful Noun Endings</h2>
 <ConjugationTable allInfo={endings} columns="1"/>
+<br/>
 <h2>Prepositions</h2>
 <ConjugationTable allInfo={prepositions} columns="1"/>
+<br/>
 <!-- <h2>Verb Endings</h2>
 <ConjugationTable allInfo={oldTenses} columns="1"/>
 <h2>"Helper Verbs"</h2>

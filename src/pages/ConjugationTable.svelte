@@ -2,22 +2,9 @@
     import ConjugationRow from './ConjugationRow.svelte'
     export let allInfo;
     export let columns;
-    let filteredInfo = allInfo
+    
 
-    if(columns === "-1"){
-        const noFutureTense = allInfo.filter(function(info) {
-               return info.original !== "Future";
-            })
-            filteredInfo = noFutureTense
-        const nonPast = filteredInfo.find(obj => obj.original === 'Present')
-        nonPast.original = "Non-Past"
-    }
-    if(columns === "-2"){
-        const noNueter = allInfo.filter(function(info) {
-               return info.original !== "Neutral";
-            })
-            filteredInfo = noNueter
-    }
+ 
 </script>
 
 <style>
@@ -25,21 +12,22 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 1rem;
+        width: 100%;
     }
-    div{
+    #columns1{
         width: 75%;
     }
 </style>
 <!-- <h2>{grammarOrigin.name}</h2> -->
 {#if columns === "2"}
 <div id="columns2">
-    {#each filteredInfo as info}
+    {#each allInfo as info}
         <ConjugationRow info={info.original} generatedInfo={info.latin}/>
     {/each}
 </div>
 {:else}
 <div id="columns1">
-    {#each filteredInfo as info}
+    {#each allInfo as info}
         <ConjugationRow info={info.original} generatedInfo={info.latin}/>
     {/each}
 </div>
