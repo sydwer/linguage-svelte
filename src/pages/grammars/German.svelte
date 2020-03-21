@@ -52,16 +52,32 @@ const cases = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt,
 nomEndings, accEndings, datEndings, genEndings];
 // Det is determiners('the'), and Art is articles('a' or 'an')
 
+const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along"}, {original: "For"}, {original: "Against"},
+{original: "Towards"}, {original: "Without"},{original: "About"},];
 
-cases.map(caseType => {
-  caseType.map(makeGrammar)
-})
+function makeGrammarDictionaries(){
+  prepositions.map(makeGrammar);
+  cases.map(caseType => {
+    caseType.map(makeGrammar)
+  })
+}
 
-cases.map(caseType => {
-  markWord(caseType)
-})
+function makeKeys(){
+  markWord(prepositions);
+  cases.map(caseType => {
+    markWord(caseType)
+  })
+}
 
-console.log(cases)
+function makeGermanGrammar(){
+  makeGrammarDictionaries();
+  makeKeys();
+}
+
+makeGermanGrammar();
+
+
+
 
   // mascDet.map(makeGrammar)
   // femDet.map(makeGrammar)
@@ -74,7 +90,7 @@ console.log(cases)
 
 
 
-makeGrammar(test)
+
 // console.log(test)
 
 
