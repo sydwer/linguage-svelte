@@ -36,7 +36,7 @@ export let markWord;
     const determiners = [{original: "The"}, {original: "A"},{original: "This"}, {original: "That"}
     ,]
     // const determiners = {};
-
+    const englishGrammar = [prepositions,tenses,helperVerbs,determiners, casePronouns]
 
     // function makeGrammar(word){
     //     const randomSyllable = syllables[Math.floor(Math.random() * syllables.length)];
@@ -53,19 +53,18 @@ export let markWord;
     //     // }
     // }
 
-   
-    tenses.map(makeGrammar);
-    helperVerbs.map(makeGrammar);
-    determiners.map(makeGrammar);
-    casePronouns.map(makeGrammar);
-    prepositions.map(makeGrammar);
+   function makeEnglishGrammarDictionaries(){
+       englishGrammar.map(grammarTrait =>{
+           grammarTrait.map(makeGrammar);
+       })
+   }
+    // tenses.map(makeGrammar);
+    // helperVerbs.map(makeGrammar);
+    // determiners.map(makeGrammar);
+    // casePronouns.map(makeGrammar);
+    // prepositions.map(makeGrammar);
     const endings = [possesive,plural,advAdj];
-    // oldTenses.map(makeGrammar);
-    // oldHelperVerbs.map(makeGrammar);
-    // oldDeterminers.map(makeGrammar);
-    // oldCasePronouns.map(makeGrammar);
-    // oldPrepositions.map(makeGrammar);
-    // const endings = [possesive,plural,advAdj];
+   
     
     
     // function markWord(dictionary, newDictionary){
@@ -80,17 +79,24 @@ export let markWord;
     // }
 
 
-    
-    markWord(tenses);
-    markWord(helperVerbs);
-    markWord(determiners);
-    markWord(casePronouns);
-    markWord(prepositions);
-    // markWord(oldTenses,tenses);
-    // markWord(oldHelperVerbs,helperVerbs);
-    // markWord(oldDeterminers, determiners);
-    // markWord(oldCasePronouns, casePronouns);
-    // markWord(oldPrepositions, prepositions);
+    function addKeysToGrammar(){
+        englishGrammar.map(dictionary =>{
+            markWord(dictionary)
+        })
+    }
+    // markWord(tenses);
+    // markWord(helperVerbs);
+    // markWord(determiners);
+    // markWord(casePronouns);
+    // markWord(prepositions);
+
+    function makeEnglishGrammar(){
+        makeEnglishGrammarDictionaries();
+        addKeysToGrammar();
+    }
+
+    makeEnglishGrammar();
+  
 
    
     
