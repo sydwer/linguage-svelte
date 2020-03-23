@@ -125,7 +125,7 @@ console.log(pronouns)
 <h2>Past Tense Verb Endings:</h2>
 <ConjugationTable allInfo={pastTenses} columns="2"/>
 <br>
-<h2>Pronouns (by Grammatical Case)</h2>
+<h2>Pronouns (by Grammatical Case):</h2>
 <GermanGrammarTable pronouns={pronouns}/>
 <br>
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->

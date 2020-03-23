@@ -5,6 +5,7 @@
     const dat = pronouns.dat;
     const gen = pronouns.gen;
     console.log(nom)
+    // restructure pronouns so that it's by person rather than case, so that this can be component
 
 </script>
 
