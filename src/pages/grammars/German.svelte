@@ -72,10 +72,10 @@ nomEndings, accEndings, datEndings, genEndings];
 // See if this is better for using in making SVGElementInstanceList, otehrwise get rid of it ^^
 
 const presentTenses =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
-{original: "He/She/It"},{original:"They"},];
+{original: "He_She_It"},{original:"They"},];
 
 const pastTenses =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
-{original: "He/She/It"},{original:"They"},];
+{original: "He_She_It"},{original:"They"},];
 
 const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along"}, {original: "For"}, {original: "Against"},
 {original: "Towards"}, {original: "Without"},{original: "About"},];
@@ -125,9 +125,25 @@ console.log(pronouns)
 <h2>Past Tense Verb Endings:</h2>
 <ConjugationTable allInfo={pastTenses} columns="2"/>
 <br>
-<h2>Pronouns (by Grammatical Case)</h2>
+<h2>Pronouns (by Grammatical Case):</h2>
 <GermanGrammarTable pronouns={pronouns}/>
 <br>
+<br>
+<h2> Sample Sentances: </h2>
+<br>
+<h4>
+<span>{names.mary.IPA}</span> <span>{verbs.say.IPA}-{presentTenses.he_she_it.IPA}</span> 
+<span>"{nouns.hello.IPA}"</span>
+</h4>
+<h4>
+<span>{names.mary.latin}</span> <span>{verbs.say.latin}-{presentTenses.he_she_it.latin}</span> 
+<span>"{nouns.hello.latin}"</span>
+</h4>
+<h4>
+<span>Mary</span> <span>say-PRES</span> <span>"hello"</span>
+</h4>
+<h4>'Mary says "hello".'</h4>
+
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
 <!-- include nach vs zu example -->
 
