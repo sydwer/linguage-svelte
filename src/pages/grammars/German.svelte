@@ -74,8 +74,12 @@ nomEndings, accEndings, datEndings, genEndings];
 const presentTenses =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
 {original: "He_She_It"},{original:"They"},];
 
-const pastTenses =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
-{original: "He_She_It"},{original:"They"},];
+// const pastTenseSuffix =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
+// {original: "He_She_It"},{original:"They"},];
+
+// const pastTensePrefixes =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
+// {original: "He_She_It"},{original:"They"},];
+const pastTenseAffixes =[{original: "Prefix"},{original: "Suffix"}];
 
 const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along"}, {original: "For"}, {original: "Against"},
 {original: "Towards"}, {original: "Without"},{original: "About"},];
@@ -83,7 +87,7 @@ const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along
 
 
 const germanGrammar = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
-nomEndings, accEndings, datEndings, genEndings, presentTenses, pastTenses, prepositions,
+nomEndings, accEndings, datEndings, genEndings, presentTenses, pastTenseAffixes, prepositions,
 nomPronouns, accPronouns, datPronouns, genPronouns];
 
 function makeGrammarDictionaries(){
@@ -114,16 +118,29 @@ function makeGermanGrammar(){
 makeGermanGrammar();
 console.log(pronouns)
 
+
+
 </script>
 
 
 <style>
+div{
+    width: 100%;
+    border-bottom: 2px solid grey
+}
+h4{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
 </style>
+
+
 <h2>Present Tense Verb Endings:</h2>
 <ConjugationTable allInfo={presentTenses} columns="2"/>
 <br>
-<h2>Past Tense Verb Endings:</h2>
-<ConjugationTable allInfo={pastTenses} columns="2"/>
+<h2>Past Tense Verb Prefix and suffix:</h2>
+<ConjugationTable allInfo={pastTenseAffixes} columns="2"/>
 <br>
 <h2>Pronouns (by Grammatical Case):</h2>
 <GermanGrammarTable pronouns={pronouns}/>
@@ -131,18 +148,37 @@ console.log(pronouns)
 <br>
 <h2> Sample Sentances: </h2>
 <br>
-<h4>
-<span>{names.mary.IPA}</span> <span>{verbs.say.IPA}-{presentTenses.he_she_it.IPA}</span> 
-<span>"{nouns.hello.IPA}"</span>
-</h4>
-<h4>
-<span>{names.mary.latin}</span> <span>{verbs.say.latin}-{presentTenses.he_she_it.latin}</span> 
-<span>"{nouns.hello.latin}"</span>
-</h4>
-<h4>
-<span>Mary</span> <span>say-PRES</span> <span>"hello"</span>
-</h4>
-<h4>'Mary says "hello".'</h4>
+<div>
+  <h4>
+    <span>{names.mary.IPA}</span> <span>{verbs.say.IPA}-{presentTenses.he_she_it.IPA}</span> 
+    <span>"{nouns.hello.IPA}"</span>
+  </h4>
+  <h4>
+    <span>{names.mary.latin}</span> <span>{verbs.say.latin}-{presentTenses.he_she_it.latin}</span> 
+    <span>"{nouns.hello.latin}"</span>
+  </h4>
+  <h4>
+    <span>Mary</span> <span>say-PRES</span> <span>"hello"</span>
+  </h4>
+  <h4>'Mary says "hello".'</h4>
+</div>
+<div>
+  <h4>
+    <span>{mascDet.nominative.IPA}</span><span>{nouns.tree.IPA}</span>
+    <span>{verbs.copula.IPA}-{presentTenses.he_she_it.IPA}</span>
+    <span>{pastTenseAffixes.prefix.IPA}-{verbs.die.IPA}-{pastTenseAffixes.suffix.IPA}</span>
+  </h4>
+  <h4>
+    <span>{mascDet.nominative.latin}</span><span>{nouns.tree.latin}</span>
+    <span>{verbs.copula.latin}-{presentTenses.he_she_it.latin}</span>
+    <span>{pastTenseAffixes.prefix.latin}-{verbs.die.latin}-{pastTenseAffixes.suffix.latin}</span>
+  </h4>
+  <h4>
+    <span>the.MASC.NOM</span><span>tree</span>
+    <span>to be-PRES.3sg</span><span>PAST-die-PAST</span>
+  </h4>
+  <h4>'The tree died.'</h4>
+</div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
 <!-- include nach vs zu example -->
