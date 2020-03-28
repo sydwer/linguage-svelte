@@ -152,7 +152,7 @@ h4{
 <GermanGrammarTable pronouns={pronouns}/>
 <br>
 <br>
-<h2> Sample Sentances: </h2>
+<h2> Sample Sentences: </h2>
 <br>
 <div>
   <h4>
@@ -181,13 +181,27 @@ h4{
   </h4>
   <h4>
     <span>the.MASC.NOM</span><span>tree</span>
-    <span>to be-PRES.3sg</span><span>PAST-die-PAST</span>
+    <span>to be-PRES.3SG</span><span>PAST-die-PAST</span>
   </h4>
   <h4>'The tree died.'</h4>
 </div>
 <div>
   <h4>
-    <span>{plDet.nominative.IPA}</span><span>{nouns.cat}</span>
+    <span>{plDet.nominative.IPA}</span><span>{nouns.cat.IPA}-s</span>
+    <span>{verbs.will.IPA}-{presentTenses.he_she_it.IPA}</span>
+    <span>{plArt.accusative.IPA}</span><span>{nouns.fish.IPA}</span>
+    <span>{pastTenseAffixes.prefix.IPA}-{verbs.eat.IPA}-{pastTenseAffixes.suffix.IPA}</span>
+  </h4>
+  <h4>
+    <span>{plDet.nominative.latin}</span><span>{nouns.cat.latin}-s</span>
+    <span>{verbs.will.latin}-{presentTenses.he_she_it.latin}</span>
+    <span>{plArt.accusative.latin}</span><span>{nouns.fish.latin}</span>
+    <span>{pastTenseAffixes.prefix.latin}-{verbs.eat.latin}-{pastTenseAffixes.suffix.latin}</span>
+  </h4>
+  <h4>
+    <span>the.PL.NOM</span><span>cat-PL</span>
+    <span>will-PRES.3SG</span><span>PL.ACC</span><span>fish</span>
+    <span>PAST-eat-PAST</span>
   </h4>
   <h4>'The cats will eat fish.'</h4>
 </div>
