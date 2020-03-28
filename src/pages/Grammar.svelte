@@ -20,7 +20,7 @@ export let grammarOrigin;
         // Original is used Headers, rather than English:, inorder to imply that the two following entries are modified versions of the first
 
     const verbs = [{original: "Able"},{original: "Eat"}, {original: "Enjoy"}, {original: "Die"}, {original: "Give"}, {original: "Have"}, 
-        {original: "Say"}, {original: "Copula"}, {original: "Want"},
+        {original: "Say"}, {original: "Copula"}, {original: "Want"},{original: "Will"},
         ];
     const adjectives = [{original: "Big"}, {original: "Cute"}, {original: "Fast"}, {original: "Hungry"},
         ];
@@ -28,6 +28,8 @@ export let grammarOrigin;
     const pronouns = [{original: "I"},{original:"We"},{original:"You"}, {original:"You all"},{original:"He"}, {original:"She"},
         {original:"It"}, {original:"They"},
         ];
+
+   
     // const defaultNames = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
 
     // const defaultNouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},

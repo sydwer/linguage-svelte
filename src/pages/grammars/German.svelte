@@ -11,6 +11,10 @@ const nouns = dictionary.nouns;
 const verbs = dictionary.verbs;
 const adjectives = dictionary.adjectives;
 
+// const will = {original: "Will"};
+// verbs.push(will)
+// console.log(will)
+
 // There's a ton of cases markers in German, come back if figuring out a more concide way of doing this
 const mascDet = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},
 {original: "Genitive"},];
@@ -83,6 +87,8 @@ const pastTenseAffixes =[{original: "Prefix"},{original: "Suffix"}];
 
 const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along"}, {original: "For"}, {original: "Against"},
 {original: "Towards"}, {original: "Without"},{original: "About"},];
+
+
 
 
 
@@ -178,6 +184,12 @@ h4{
     <span>to be-PRES.3sg</span><span>PAST-die-PAST</span>
   </h4>
   <h4>'The tree died.'</h4>
+</div>
+<div>
+  <h4>
+    <span>{plDet.nominative.IPA}</span><span>{nouns.cat}</span>
+  </h4>
+  <h4>'The cats will eat fish.'</h4>
 </div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
