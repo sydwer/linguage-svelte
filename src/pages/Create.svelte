@@ -164,14 +164,15 @@
     }
     function makeSonorantList(){
         const w = phonemes.find(obj => obj.symbol === 'w');
-        const nasals = filterPhonemes("nasal", "manner");
+        // const nasals = filterPhonemes("nasal", "manner");
         const laterals = filterPhonemes("lateral approximant", "manner");
         if(w){
             laterals.push(w)
             // ensuring that if w isn't in sound inventory, im not pushing an undefined item into soundBank
         }
         const rhotics = filterPhonemes("r", "latin");
-        const sonorants = nasals.concat(laterals, rhotics)
+        // const sonorants = nasals.concat(laterals, rhotics)
+        const sonorants = laterals.concat(rhotics)
         return sonorants
     };
 
@@ -180,8 +181,11 @@
         return object
     }
 
+    // CHANGE THIS TO DIFFERENT FUNCTIONS FOR EACH TYPE OF CLUSTER
     function makeConsonantCluster(sonorants,numberOfSyllables){
         const consonantClusterSyllables = [];
+        const nasals = filterPhonemes("nasal", "manner");
+        const allSonorants = sonorants.concat(nasals);
         const s = filterPhonemes("s", "latin").concat(filterPhonemes("sh", "latin"));
         const allPlosives = filterPhonemes("plosive", "manner");
         const plosives = filterPlosives(allPlosives);
@@ -191,18 +195,23 @@
         for(i = 0; i < numberOfSyllables; i ++){
             const startingSound = getRandomItem(startingSounds);
             const sonorant = getRandomItem(sonorants);
+            const sonorantWithN = getRandomItem(allSonorants);
             const vowel1 = getRandomItem(vowels);
             const plosive = getRandomItem(plosives);
             const lateral = getRandomItem(laterals);
             const vowel2 = getRandomItem(vowels);
+            const vowel3 = getRandomItem(vowels);
             //Without these constants, the IPA doesn't match the latin, since it just re-assigns the phoneme
             const consonantCluster1IPA = [startingSound.symbol, sonorant.symbol, vowel1.symbol].join("");
             const consonantCluster1Latin = [startingSound.latin, sonorant.latin, vowel1.latin].join("");
             const consonantCluster2IPA = [plosive.symbol,lateral.symbol, vowel2.symbol].join("");
             const consonantCluster2Latin = [plosive.latin,lateral.latin, vowel2.latin].join("");
+            const consonantCluster3IPA = [s.symbol,lateral.symbol, sonorantWithN.symbol, vowel3.symbol].join("");
+            const consonantCluster3Latin = [s.latin,lateral.latin, sonorantWithN.latin, vowel3.latin].join("");
             const consonantCluster1 = {IPA: consonantCluster1IPA, latin: consonantCluster1Latin};
             const consonantCluster2 = {IPA: consonantCluster2IPA, latin: consonantCluster2Latin};
-            syllableBank.push(consonantCluster1, consonantCluster2)
+            const consonantCluster3 = {IPA: consonantCluster3IPA, latin: consonantCluster3Latin};
+            syllableBank.push(consonantCluster1, consonantCluster2, consonantCluster3)
         }
     }
 

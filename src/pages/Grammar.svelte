@@ -11,7 +11,7 @@ export let mary;
 export let john;
 export let grammarOrigin;
 
-
+// TRANSFER TO BAcKEND SCHEMA WHEN THE FINAL INFO IS DECIDED UPON
     const names = [{IPA: mary, latin: "Mary"},{IPA: john, latin: "John"}]
 
     const nouns = [{original:"Apple"},{original:"Bear"},{original:"Book"}, {original:"Cat"}, {original:"Dinner"}, {original:"Fish"},
@@ -232,13 +232,6 @@ export let grammarOrigin;
         <Dictionary category="Pronouns" dictionary={pronouns}/>
         <Dictionary category="Adjectives" dictionary={adjectives}/>
         <Dictionary category="Verbs" dictionary={verbs}/>
-        <!-- <Dictionary category="Nouns" dictionary={defaultNouns}/>
-        <Dictionary category="Pronouns" dictionary={defaultPronouns}/>
-        <Dictionary category="Adjectives" dictionary={defaultAdjectives}/>
-        <Dictionary category="Verbs" dictionary={defaultVerbs}/> -->
-        <!-- {#if grammarOrigin.name !== "English"}
-        <Dictionary category="Other" dictionary={determiners}/>
-        {/if} -->
     </div>
     <div id="grammar">
     <h1>Basic Grammar:</h1>
