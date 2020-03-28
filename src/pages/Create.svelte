@@ -242,6 +242,17 @@
                 randomIPA.push(randomPhoneme.symbol)
                 randomLatin.push(randomPhoneme.latin)
             }
+            // EXPERIMENTAL PART- CAN TAKE OUT
+            const chance = Math.floor(Math.random() * 2)
+            if(phonologyOrigin !== "Japanese"){
+                if(chance === 2){
+
+                    const randomEnding = getRandomItem(consonants);
+                randomIPA.push(randomEnding.symbol)
+                randomLatin.push(randomEnding.latin)
+                }
+            }
+            // END EXPIRIMENTAL SECTION
         }
             const joinedRandomIPA = randomIPA.join("")
             const joinedRandomLatin = randomLatin.join("")
