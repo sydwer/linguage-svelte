@@ -89,7 +89,7 @@ const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along
 {original: "Towards"}, {original: "Without"},{original: "About"},];
 
 
-
+const adverb = {original: "Adverb"}
 
 
 const germanGrammar = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
@@ -97,6 +97,7 @@ nomEndings, accEndings, datEndings, genEndings, presentTenses, pastTenseAffixes,
 nomPronouns, accPronouns, datPronouns, genPronouns];
 
 function makeGrammarDictionaries(){
+  makeGrammar(adverb);
   germanGrammar.map(dictionary=>{
     dictionary.map(makeGrammar)
   })
@@ -204,6 +205,21 @@ h4{
     <span>PAST-eat-PAST</span>
   </h4>
   <h4>'The cats will eat fish.'</h4>
+</div>
+<div>
+  <h4>
+    <span>{nomPronouns.we.IPA}</span><span>{verbs.copula.IPA}-{presentTenses.we.IPA}</span>
+    <span>{nouns.hunger.IPA}.{adverb.IPA}</span>
+  </h4>
+  <h4>
+    <span>{nomPronouns.we.latin}</span><span>{verbs.copula.latin}-{presentTenses.we.latin}</span>
+    <span>{nouns.hunger.latin}.{adverb.latin}</span>
+  </h4>
+  <h4>
+    <span>we</span><span>are-PRES.3SG</span>
+    <span>hunger.ADV</span>
+  </h4>
+  <h4> 'We're hungry.'</h4>
 </div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
