@@ -11,9 +11,13 @@ const nouns = dictionary.nouns;
 const verbs = dictionary.verbs;
 const adjectives = dictionary.adjectives;
 
-// const will = {original: "Will"};
-// verbs.push(will)
-// console.log(will)
+
+
+// function createSubjunctive(){
+//   let become = verbs.find(o => o.original === "Will");
+//   become.original = "Become"
+// }
+
 
 // There's a ton of cases markers in German, come back if figuring out a more concide way of doing this
 const mascDet = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},
@@ -40,6 +44,7 @@ const neutArt = [{original: "Nominative"},{original: "Accusative"},{original: "D
 const plArt = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},
 {original: "Genitive"},];
 
+// endings is the grammar for the end of adjectives and articles to match gender and case of word they midify
 const nomEndings = [{original: "Masculine"},{original: "Feminine"},{original: "Neutral"},
 {original: "Plural"},];
 
@@ -68,6 +73,10 @@ const genPronouns = [{original: "I"},{original: "We"},{original: "You"},
 {original:"You_all"},{original:"He"},{original:"She"},{original:"It"},
 {original:"They"},];
 
+const possPronouns = [{original: "I"},{original: "We"},{original: "You"},
+{original:"You_all"},{original:"He"},{original:"She"},{original:"It"},
+{original:"They"},];
+
 const pronouns = {nom: nomPronouns, acc: accPronouns, dat: datPronouns, gen: genPronouns};
 
 const cases = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
@@ -77,6 +86,8 @@ nomEndings, accEndings, datEndings, genEndings];
 
 const presentTenses =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
 {original: "He_She_It"},{original:"They"},];
+
+const subjunctive = [{original: "Become"}]
 
 // const pastTenseSuffix =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
 // {original: "He_She_It"},{original:"They"},];
@@ -94,7 +105,7 @@ const adverb = {original: "Adverb"}
 
 const germanGrammar = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
 nomEndings, accEndings, datEndings, genEndings, presentTenses, pastTenseAffixes, prepositions,
-nomPronouns, accPronouns, datPronouns, genPronouns];
+nomPronouns, accPronouns, datPronouns, genPronouns,possPronouns, subjunctive];
 
 function makeGrammarDictionaries(){
   makeGrammar(adverb);
@@ -123,7 +134,7 @@ function makeGermanGrammar(){
 }
 
 makeGermanGrammar();
-console.log(pronouns)
+
 
 
 
@@ -220,6 +231,27 @@ h4{
     <span>hunger.ADV</span>
   </h4>
   <h4> 'We're hungry.'</h4>
+</div>
+<div>
+  <h4>
+    <span>{nomPronouns.i.IPA}</span>
+    <span>{pastTenseAffixes.prefix.IPA}-{subjunctive.would.IPA}-{pastTenseAffixes.suffux.IPA}</span>
+    <span>{datPronouns.he.IPA}</span><span>{possPronouns.i.IPA}-{accEndings.neutral.IPA}</span>
+    <span>{nouns.book.IPA}</span>
+  </h4>
+  <h4>
+    <span>{nomPronouns.i.latin}</span>
+    <span>{pastTenseAffixes.prefix.latin}-{subjunctive.would.latin}-{pastTenseAffixes.suffux.latin}</span>
+    <span>{datPronouns.he.latin}</span><span>{possPronouns.i.latin}-{accEndings.neutral.latin}</span>
+    <span>{nouns.book.latin}</span>
+  </h4>
+  <h4>
+    <span>i</span>
+    <span>PAST-become-PAST</span>
+    <span>he.DAT</span><span>i.POSS-ACC.NEUT</span>
+    <span>book</span>
+  </h4>
+  <h4>'I would give him my book.'</h4>
 </div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
