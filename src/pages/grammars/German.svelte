@@ -211,6 +211,14 @@ h4{
     <span>{nomPronouns.we.IPA}</span><span>{verbs.copula.IPA}-{presentTenses.we.IPA}</span>
     <span>{nouns.hunger.IPA}.{adverb.IPA}</span>
   </h4>
+  <h4>
+    <span>{nomPronouns.we.latin}</span><span>{verbs.copula.latin}-{presentTenses.we.latin}</span>
+    <span>{nouns.hunger.latin}.{adverb.latin}</span>
+  </h4>
+  <h4>
+    <span>we</span><span>are-PRES.3SG</span>
+    <span>hunger.ADV</span>
+  </h4>
   <h4> 'We're hungry.'</h4>
 </div>
 
