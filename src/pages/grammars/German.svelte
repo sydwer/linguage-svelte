@@ -227,7 +227,7 @@ h4{
     <span>{nouns.hunger.latin}.{adverb.latin}</span>
   </h4>
   <h4>
-    <span>we</span><span>are-PRES.3SG</span>
+    <span>we.NOM</span><span>are-PRES.3SG</span>
     <span>hunger.ADV</span>
   </h4>
   <h4> 'We're hungry.'</h4>
@@ -235,13 +235,13 @@ h4{
 <div>
   <h4>
     <span>{nomPronouns.i.IPA}</span>
-    <span>{pastTenseAffixes.prefix.IPA}-{subjunctive.would.IPA}-{pastTenseAffixes.suffux.IPA}</span>
+    <span>{pastTenseAffixes.prefix.IPA}-{subjunctive.become.IPA}-{pastTenseAffixes.suffix.IPA}</span>
     <span>{datPronouns.he.IPA}</span><span>{possPronouns.i.IPA}-{accEndings.neutral.IPA}</span>
     <span>{nouns.book.IPA}</span>
   </h4>
   <h4>
     <span>{nomPronouns.i.latin}</span>
-    <span>{pastTenseAffixes.prefix.latin}-{subjunctive.would.latin}-{pastTenseAffixes.suffux.latin}</span>
+    <span>{pastTenseAffixes.prefix.latin}-{subjunctive.become.latin}-{pastTenseAffixes.suffix.latin}</span>
     <span>{datPronouns.he.latin}</span><span>{possPronouns.i.latin}-{accEndings.neutral.latin}</span>
     <span>{nouns.book.latin}</span>
   </h4>
