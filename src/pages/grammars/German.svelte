@@ -227,7 +227,7 @@ h4{
     <span>{nouns.hunger.latin}.{adverb.latin}</span>
   </h4>
   <h4>
-    <span>we.NOM</span><span>are-PRES.3SG</span>
+    <span>we.NOM</span><span>to be-PRES.3SG</span>
     <span>hunger.ADV</span>
   </h4>
   <h4> 'We're hungry.'</h4>
