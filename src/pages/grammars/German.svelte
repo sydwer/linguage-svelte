@@ -253,6 +253,13 @@ h4{
   </h4>
   <h4>'I would give him my book.'</h4>
 </div>
+<div>
+  <h4>
+    <span>{nomPronouns.i.IPA}</span>
+    <span></span>
+  </h4>
+  <h4>'I wanted a rock from the river.'</h4>
+</div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
 <!-- include nach vs zu example -->
