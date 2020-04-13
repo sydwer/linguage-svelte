@@ -89,22 +89,22 @@ const presentTenses =[{original: "I"},{original:"We"},{original:"You"},{original
 
 const subjunctive = [{original: "Become"}]
 
-// const pastTenseSuffix =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
-// {original: "He_She_It"},{original:"They"},];
+const pastTenseSuffix =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
+{original: "He_She_It"},{original:"They"},];
 
 // const pastTensePrefixes =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
 // {original: "He_She_It"},{original:"They"},];
 const pastTenseAffixes =[{original: "Prefix"},{original: "Suffix"}];
 
 const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along"}, {original: "For"}, {original: "Against"},
-{original: "Towards"}, {original: "Without"},{original: "About"},];
+{original: "Towards"}, {original: "Without"},{original: "About"},{original: "From"},];
 
 
 const adverb = {original: "Adverb"}
 
 
 const germanGrammar = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
-nomEndings, accEndings, datEndings, genEndings, presentTenses, pastTenseAffixes, prepositions,
+nomEndings, accEndings, datEndings, genEndings, presentTenses,pastTenseSuffix, pastTenseAffixes, prepositions,
 nomPronouns, accPronouns, datPronouns, genPronouns,possPronouns, subjunctive];
 
 function makeGrammarDictionaries(){
@@ -256,7 +256,10 @@ h4{
 <div>
   <h4>
     <span>{nomPronouns.i.IPA}</span>
-    <span></span>
+    <span>{verbs.have.IPA}-{pastTenseSuffix.i.IPA}</span><span>{neutArt.accusative.IPA}</span>
+    <span>{nouns.rock.IPA}</span><span>{prepositions.from.IPA}</span>
+    <span>{mascDet.dative.IPA}</span><span>{nouns.river.IPA}</span>
+    <span>{pastTenseAffixes.prefix.IPA}-{verbs.want.IPA}-{pastTenseAffixes.suffix.IPA}</span>
   </h4>
   <h4>'I wanted a rock from the river.'</h4>
 </div>
