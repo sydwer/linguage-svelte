@@ -261,6 +261,20 @@ h4{
     <span>{mascDet.dative.IPA}</span><span>{nouns.river.IPA}</span>
     <span>{pastTenseAffixes.prefix.IPA}-{verbs.want.IPA}-{pastTenseAffixes.suffix.IPA}</span>
   </h4>
+  <h4>
+    <span>{nomPronouns.i.latin}</span>
+    <span>{verbs.have.latin}-{pastTenseSuffix.i.latin}</span><span>{neutArt.accusative.latin}</span>
+    <span>{nouns.rock.latin}</span><span>{prepositions.from.latin}</span>
+    <span>{mascDet.dative.latin}</span><span>{nouns.river.latin}</span>
+    <span>{pastTenseAffixes.prefix.latin}-{verbs.want.latin}-{pastTenseAffixes.suffix.latin}</span>
+  </h4>
+  <h4>
+    <span>i.NOM</span>
+    <span>have-PAST.1SG</span><span>a.NEUT.ACC</span>
+    <span>rock</span><span>from</span>
+    <span>the.MASC.DAT</span><span>river</span>
+    <span>PAST-want-PAST</span>
+  </h4>
   <h4>'I wanted a rock from the river.'</h4>
 </div>
 
