@@ -89,22 +89,22 @@ const presentTenses =[{original: "I"},{original:"We"},{original:"You"},{original
 
 const subjunctive = [{original: "Become"}]
 
-// const pastTenseSuffix =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
-// {original: "He_She_It"},{original:"They"},];
+const pastTenseSuffix =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
+{original: "He_She_It"},{original:"They"},];
 
 // const pastTensePrefixes =[{original: "I"},{original:"We"},{original:"You"},{original:"You_All"},
 // {original: "He_She_It"},{original:"They"},];
 const pastTenseAffixes =[{original: "Prefix"},{original: "Suffix"}];
 
 const prepositions = [{original: "By"}, {original: "Through"}, {original: "Along"}, {original: "For"}, {original: "Against"},
-{original: "Towards"}, {original: "Without"},{original: "About"},];
+{original: "Towards"}, {original: "Without"},{original: "About"},{original: "From"},];
 
 
 const adverb = {original: "Adverb"}
 
 
 const germanGrammar = [mascDet, femDet, neutDet, plDet, mascArt, femArt, neutArt, plArt, 
-nomEndings, accEndings, datEndings, genEndings, presentTenses, pastTenseAffixes, prepositions,
+nomEndings, accEndings, datEndings, genEndings, presentTenses,pastTenseSuffix, pastTenseAffixes, prepositions,
 nomPronouns, accPronouns, datPronouns, genPronouns,possPronouns, subjunctive];
 
 function makeGrammarDictionaries(){
@@ -252,6 +252,30 @@ h4{
     <span>book</span>
   </h4>
   <h4>'I would give him my book.'</h4>
+</div>
+<div>
+  <h4>
+    <span>{nomPronouns.i.IPA}</span>
+    <span>{verbs.have.IPA}-{pastTenseSuffix.i.IPA}</span><span>{neutArt.accusative.IPA}</span>
+    <span>{nouns.rock.IPA}</span><span>{prepositions.from.IPA}</span>
+    <span>{mascDet.dative.IPA}</span><span>{nouns.river.IPA}</span>
+    <span>{pastTenseAffixes.prefix.IPA}-{verbs.want.IPA}-{pastTenseAffixes.suffix.IPA}</span>
+  </h4>
+  <h4>
+    <span>{nomPronouns.i.latin}</span>
+    <span>{verbs.have.latin}-{pastTenseSuffix.i.latin}</span><span>{neutArt.accusative.latin}</span>
+    <span>{nouns.rock.latin}</span><span>{prepositions.from.latin}</span>
+    <span>{mascDet.dative.latin}</span><span>{nouns.river.latin}</span>
+    <span>{pastTenseAffixes.prefix.latin}-{verbs.want.latin}-{pastTenseAffixes.suffix.latin}</span>
+  </h4>
+  <h4>
+    <span>i.NOM</span>
+    <span>have-PAST.1SG</span><span>a.NEUT.ACC</span>
+    <span>rock</span><span>from</span>
+    <span>the.MASC.DAT</span><span>river</span>
+    <span>PAST-want-PAST</span>
+  </h4>
+  <h4>'I wanted a rock from the river.'</h4>
 </div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
