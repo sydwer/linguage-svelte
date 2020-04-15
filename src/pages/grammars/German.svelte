@@ -277,6 +277,13 @@ h4{
   </h4>
   <h4>'I wanted a rock from the river.'</h4>
 </div>
+<div>
+  <h4>
+    <span>{femArt.nominative.IPA}</span><span>{adjectives.big.IPA}-{nomEndings.feminine.IPA}</span>
+    <span>{nouns.bear.IPA}</span><span>{verbs.able.IPA}</span>
+  </h4>
+  <h4>'A big bear could eat 10 fish quickly.'</h4>
+</div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
 <!-- include nach vs zu example -->
