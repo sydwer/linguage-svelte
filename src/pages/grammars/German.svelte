@@ -287,6 +287,18 @@ h4{
     <span>{adjectives.quick.IPA}</span><span>{nouns.ten.IPA}</span>
     <span>{nouns.fish.IPA}-e</span><span>{verbs.eat.IPA}</span>
   </h4>
+  <h4>
+    <span>{femArt.nominative.latin}</span><span>{adjectives.big.latin}-{nomEndings.feminine.latin}</span>
+    <span>{nouns.bear.latin}</span><span>{verbs.able.latin}-{presentTenses.he_she_it.latin}</span>
+    <span>{adjectives.quick.latin}</span><span>{nouns.ten.latin}</span>
+    <span>{nouns.fish.latin}-e</span><span>{verbs.eat.latin}</span>
+  </h4>
+  <h4>
+    <span>a.FEM.NOM</span><span>big-NOM.FEM</span>
+    <span>bear</span><span>can-PRES.3SG</span>
+    <span>quick</span><span>ten</span>
+    <span>fish-PL</span><span>eat</span>
+  </h4>
   <h4>'A big bear can eat 10 fish quickly.'</h4>
 </div>
 
