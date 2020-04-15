@@ -163,6 +163,9 @@ h4{
 <h2>Pronouns (by Grammatical Case):</h2>
 <GermanGrammarTable pronouns={pronouns}/>
 <br>
+<h2>Plural Marker:</h2>
+<h4> -e </h4>
+<!-- Format this plural marker ^^^^ -->
 <br>
 <h2> Sample Sentences: </h2>
 <br>
@@ -199,13 +202,13 @@ h4{
 </div>
 <div>
   <h4>
-    <span>{plDet.nominative.IPA}</span><span>{nouns.cat.IPA}-s</span>
+    <span>{plDet.nominative.IPA}</span><span>{nouns.cat.IPA}-e</span>
     <span>{verbs.will.IPA}-{presentTenses.he_she_it.IPA}</span>
     <span>{plArt.accusative.IPA}</span><span>{nouns.fish.IPA}</span>
     <span>{pastTenseAffixes.prefix.IPA}-{verbs.eat.IPA}-{pastTenseAffixes.suffix.IPA}</span>
   </h4>
   <h4>
-    <span>{plDet.nominative.latin}</span><span>{nouns.cat.latin}-s</span>
+    <span>{plDet.nominative.latin}</span><span>{nouns.cat.latin}-e</span>
     <span>{verbs.will.latin}-{presentTenses.he_she_it.latin}</span>
     <span>{plArt.accusative.latin}</span><span>{nouns.fish.latin}</span>
     <span>{pastTenseAffixes.prefix.latin}-{verbs.eat.latin}-{pastTenseAffixes.suffix.latin}</span>
@@ -280,9 +283,11 @@ h4{
 <div>
   <h4>
     <span>{femArt.nominative.IPA}</span><span>{adjectives.big.IPA}-{nomEndings.feminine.IPA}</span>
-    <span>{nouns.bear.IPA}</span><span>{verbs.able.IPA}</span>
+    <span>{nouns.bear.IPA}</span><span>{verbs.able.IPA}-{presentTenses.he_she_it.IPA}</span>
+    <span>{adjectives.quick.IPA}</span><span>{nouns.ten.IPA}</span>
+    <span>{nouns.fish.IPA}-e</span><span>{verbs.eat.IPA}</span>
   </h4>
-  <h4>'A big bear could eat 10 fish quickly.'</h4>
+  <h4>'A big bear can eat 10 fish quickly.'</h4>
 </div>
 
 <!-- verb kickers, multiple clauses are a must, so is dat/acc verbs and movement/stationary past. -->
