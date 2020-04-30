@@ -8,6 +8,7 @@
     // restructure pronouns so that it's by person rather than case, so that this can be component
 
 </script>
+<!-- DELETE THIS COMPONENT ONCE DICTIONARY BACKEND IS LINKED- AND MOVE THIS TABLE TO THE CONJUGATION TABLE COMPONENT -->
 
 
 <style>

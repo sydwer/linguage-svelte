@@ -19,7 +19,8 @@ const adjectives = dictionary.adjectives;
 // }
 
 
-// There's a ton of cases markers in German, come back if figuring out a more concide way of doing this
+// These are now being-built into back end - and will come up when the callis made so can be deleted once 
+// the backend is fully up an running
 const mascDet = [{original: "Nominative"},{original: "Accusative"},{original: "Dative"},
 {original: "Genitive"},];
 
