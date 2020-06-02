@@ -5,6 +5,14 @@ export let dictionary;
 export let makeGrammar;
 export let markWord;
 
+/////
+////
+///
+//Start logic that can be deleted upon finishing improved backend
+///
+////
+/////
+
 
 const names = dictionary.names;
 const nouns = dictionary.nouns;
@@ -135,6 +143,14 @@ function makeGermanGrammar(){
 }
 
 makeGermanGrammar();
+
+/////
+////
+///
+// Delete everything above 
+///
+////
+/////
 
 
 
