@@ -3,6 +3,15 @@ import ConjugationTable from '../ConjugationTable.svelte'
 export let dictionary;
 export let makeGrammar;
 export let markWord;
+/////
+////
+///
+//this is all going away once the new backend is built/properly linked up- placeholder for
+// now for work breaks involving the front end/taking breaks to do some design
+// between designing the database
+///
+////
+/////
 
     const names = dictionary.names;
     const nouns = dictionary.nouns;
@@ -96,6 +105,15 @@ export let markWord;
     }
 
     makeEnglishGrammar();
+
+    /////
+    ////
+    ///
+    //End logic- everything above here can be deleted upon new backend being finished 
+    // (oh my god the amount of join tables is dumb why did i do that to myself)
+    ///
+    ////
+    /////
   
 
    

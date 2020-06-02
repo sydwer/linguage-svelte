@@ -53,6 +53,25 @@ export let grammarOrigin;
     // const verbs = {};
     // const adjectives = {};
 
+
+    /////
+    ////
+    ///
+    // ALL OF THIS IS CURRENTLY ON NEWEST BACKEND WITH IT ROUTE BEING SET UP
+    //-THIS IS A PLACEHOLDER BUT NECESSARY 
+    // FOR ANY FROTNEND WORK BEING DONE AS A BREAK FROM THE BACKEND DEVELOPMENT
+    // DO
+    // NOT 
+    // DELETE 
+    // IT 
+    // YET
+    //////
+    /////
+    ////
+    ///
+    //
+    
+
     let test = [{original: "one"}, {original: "dos"}];
 
     if(syllableBank){
@@ -190,6 +209,14 @@ export let grammarOrigin;
             dictionary[i].latin = newWord.latin
         }
     }
+
+    /////
+    ////
+    ///
+    //END PLACEHOLDER LOGIC
+    ///
+    ////
+    /////
 
 </script>
 
